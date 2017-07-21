@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { Switch, Route } from 'react-router';
-import { withRouter } from 'react-router-dom';
 // import { Link } from 'react-router';
 
 import * as actions from '../actions';
@@ -17,11 +16,21 @@ class App extends Component {
 
   // }
 
+  getNest() {
+    let decapitateThePath = this.props.location.pathname.match(/\/_appliance/);
+    if (decapitateThePath === null) {
+      return '';
+    } else {
+      return this.props.location.pathname.slice(0, decapitateThePath.index);
+    }
+  }
+
   render() {
+    console.log(this.getNest());
     return (
       <Switch>
-        <Route exact path="/" component={New} />
-        <Route path="/new-too" component={NewToo} />
+        <Route exact path={`${this.getNest()}/_appliance/`} component={New} />
+        <Route path={`${this.getNest()}/_appliance/new-too`} component={NewToo} />
       </Switch>
     );
   }

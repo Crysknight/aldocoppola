@@ -15,6 +15,7 @@ class NewToo extends Component {
 	// }
 
 	render() {
+		console.log(this.props.match.path);
 		return (
 			<div className="new-too">Hello, it's NewToo</div>
 		);

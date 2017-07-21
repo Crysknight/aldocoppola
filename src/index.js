@@ -6,6 +6,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { applyMiddleware, createStore } from 'redux';
 import { Provider } from 'react-redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
+import { Switch, Route } from 'react-router';
 import thunk from 'redux-thunk';
 import cookie from 'react-cookie';
 
@@ -15,13 +16,13 @@ import allReducers from './reducers';
 
 
 const store = createStore(allReducers, composeWithDevTools(applyMiddleware(thunk)));
-const basename = window.location;
-console.log(basename);
 
 ReactDOM.render((
 	<Provider store={store}>
-		<BrowserRouter basename="/appliance">
-			<App />
+		<BrowserRouter>
+			<Switch>
+        <Route component={App} />
+			</Switch>
 		</BrowserRouter>
 	</Provider>
 ), document.getElementById('root'));

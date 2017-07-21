@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 // import { Link } from 'react-router';
 
 import * as actions from '../actions';
@@ -15,8 +16,12 @@ class New extends Component {
 	// }
 
 	render() {
+		console.log(this.props.match.path);
 		return (
-			<div className="new">Hello, it's new</div>
+			<div className="new">
+				<p>Hello, it's new</p>
+				<Link to="/new-too">Go to new-too</Link>
+			</div>
 		);
 	}
 

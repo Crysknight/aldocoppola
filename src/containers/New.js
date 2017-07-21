@@ -16,7 +16,6 @@ class New extends Component {
 	// }
 
 	render() {
-		console.log(this.props.paths.getNest(this.props.match.path));
 		return (
 			<div className="new">
 				<p>Hello, it's new</p>

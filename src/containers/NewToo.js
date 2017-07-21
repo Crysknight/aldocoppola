@@ -15,11 +15,10 @@ class NewToo extends Component {
 	// }
 
 	render() {
-		let linkHome = this.props.match.path.replace(new RegExp(this.props.paths.app + '(.*)'), this.props.paths.app);
 		return (
 			<div className="new-too">
 				<p>Hello, it's NewToo</p>
-				<Link to={`${linkHome}`}>Go to new</Link>
+				<Link to={`${this.props.paths.getNest(this.props.match.path)}`}>Go to new</Link>
 			</div>
 		);
 	}

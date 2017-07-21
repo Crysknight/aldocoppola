@@ -9,28 +9,19 @@ import * as actions from '../actions';
 import New from './New';
 import NewToo from './NewToo';
 
-class App extends Component {
+class Routes extends Component {
 
   // constructor(props) {
     // super(props);
 
   // }
 
-  getNest() {
-    let decapitateThePath = this.props.location.pathname.match(new RegExp(this.props.paths.app));
-    if (decapitateThePath === null) {
-      return '';
-    } else {
-      return this.props.location.pathname.slice(0, decapitateThePath.index);
-    }
-  }
-
   render() {
     return (
       <div>
         <Switch>
-          <Route exact path={`${this.getNest()}${this.props.paths.app}`} component={New} />
-          <Route path={`${this.getNest()}${this.props.paths.newToo}`} component={NewToo} />
+          <Route exact path={`${this.props.paths.getNest(this.props.location.pathname)}`} component={New} />
+          <Route path={`${this.props.paths.getPath(this.props.location.pathname, this.props.paths.newToo.pathString)}`} component={NewToo} />
         </Switch>
       </div>
     );
@@ -50,4 +41,4 @@ function matchDispatchToProps(dispatch) {
   }, dispatch);
 }
 
-export default connect(mapStateToProps, matchDispatchToProps)(App);
+export default connect(mapStateToProps, matchDispatchToProps)(Routes);

@@ -10,7 +10,7 @@ import { Switch, Route } from 'react-router';
 import thunk from 'redux-thunk';
 import cookie from 'react-cookie';
 
-import App from './containers/App';
+import Routes from './containers/Routes';
 
 import allReducers from './reducers';
 
@@ -21,7 +21,7 @@ ReactDOM.render((
 	<Provider store={store}>
 		<BrowserRouter>
 			<Switch>
-        <Route component={App} />
+        <Route component={Routes} />
 			</Switch>
 		</BrowserRouter>
 	</Provider>

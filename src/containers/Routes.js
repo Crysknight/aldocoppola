@@ -17,7 +17,7 @@ class App extends Component {
   // }
 
   getNest() {
-    let decapitateThePath = this.props.location.pathname.match(/\/_appliance/);
+    let decapitateThePath = this.props.location.pathname.match(new RegExp(this.props.paths.app));
     if (decapitateThePath === null) {
       return '';
     } else {
@@ -26,12 +26,13 @@ class App extends Component {
   }
 
   render() {
-    console.log(this.getNest());
     return (
-      <Switch>
-        <Route exact path={`${this.getNest()}/_appliance/`} component={New} />
-        <Route path={`${this.getNest()}/_appliance/new-too`} component={NewToo} />
-      </Switch>
+      <div>
+        <Switch>
+          <Route exact path={`${this.getNest()}${this.props.paths.app}`} component={New} />
+          <Route path={`${this.getNest()}${this.props.paths.newToo}`} component={NewToo} />
+        </Switch>
+      </div>
     );
   }
 
@@ -39,7 +40,7 @@ class App extends Component {
 
 function mapStateToProps(state) {
   return {
-    
+    paths: state.paths
   };
 }
 

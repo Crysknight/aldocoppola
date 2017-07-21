@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-// import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 
 import * as actions from '../actions';
 
@@ -15,9 +15,12 @@ class NewToo extends Component {
 	// }
 
 	render() {
-		console.log(this.props.match.path);
+		let linkHome = this.props.match.path.replace(new RegExp(this.props.paths.app + '(.*)'), this.props.paths.app);
 		return (
-			<div className="new-too">Hello, it's NewToo</div>
+			<div className="new-too">
+				<p>Hello, it's NewToo</p>
+				<Link to={`${linkHome}`}>Go to new</Link>
+			</div>
 		);
 	}
 
@@ -25,7 +28,7 @@ class NewToo extends Component {
 
 function mapStateToProps(state) {
 	return {
-		
+		paths: state.paths
 	};
 }
 

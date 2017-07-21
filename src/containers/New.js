@@ -16,11 +16,11 @@ class New extends Component {
 	// }
 
 	render() {
-		console.log(this.props.match.path);
+		console.log(this.props.paths.getNest(this.props.match.path));
 		return (
 			<div className="new">
 				<p>Hello, it's new</p>
-				<Link to="/new-too">Go to new-too</Link>
+				<Link to={`${this.props.paths.getPath(this.props.match.path, this.props.paths.newToo)}`}>Go to new-too</Link>
 			</div>
 		);
 	}
@@ -29,7 +29,7 @@ class New extends Component {
 
 function mapStateToProps(state) {
 	return {
-		
+		paths: state.paths
 	};
 }
 

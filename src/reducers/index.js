@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
-import defaultReducer from './default';
+import paths from './paths';
 
 const allReducers = combineReducers({
-	defaultReducer: defaultReducer
+	paths: paths
 });
 
 export default allReducers;

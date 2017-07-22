@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 
 import * as actions from '../actions';
 
-//here be components
+import Header from '../components/header';
 
 class New extends Component {
 
@@ -16,10 +16,12 @@ class New extends Component {
 	// }
 
 	render() {
+		let paths = this.props.paths;
 		return (
 			<div className="new">
+				<Header title="Выбрать центр красоты" />
 				<p>Hello, it's new</p>
-				<Link to={`${this.props.paths.getPath(this.props.match.path, this.props.paths.newToo)}`}>Go to new-too</Link>
+				<Link to={`${paths.getPath(this.props.match.path, paths.newToo)}`}>Go to new-too</Link>
 			</div>
 		);
 	}

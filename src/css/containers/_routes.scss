@@ -1,0 +1,25 @@
+#ac_layout {
+	position: relative;
+	display: inline-block;
+	&>div {
+		width: 320px;
+		height: 568px;
+		border: 3px solid $acDark;
+	}
+	.app-switch {
+		display: inline-block;
+		width: 30px;
+		height: 30px;
+		position: absolute;
+		right: -45px;
+		top: 15px;
+		border-radius: 50%;
+		border: 2px solid $acDark;
+		color: $acDark;
+		font-size: 26px;
+		line-height: 1;
+		text-align: center;
+		text-decoration: none;
+		transform: rotate(45deg);
+	}
+}

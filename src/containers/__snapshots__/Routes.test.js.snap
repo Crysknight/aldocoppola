@@ -1,3 +1,110 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`containers: routes matches the snapshot 1`] = `<div />`;
+exports[`Routes child path of the app matches the snapshot on the rootpath 1`] = `
+<div
+  id="ac_layout"
+>
+  <a
+    className="app-switch"
+    href="/"
+    onClick={[Function]}
+  >
+    +
+  </a>
+  <div
+    className="new-too"
+  >
+    <p>
+      Hello, it's NewToo
+    </p>
+    <a
+      href="/_appliance/"
+      onClick={[Function]}
+    >
+      Go to new
+    </a>
+  </div>
+</div>
+`;
+
+exports[`Routes doesn't render the app everywhere 1`] = `
+<div
+  id="ac_layout"
+>
+  <a
+    className="app-switch"
+    href="/test/bauble.html/_appliance/"
+    onClick={[Function]}
+  >
+    +
+  </a>
+</div>
+`;
+
+exports[`Routes matches the snapshot on the nested path 1`] = `
+<div
+  id="ac_layout"
+>
+  <a
+    className="app-switch"
+    href="/test/bauble.html"
+    onClick={[Function]}
+  >
+    +
+  </a>
+  <div
+    className="new"
+  >
+    <div
+      className="ac-header"
+    >
+      <h3>
+        Выбрать центр красоты
+      </h3>
+    </div>
+    <p>
+      Hello, it's new
+    </p>
+    <a
+      href="/test/bauble.html/_appliance/new-too/"
+      onClick={[Function]}
+    >
+      Go to new-too
+    </a>
+  </div>
+</div>
+`;
+
+exports[`Routes matches the snapshot on the rootpath 1`] = `
+<div
+  id="ac_layout"
+>
+  <a
+    className="app-switch"
+    href="/"
+    onClick={[Function]}
+  >
+    +
+  </a>
+  <div
+    className="new"
+  >
+    <div
+      className="ac-header"
+    >
+      <h3>
+        Выбрать центр красоты
+      </h3>
+    </div>
+    <p>
+      Hello, it's new
+    </p>
+    <a
+      href="/_appliance/new-too/"
+      onClick={[Function]}
+    >
+      Go to new-too
+    </a>
+  </div>
+</div>
+`;

@@ -18,7 +18,7 @@ class NewToo extends Component {
 		return (
 			<div className="new-too">
 				<p>Hello, it's NewToo</p>
-				<Link to={`${this.props.paths.getNest(this.props.match.path)}`}>Go to new</Link>
+				<Link to={`${this.props.paths.getPath(this.props.match.path, this.props.paths.app)}`}>Go to new</Link>
 			</div>
 		);
 	}

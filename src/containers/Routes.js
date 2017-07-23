@@ -7,8 +7,11 @@ import { Link } from 'react-router-dom';
 import * as actions from '../actions';
 
 // Import the containers related to paths
-import New from './New';
-import NewToo from './NewToo';
+import OnlineAppointment from './OnlineAppointment';
+import ChooseCenter from './ChooseCenter';
+import ChooseEmployee from './ChooseEmployee';
+import ChooseServices from './ChooseServices';
+import ChooseDateTime from './ChooseDateTime';
 
 class Routes extends Component {
 
@@ -16,8 +19,11 @@ class Routes extends Component {
   // We do it here to make it possible to map the paths' reducer to an array of Route components
   componentWillMount() {
     let paths = this.props.paths;
-    paths.app.component = New;
-    paths.newToo.component = NewToo;
+    paths.app.component = OnlineAppointment;
+    paths.ChooseCenter.component = ChooseCenter;
+    paths.ChooseEmployee.component = ChooseEmployee;
+    paths.ChooseServices.component = ChooseServices;
+    paths.ChooseDateTime.component = ChooseDateTime;
   }
 
   render() {
@@ -27,7 +33,6 @@ class Routes extends Component {
     for (let path in paths) {
       pathArray.push(paths[path]);
     }
-    console.log(paths.getAppSwitch(this.props.location.pathname));
     return (
       <div id="ac_layout">
         <Link 

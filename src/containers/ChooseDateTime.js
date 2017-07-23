@@ -5,9 +5,9 @@ import { Link } from 'react-router-dom';
 
 import * as actions from '../actions';
 
-//here be components
+import Header from '../components/header';
 
-class NewToo extends Component {
+class ChooseDateTime extends Component {
 
 	// constructor(props) {
 		// super(props);
@@ -15,10 +15,15 @@ class NewToo extends Component {
 	// }
 
 	render() {
+		let paths = this.props.paths;
 		return (
-			<div className="new-too">
-				<p>Hello, it's NewToo</p>
-				<Link to={`${this.props.paths.getPath(this.props.match.path, this.props.paths.app)}`}>Go to new</Link>
+			<div className="new">
+				<Header title="Выбрать дату">
+					<Link 
+						to={`${paths.getPath(this.props.match.path, paths.app)}`}
+						className="back-link"
+					>&larr;</Link>
+				</Header>
 			</div>
 		);
 	}
@@ -37,4 +42,4 @@ function matchDispatchToProps(dispatch) {
 	}, dispatch);
 }
 
-export default connect(mapStateToProps, matchDispatchToProps)(NewToo);
+export default connect(mapStateToProps, matchDispatchToProps)(ChooseDateTime);

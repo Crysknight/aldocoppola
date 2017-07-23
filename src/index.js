@@ -8,7 +8,7 @@ import { Provider } from 'react-redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import { Switch, Route } from 'react-router';
 import thunk from 'redux-thunk';
-import cookie from 'react-cookie';
+// import cookie from 'react-cookie';
 
 import Routes from './containers/Routes';
 

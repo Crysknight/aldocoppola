@@ -1,0 +1,20 @@
+.ac-header {
+	background-color: $acDark;
+	margin: 0 0 15px 0;
+	padding: 20px;
+	padding-top: 17px;
+	h3 {
+		color: $acWhite;
+		margin: 0;
+		display: inline-block;
+		vertical-align: middle;
+	}
+	.back-link {
+		float: right;
+		color: $acWhite;
+		text-decoration: none;
+		font-size: 1.4em;
+		display: inline-block;
+		vertical-align: middle;
+	}
+}

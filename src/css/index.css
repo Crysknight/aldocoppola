@@ -6,17 +6,62 @@
 /* Brights */
 /* Colored */
 /* =================================================================================================== */
+/* < FONTS > */
+/* =================================================================================================== */
+/* =================================================================================================== */
 /* < COMPLEX VALUES > */
 /* =================================================================================================== */
 /* Shadows */
+@font-face {
+  font-family: 'SourceSansPro-Black';
+  src: url("../fonts/SourceSansPro/SourceSansPro-Black.eot");
+  src: url("../fonts/SourceSansPro/SourceSansPro-Black.eot?#iefix") format("embedded-opentype"), url("../fonts/SourceSansPro/SourceSansPro-Black.woff") format("woff"), url("../fonts/SourceSansPro/SourceSansPro-Black.ttf") format("truetype"), url("../fonts/SourceSansPro/SourceSansPro-Black.svg#SourceSansPro-Black") format("svg");
+  font-style: normal;
+  font-weight: normal; }
+
+@font-face {
+  font-family: 'SourceSansPro-Bold';
+  src: url("../fonts/SourceSansPro/SourceSansPro-Bold.eot");
+  src: url("../fonts/SourceSansPro/SourceSansPro-Bold.eot?#iefix") format("embedded-opentype"), url("../fonts/SourceSansPro/SourceSansPro-Bold.woff") format("woff"), url("../fonts/SourceSansPro/SourceSansPro-Bold.ttf") format("truetype"), url("../fonts/SourceSansPro/SourceSansPro-Bold.svg#SourceSansPro-Bold") format("svg");
+  font-style: normal;
+  font-weight: normal; }
+
+@font-face {
+  font-family: 'SourceSansPro-ExtraLight';
+  src: url("../fonts/SourceSansPro/SourceSansPro-ExtraLight.eot");
+  src: url("../fonts/SourceSansPro/SourceSansPro-ExtraLight.eot?#iefix") format("embedded-opentype"), url("../fonts/SourceSansPro/SourceSansPro-ExtraLight.woff") format("woff"), url("../fonts/SourceSansPro/SourceSansPro-ExtraLight.ttf") format("truetype"), url("../fonts/SourceSansPro/SourceSansPro-ExtraLight.svg#SourceSansPro-ExtraLight") format("svg");
+  font-style: normal;
+  font-weight: normal; }
+
+@font-face {
+  font-family: 'SourceSansPro-Light';
+  src: url("../fonts/SourceSansPro/SourceSansPro-Light.eot");
+  src: url("../fonts/SourceSansPro/SourceSansPro-Light.eot?#iefix") format("embedded-opentype"), url("../fonts/SourceSansPro/SourceSansPro-Light.woff") format("woff"), url("../fonts/SourceSansPro/SourceSansPro-Light.ttf") format("truetype"), url("../fonts/SourceSansPro/SourceSansPro-Light.svg#SourceSansPro-Light") format("svg");
+  font-style: normal;
+  font-weight: normal; }
+
+@font-face {
+  font-family: 'SourceSansPro-Regular';
+  src: url("../fonts/SourceSansPro/SourceSansPro-Regular.eot");
+  src: url("../fonts/SourceSansPro/SourceSansPro-Regular.eot?#iefix") format("embedded-opentype"), url("../fonts/SourceSansPro/SourceSansPro-Regular.woff") format("woff"), url("../fonts/SourceSansPro/SourceSansPro-Regular.ttf") format("truetype"), url("../fonts/SourceSansPro/SourceSansPro-Regular.svg#SourceSansPro-Regular") format("svg");
+  font-style: normal;
+  font-weight: normal; }
+
+@font-face {
+  font-family: 'SourceSansPro-Semibold';
+  src: url("../fonts/SourceSansPro/SourceSansPro-Semibold.eot");
+  src: url("../fonts/SourceSansPro/SourceSansPro-Semibold.eot?#iefix") format("embedded-opentype"), url("../fonts/SourceSansPro/SourceSansPro-Semibold.woff") format("woff"), url("../fonts/SourceSansPro/SourceSansPro-Semibold.ttf") format("truetype"), url("../fonts/SourceSansPro/SourceSansPro-Semibold.svg#SourceSansPro-Semibold") format("svg");
+  font-style: normal;
+  font-weight: normal; }
+
 /* Containers */
 #ac_layout {
   position: relative;
   display: inline-block; }
   #ac_layout > div {
-    width: 320px;
-    height: 568px;
-    border: 3px solid #020202; }
+    width: 375px;
+    height: 667px;
+    border: 2px solid #e6e6e6; }
   #ac_layout .app-switch {
     display: inline-block;
     width: 30px;
@@ -27,11 +72,33 @@
     border-radius: 50%;
     border: 2px solid #020202;
     color: #020202;
-    font-size: 26px;
-    line-height: 1;
+    font-size: 29px;
     text-align: center;
     text-decoration: none;
     transform: rotate(45deg); }
+
+#online_appointment .main-link {
+  display: block;
+  margin: 15px 0; }
+
+/* Components */
+.ac-header {
+  background-color: #020202;
+  margin: 0 0 15px 0;
+  padding: 20px;
+  padding-top: 17px; }
+  .ac-header h3 {
+    color: #ffffff;
+    margin: 0;
+    display: inline-block;
+    vertical-align: middle; }
+  .ac-header .back-link {
+    float: right;
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 1.4em;
+    display: inline-block;
+    vertical-align: middle; }
 
 /* =================================================================================================== */
 /* < COMMON STYLING > */
@@ -39,5 +106,10 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: Verdana;
-  font-size: 16px; }
+  font-family: "SourceSansPro-Regular";
+  font-size: 16px;
+  line-height: 1; }
+
+h3 {
+  font-size: 1.2em;
+  font-family: "SourceSansPro-ExtraLight"; }

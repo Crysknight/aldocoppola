@@ -7,8 +7,17 @@ const paths = {
 	app: {
 		pathString: '/'
 	},
-	newToo: {
-		pathString: '/new-too/'
+	ChooseCenter: {
+		pathString: '/choose-center/'
+	},
+	ChooseEmployee: {
+		pathString: '/choose-employee/'
+	},
+	ChooseServices: {
+		pathString: '/choose-services/'
+	},
+	ChooseDateTime: {
+		pathString: '/choose-datetime/'
 	}
 };
 

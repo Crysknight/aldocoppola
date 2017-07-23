@@ -2,13 +2,12 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-// import { Link } from 'react-router';
 
 import * as actions from '../actions';
 
 import Header from '../components/header';
 
-class New extends Component {
+class ChooseServices extends Component {
 
 	// constructor(props) {
 		// super(props);
@@ -19,9 +18,12 @@ class New extends Component {
 		let paths = this.props.paths;
 		return (
 			<div className="new">
-				<Header title="Выбрать центр красоты" />
-				<p>Hello, it's new</p>
-				<Link to={`${paths.getPath(this.props.match.path, paths.newToo)}`}>Go to new-too</Link>
+				<Header title="Выбрать услуги">
+					<Link 
+						to={`${paths.getPath(this.props.match.path, paths.app)}`}
+						className="back-link"
+					>&larr;</Link>
+				</Header>
 			</div>
 		);
 	}
@@ -40,4 +42,4 @@ function matchDispatchToProps(dispatch) {
 	}, dispatch);
 }
 
-export default connect(mapStateToProps, matchDispatchToProps)(New);
+export default connect(mapStateToProps, matchDispatchToProps)(ChooseServices);

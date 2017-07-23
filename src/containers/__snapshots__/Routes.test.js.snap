@@ -11,19 +11,6 @@ exports[`Routes child path of the app matches the snapshot on the rootpath 1`] =
   >
     +
   </a>
-  <div
-    className="new-too"
-  >
-    <p>
-      Hello, it's NewToo
-    </p>
-    <a
-      href="/_appliance/"
-      onClick={[Function]}
-    >
-      Go to new
-    </a>
-  </div>
 </div>
 `;
 
@@ -53,24 +40,63 @@ exports[`Routes matches the snapshot on the nested path 1`] = `
     +
   </a>
   <div
-    className="new"
+    id="online_appointment"
   >
     <div
       className="ac-header"
     >
       <h3>
-        Выбрать центр красоты
+        Онлайн запись
       </h3>
     </div>
-    <p>
-      Hello, it's new
-    </p>
     <a
-      href="/test/bauble.html/_appliance/new-too/"
+      className="main-link chosen"
+      href="/test/bauble.html/_appliance/choose-center/"
       onClick={[Function]}
     >
-      Go to new-too
+      <span
+        className="title"
+      >
+        Изменить центр красоты
+      </span>
+      <span
+        className="info-text"
+      >
+        Времена года
+      </span>
     </a>
+    <a
+      className="main-link"
+      href="/test/bauble.html/_appliance/choose-employee/"
+      onClick={[Function]}
+    >
+      Выбрать сотрудника
+    </a>
+    <a
+      className="main-link"
+      href="/test/bauble.html/_appliance/choose-services/"
+      onClick={[Function]}
+    >
+      Выбрать услуги
+    </a>
+    <a
+      className="main-link"
+      href="/test/bauble.html/_appliance/choose-datetime/"
+      onClick={[Function]}
+    >
+      Выбрать дату и время
+    </a>
+    <div
+      className="ac-footer coal"
+    >
+      <a
+        className="footer-link my-account-link"
+        href="/test/bauble.html/_appliance/"
+        onClick={[Function]}
+      >
+        Личный кабинет
+      </a>
+    </div>
   </div>
 </div>
 `;
@@ -87,24 +113,63 @@ exports[`Routes matches the snapshot on the rootpath 1`] = `
     +
   </a>
   <div
-    className="new"
+    id="online_appointment"
   >
     <div
       className="ac-header"
     >
       <h3>
-        Выбрать центр красоты
+        Онлайн запись
       </h3>
     </div>
-    <p>
-      Hello, it's new
-    </p>
     <a
-      href="/_appliance/new-too/"
+      className="main-link chosen"
+      href="/_appliance/choose-center/"
       onClick={[Function]}
     >
-      Go to new-too
+      <span
+        className="title"
+      >
+        Изменить центр красоты
+      </span>
+      <span
+        className="info-text"
+      >
+        Времена года
+      </span>
     </a>
+    <a
+      className="main-link"
+      href="/_appliance/choose-employee/"
+      onClick={[Function]}
+    >
+      Выбрать сотрудника
+    </a>
+    <a
+      className="main-link"
+      href="/_appliance/choose-services/"
+      onClick={[Function]}
+    >
+      Выбрать услуги
+    </a>
+    <a
+      className="main-link"
+      href="/_appliance/choose-datetime/"
+      onClick={[Function]}
+    >
+      Выбрать дату и время
+    </a>
+    <div
+      className="ac-footer coal"
+    >
+      <a
+        className="footer-link my-account-link"
+        href="/_appliance/"
+        onClick={[Function]}
+      >
+        Личный кабинет
+      </a>
+    </div>
   </div>
 </div>
 `;

@@ -1,0 +1,36 @@
+.ac-footer {
+	position: absolute;
+	bottom: 0;
+	height: 55px;
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	.footer-link {
+		text-decoration: none;
+		display: inline-flex;
+		justify-content: center;
+		font-size: 0.8em;
+		height: 50px;
+		width: 100%;
+		align-items: center;
+	}
+	&.white {
+		background-color: $acWhite;
+		.footer-link {
+			color: $acDark;
+		}
+	}
+	&.coal {
+		background-color: $acCoal;
+		.footer-link {
+			color: $acWhite;
+		}
+	}
+	&.cherry {
+		background-color: $acCherry;
+		.footer-link {
+			color: $acWhite;
+		}
+	}
+}

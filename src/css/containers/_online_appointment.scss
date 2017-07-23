@@ -1,6 +1,39 @@
 #online_appointment {
+	background-color: $acLayoutGrey;
 	.main-link {
-		display: block;
+		display: flex;
+		position: relative;
+		align-items: center;
+		align-content: center;
+		justify-content: flex-start;
+		flex-wrap: wrap;
 		margin: 15px 0;
+		height: 70px;
+		background-color: $acWhite;
+		margin: 20px;
+		padding-left: 20px;
+		box-sizing: border-box;
+		border-left: 5px solid $acLabelGrey;
+		color: $acTextGrey;
+		text-decoration: none;
+		box-shadow: 0 0 8px $acLabelGrey;
+		&:after {
+			content: '\2192';
+			display: inline-block;
+			position: absolute;
+			right: 20px;
+		}
+		&.chosen {
+			border-left: 5px solid $acCherry;
+			color: $acDark;
+		}
+		span {
+			display: block;
+			margin: 3px 0;
+			width: 100%;
+		}
+		span.info-text {
+			font-size: 0.7em;
+		}
 	}
 }

@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-// import { Link } from 'react-router';
 
-import * as actions from '../actions';
+import actions from '../actions';
 
 import Header from '../components/header';
+import Center from '../components/center';
 
 class ChooseCenter extends Component {
 
@@ -15,13 +15,32 @@ class ChooseCenter extends Component {
 
 	// }
 
+	componentWillMount() {
+		this.props.loadCenters();
+	}
+
+	chooseCenter(id) {
+		console.log(id);
+	}
+
+	renderCenters() {
+		return this.props.centers.map((center, index) => {
+			return (
+				<Center
+					key={index}
+					center={center}
+					chooseCenter={() => this.chooseCenter(center.id)}
+				/>
+			);
+		});
+	}
+
 	render() {
 		let paths = this.props.paths;
 		return (
 			<div id="choose_center">
 				<Header title="Выбрать центр красоты" />
-				<p>Hello, it's new</p>
-				<Link to={`${paths.getPath(this.props.match.path, paths.app)}`}>Go to new-too</Link>
+				{this.renderCenters()}
 			</div>
 		);
 	}
@@ -30,13 +49,14 @@ class ChooseCenter extends Component {
 
 function mapStateToProps(state) {
 	return {
-		paths: state.paths
+		paths: state.paths,
+		centers: state.centers
 	};
 }
 
 function matchDispatchToProps(dispatch) {
 	return bindActionCreators({
-		
+		loadCenters: actions.loadCenters
 	}, dispatch);
 }
 

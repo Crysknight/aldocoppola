@@ -1,8 +1,11 @@
 .ac-header {
 	background-color: $acDark;
 	margin: 0 0 15px 0;
-	padding: 20px;
-	padding-top: 17px;
+	height: 56px;
+	padding-left: 20px;
+	display: flex;
+	align-items: center;
+	position: relative;
 	h3 {
 		color: $acWhite;
 		margin: 0;
@@ -10,7 +13,8 @@
 		vertical-align: middle;
 	}
 	.back-link {
-		float: right;
+		position: absolute;
+		right: 20px;
 		color: $acWhite;
 		text-decoration: none;
 		font-size: 1.4em;

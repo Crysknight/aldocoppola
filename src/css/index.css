@@ -61,7 +61,9 @@
   #ac_layout > div {
     width: 375px;
     height: 667px;
-    border: 2px solid #e6e6e6; }
+    border: 2px solid #e6e6e6;
+    background-color: #f5f5f5;
+    position: relative; }
   #ac_layout .app-switch {
     display: inline-block;
     width: 30px;
@@ -77,28 +79,143 @@
     text-decoration: none;
     transform: rotate(45deg); }
 
-#online_appointment .main-link {
-  display: block;
-  margin: 15px 0; }
+#online_appointment {
+  background-color: #f5f5f5; }
+  #online_appointment .main-link {
+    display: flex;
+    position: relative;
+    align-items: center;
+    align-content: center;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    margin: 15px 0;
+    height: 70px;
+    background-color: #ffffff;
+    margin: 20px;
+    padding-left: 20px;
+    box-sizing: border-box;
+    border-left: 5px solid #e6e6e6;
+    color: #8d8d8d;
+    text-decoration: none;
+    box-shadow: 0 0 8px #e6e6e6; }
+    #online_appointment .main-link:after {
+      content: '\2192';
+      display: inline-block;
+      position: absolute;
+      right: 20px; }
+    #online_appointment .main-link.chosen {
+      border-left: 5px solid #c21526;
+      color: #020202; }
+    #online_appointment .main-link span {
+      display: block;
+      margin: 3px 0;
+      width: 100%; }
+    #online_appointment .main-link span.info-text {
+      font-size: 0.7em; }
 
 /* Components */
 .ac-header {
   background-color: #020202;
   margin: 0 0 15px 0;
-  padding: 20px;
-  padding-top: 17px; }
+  height: 56px;
+  padding-left: 20px;
+  display: flex;
+  align-items: center;
+  position: relative; }
   .ac-header h3 {
     color: #ffffff;
     margin: 0;
     display: inline-block;
     vertical-align: middle; }
   .ac-header .back-link {
-    float: right;
+    position: absolute;
+    right: 20px;
     color: #ffffff;
     text-decoration: none;
     font-size: 1.4em;
     display: inline-block;
     vertical-align: middle; }
+
+.ac-footer {
+  position: absolute;
+  bottom: 0;
+  height: 55px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
+  .ac-footer .footer-link {
+    text-decoration: none;
+    display: inline-flex;
+    justify-content: center;
+    font-size: 0.8em;
+    height: 50px;
+    width: 100%;
+    align-items: center; }
+  .ac-footer.white {
+    background-color: #ffffff; }
+    .ac-footer.white .footer-link {
+      color: #020202; }
+  .ac-footer.coal {
+    background-color: #333333; }
+    .ac-footer.coal .footer-link {
+      color: #ffffff; }
+  .ac-footer.cherry {
+    background-color: #c21526; }
+    .ac-footer.cherry .footer-link {
+      color: #ffffff; }
+
+.ac-center {
+  margin: 20px;
+  box-shadow: 0 0 8px #e6e6e6; }
+  .ac-center .center-header {
+    background-color: #333333;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    padding: 20px;
+    cursor: pointer;
+    position: relative; }
+    .ac-center .center-header:after {
+      content: '\2192';
+      display: inline-block;
+      position: absolute;
+      right: 20px;
+      font-size: 1.8em; }
+    .ac-center .center-header span {
+      display: flex;
+      width: 100%;
+      margin: 3px 0;
+      font-size: 0.7em; }
+    .ac-center .center-header h2 {
+      margin: 3px 0;
+      display: flex;
+      width: 100%;
+      font-size: 1em; }
+  .ac-center .center-address {
+    background-color: #3c3c3c;
+    color: #ffffff;
+    font-family: "SourceSansPro-ExtraLight";
+    padding: 20px; }
+    .ac-center .center-address p {
+      margin: 0;
+      font-size: 0.7em; }
+  .ac-center .center-footer {
+    background-color: #ffffff;
+    padding: 20px;
+    display: flex; }
+    .ac-center .center-footer div {
+      height: 45px; }
+    .ac-center .center-footer p {
+      margin: 4px 0;
+      font-size: 0.7em;
+      text-align: center; }
+    .ac-center .center-footer .delimeter {
+      background-color: #e6e6e6;
+      width: 1px; }
 
 /* =================================================================================================== */
 /* < COMMON STYLING > */
@@ -110,6 +227,13 @@ body {
   font-size: 16px;
   line-height: 1; }
 
+h2 {
+  font-size: 1.4em;
+  font-family: "SourceSansPro-ExtraLight"; }
+
 h3 {
   font-size: 1.2em;
   font-family: "SourceSansPro-ExtraLight"; }
+
+.label {
+  color: #8d8d8d; }

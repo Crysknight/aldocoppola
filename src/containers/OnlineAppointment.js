@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import * as actions from '../actions';
 
 import Header from '../components/header';
+import Footer from '../components/footer';
 
 class OnlineAppointment extends Component {
 
@@ -21,8 +22,11 @@ class OnlineAppointment extends Component {
 				<Header title="Онлайн запись" />
 				<Link 
 					to={`${paths.getPath(this.props.match.path, paths.ChooseCenter)}`}
-					className="main-link"
-				>Изменить центр красоты</Link>
+					className="main-link chosen"
+				>
+					<span className="title">Изменить центр красоты</span>
+					<span className="info-text">Времена года</span>
+				</Link>
 				<Link 
 					to={`${paths.getPath(this.props.match.path, paths.ChooseEmployee)}`}
 					className="main-link"
@@ -35,6 +39,12 @@ class OnlineAppointment extends Component {
 					to={`${paths.getPath(this.props.match.path, paths.ChooseDateTime)}`}
 					className="main-link"
 				>Выбрать дату и время</Link>
+				<Footer className="coal">
+					<Link 
+						to={`${paths.getPath(this.props.match.path, paths.MyAccount)}`}
+						className="footer-link my-account-link"
+					>Личный кабинет</Link>
+				</Footer>
 			</div>
 		);
 	}

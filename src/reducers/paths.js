@@ -1,5 +1,7 @@
 // Basis of all widget paths (after this everything is widget)
 const appPath = '/_appliance';
+
+// Regular expression to find any path related to the widget
 const appRegExp = new RegExp(appPath + '(.*)');
 
 // Object with paths used by the app
@@ -28,6 +30,9 @@ for (let path in paths) {
 
 // A function to get the path of the specific page
 paths.getPath = function (currentPath, path) {
+	if (!path) {
+		return currentPath.replace(appRegExp, '') + this.app.pathString;
+	}
 	return currentPath.replace(appRegExp, '') + path.pathString;
 };
 

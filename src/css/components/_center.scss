@@ -1,0 +1,62 @@
+.ac-center {
+	margin: 20px;
+	box-shadow: 0 0 8px $acLabelGrey;
+	.center-header {
+		background-color: $acCoal;
+		color: $acWhite;
+		display: flex;
+		align-items: center;
+		align-content: center;
+		justify-content: flex-start;
+		flex-wrap: wrap;
+		padding: 20px;
+		cursor: pointer;
+		position: relative;
+		&:after {
+			content: '\2192';
+			display: inline-block;
+			position: absolute;
+			right: 20px;
+			font-size: 1.8em;
+		}
+		span {
+			display: flex;
+			width: 100%;
+			margin: 3px 0;
+			font-size: 0.7em;
+		}
+		h2 {
+			margin: 3px 0;
+			display: flex;
+			width: 100%;
+			font-size: 1em;
+		}
+	}
+	.center-address {
+		background-color: $acPaleCoal;
+		color: $acWhite;
+		font-family: $acExtraLight;
+		padding: 20px;
+		p {
+			margin: 0;
+			font-size: 0.7em;
+		}
+	}
+	.center-footer {
+		background-color: $acWhite;
+		padding: 20px;
+		display: flex;
+		div {
+			height: 45px;
+		}
+		p {
+			margin: 4px 0;
+			font-size: 0.7em;
+			text-align: center;
+		}
+		.delimeter {
+			background-color: $acLabelGrey;
+			width: 1px;
+		}
+	}
+}

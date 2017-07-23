@@ -8,6 +8,8 @@
 
 /* Components */
 @import "./components/header";
+@import "./components/footer";
+@import "./components/center";
 
 /* =================================================================================================== */
 /* < COMMON STYLING > */
@@ -21,7 +23,16 @@ body {
   line-height: 1;
 }
 
+h2 {
+	font-size: 1.4em;
+	font-family: $acExtraLight;
+}
+
 h3 {
 	font-size: 1.2em;
 	font-family: $acExtraLight;
+}
+
+.label {
+	color: $acTextGrey;
 }

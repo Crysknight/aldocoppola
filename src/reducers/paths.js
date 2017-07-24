@@ -7,25 +7,33 @@ const appRegExp = new RegExp(appPath + '(.*)');
 // Object with paths used by the app
 const paths = {
 	app: {
-		pathString: '/'
+		pathString: '/',
+		private: true
 	},
 	ChooseCenter: {
-		pathString: '/choose-center/'
+		pathString: '/choose-center/',
+		private: false
 	},
 	ChooseEmployee: {
-		pathString: '/choose-employee/'
+		pathString: '/choose-employee/',
+		private: true
 	},
 	ChooseServices: {
-		pathString: '/choose-services/'
+		pathString: '/choose-services/',
+		private: true
 	},
 	ChooseDateTime: {
-		pathString: '/choose-datetime/'
+		pathString: '/choose-datetime/',
+		private: true
 	}
 };
 
 // Concatenating the paths with the basis
 for (let path in paths) {
 	paths[path].pathString = appPath + paths[path].pathString;
+	// for (let property in paths[path]) {
+	// 	if (typeof paths[path][property] === )
+	// }
 }
 
 // A function to get the path of the specific page
@@ -43,6 +51,18 @@ paths.getAppSwitch = function (currentPath) {
 		return currentPath.replace(appRegExp, '');
 	} else {
 		return currentPath + this.app.pathString;
+	}
+};
+
+// A function to create dynamic paths. Takes in path object: pathString, component, parentPath and privacy
+paths.createPath = function (path) {
+	if (!path.pathString || !path.component) {
+		throw new Error('no pathstring or component');
+		return;
+	}
+	if (!path.pathString.match(/ /) === null) {
+		throw new Error('wrong pathstring format');
+		return;
 	}
 };
 

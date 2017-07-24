@@ -11,6 +11,24 @@ exports[`Routes child path of the app matches the snapshot on the rootpath 1`] =
   >
     +
   </a>
+  <div
+    className="new"
+  >
+    <div
+      className="ac-header"
+    >
+      <h3>
+        Выбрать услуги
+      </h3>
+      <a
+        className="back-link"
+        href="/_appliance/"
+        onClick={[Function]}
+      >
+        ←
+      </a>
+    </div>
+  </div>
 </div>
 `;
 
@@ -62,7 +80,7 @@ exports[`Routes matches the snapshot on the nested path 1`] = `
       <span
         className="info-text"
       >
-        Времена года
+        Generic Name
       </span>
     </a>
     <a
@@ -70,21 +88,33 @@ exports[`Routes matches the snapshot on the nested path 1`] = `
       href="/test/bauble.html/_appliance/choose-employee/"
       onClick={[Function]}
     >
-      Выбрать сотрудника
+      <span
+        className="title"
+      >
+        Выбрать сотрудника
+      </span>
     </a>
     <a
       className="main-link"
       href="/test/bauble.html/_appliance/choose-services/"
       onClick={[Function]}
     >
-      Выбрать услуги
+      <span
+        className="title"
+      >
+        Выбрать услуги
+      </span>
     </a>
     <a
       className="main-link"
       href="/test/bauble.html/_appliance/choose-datetime/"
       onClick={[Function]}
     >
-      Выбрать дату и время
+      <span
+        className="title"
+      >
+        Выбрать дату и время
+      </span>
     </a>
     <div
       className="ac-footer coal"
@@ -135,7 +165,7 @@ exports[`Routes matches the snapshot on the rootpath 1`] = `
       <span
         className="info-text"
       >
-        Времена года
+        Generic Name
       </span>
     </a>
     <a
@@ -143,21 +173,33 @@ exports[`Routes matches the snapshot on the rootpath 1`] = `
       href="/_appliance/choose-employee/"
       onClick={[Function]}
     >
-      Выбрать сотрудника
+      <span
+        className="title"
+      >
+        Выбрать сотрудника
+      </span>
     </a>
     <a
       className="main-link"
       href="/_appliance/choose-services/"
       onClick={[Function]}
     >
-      Выбрать услуги
+      <span
+        className="title"
+      >
+        Выбрать услуги
+      </span>
     </a>
     <a
       className="main-link"
       href="/_appliance/choose-datetime/"
       onClick={[Function]}
     >
-      Выбрать дату и время
+      <span
+        className="title"
+      >
+        Выбрать дату и время
+      </span>
     </a>
     <div
       className="ac-footer coal"
@@ -165,6 +207,56 @@ exports[`Routes matches the snapshot on the rootpath 1`] = `
       <a
         className="footer-link my-account-link"
         href="/_appliance/"
+        onClick={[Function]}
+      >
+        Личный кабинет
+      </a>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Routes redirects to ChooseCenter if no center is chosen 1`] = `
+<div
+  id="ac_layout"
+>
+  <a
+    className="app-switch"
+    href="/test/bauble.html"
+    onClick={[Function]}
+  >
+    +
+  </a>
+</div>
+`;
+
+exports[`Routes renders ChooseCenter properly when no center is chosen 1`] = `
+<div
+  id="ac_layout"
+>
+  <a
+    className="app-switch"
+    href="/test/bauble.html"
+    onClick={[Function]}
+  >
+    +
+  </a>
+  <div
+    id="choose_center"
+  >
+    <div
+      className="ac-header"
+    >
+      <h3>
+        Выбрать центр красоты
+      </h3>
+    </div>
+    <div
+      className="ac-footer coal"
+    >
+      <a
+        className="footer-link my-account-link"
+        href="/test/bauble.html/_appliance/"
         onClick={[Function]}
       >
         Личный кабинет

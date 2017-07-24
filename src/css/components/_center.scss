@@ -46,7 +46,7 @@
 		background-color: $acWhite;
 		padding: 20px;
 		display: flex;
-		div {
+		&>div {
 			height: 45px;
 		}
 		p {
@@ -56,7 +56,7 @@
 		}
 		.delimeter {
 			background-color: $acLabelGrey;
-			width: 1px;
+			width: 1.5px;
 		}
 	}
 }

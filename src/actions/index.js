@@ -1,5 +1,7 @@
 import loadCenters from './load-centers';
+import chooseCenter from './choose-center';
 
 export default {
-	loadCenters: loadCenters
+	loadCenters: loadCenters,
+	chooseCenter: chooseCenter
 };

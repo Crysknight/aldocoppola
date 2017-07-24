@@ -207,7 +207,7 @@
     background-color: #ffffff;
     padding: 20px;
     display: flex; }
-    .ac-center .center-footer div {
+    .ac-center .center-footer > div {
       height: 45px; }
     .ac-center .center-footer p {
       margin: 4px 0;
@@ -215,7 +215,7 @@
       text-align: center; }
     .ac-center .center-footer .delimeter {
       background-color: #e6e6e6;
-      width: 1px; }
+      width: 1.5px; }
 
 /* =================================================================================================== */
 /* < COMMON STYLING > */

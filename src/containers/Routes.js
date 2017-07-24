@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { Switch, Route } from 'react-router';
+import { Switch, Route, Redirect } from 'react-router';
 import { Link } from 'react-router-dom';
 
 import * as actions from '../actions';
@@ -24,6 +24,10 @@ class Routes extends Component {
     paths.ChooseEmployee.component = ChooseEmployee;
     paths.ChooseServices.component = ChooseServices;
     paths.ChooseDateTime.component = ChooseDateTime;
+    // paths.Hello = {
+    //   pathString: `${paths.app.pathString}/hello/`,
+    //   component: ChooseCenter
+    // };
   }
 
   render() {
@@ -33,22 +37,49 @@ class Routes extends Component {
     for (let path in paths) {
       pathArray.push(paths[path]);
     }
+    let location = this.props.location.pathname;
+    // Here we render ann app
+    // Why is here such a gigantic bunch of code?
+    // Because we also stick a redirection in it, which works, when user
+    // has no chosen center in the appointment reducer. The app redirects
+    // him to ChooseCenter path. For that purpose in the paths reducer every
+    // path should have a property 'private', if set to true, it will redirect
+    // the user to ChooseCenter
     return (
       <div id="ac_layout">
         <Link 
-          className="app-switch" 
+          className="app-switch"
           to={`${paths.getAppSwitch(this.props.location.pathname)}`} 
         >+</Link>
         <Switch>
           {pathArray.map((path, index) => {
-            return (
-              <Route 
-                key={index}
-                exact
-                path={`${paths.getPath(this.props.location.pathname, path)}`} 
-                component={path.component} 
-              />
-            );
+            // Here we filter the paths, which are private.
+            // Though, we render all of them if the user has chosen a center in ChooseCenter
+            if (!path.private || (this.props.appointment && this.props.appointment.centerChosen)) {
+              return (
+                <Route 
+                  key={index}
+                  exact
+                  path={`${paths.getPath(location, path)}`} 
+                  component={path.component} 
+                />
+              );  
+            } else {
+              return (
+                <Route
+                  key={index}
+                  exact
+                  path={`${paths.getPath(location, path)}`}
+                  render={() => 
+                    (
+                      <Redirect
+                        from={`${paths.getPath(location, path)}`}
+                        to={`${paths.getPath(location, paths.ChooseCenter)}`}
+                      />
+                    )
+                  }/>
+              );
+            }
           })}
         </Switch>
       </div>
@@ -59,7 +90,8 @@ class Routes extends Component {
 
 function mapStateToProps(state) {
   return {
-    paths: state.paths
+    paths: state.paths,
+    appointment: state.appointment
   };
 }
 

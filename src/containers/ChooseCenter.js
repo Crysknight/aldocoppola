@@ -7,20 +7,21 @@ import actions from '../actions';
 
 import Header from '../components/header';
 import Center from '../components/center';
+import Footer from '../components/footer';
 
 class ChooseCenter extends Component {
 
 	// constructor(props) {
-		// super(props);
-
+	// 	super(props);
 	// }
 
 	componentWillMount() {
 		this.props.loadCenters();
 	}
 
-	chooseCenter(id) {
-		console.log(id);
+	chooseCenter(id, name) {
+		this.props.chooseCenter(id, name);
+		this.props.history.push(this.props.paths.getPath(this.props.location.pathname, this.props.paths.app));
 	}
 
 	renderCenters() {
@@ -29,7 +30,7 @@ class ChooseCenter extends Component {
 				<Center
 					key={index}
 					center={center}
-					chooseCenter={() => this.chooseCenter(center.id)}
+					chooseCenter={() => this.chooseCenter(center.id, center.name)}
 				/>
 			);
 		});
@@ -41,6 +42,12 @@ class ChooseCenter extends Component {
 			<div id="choose_center">
 				<Header title="Выбрать центр красоты" />
 				{this.renderCenters()}
+				<Footer className="coal">
+					<Link 
+						to={`${paths.getPath(this.props.match.path, paths.MyAccount)}`}
+						className="footer-link my-account-link"
+					>Личный кабинет</Link>
+				</Footer>
 			</div>
 		);
 	}
@@ -56,7 +63,8 @@ function mapStateToProps(state) {
 
 function matchDispatchToProps(dispatch) {
 	return bindActionCreators({
-		loadCenters: actions.loadCenters
+		loadCenters: actions.loadCenters,
+		chooseCenter: actions.chooseCenter
 	}, dispatch);
 }
 

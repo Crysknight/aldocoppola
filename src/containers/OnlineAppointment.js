@@ -25,20 +25,26 @@ class OnlineAppointment extends Component {
 					className="main-link chosen"
 				>
 					<span className="title">Изменить центр красоты</span>
-					<span className="info-text">Времена года</span>
+					<span className="info-text">{this.props.appointment.centerChosen.name}</span>
 				</Link>
 				<Link 
 					to={`${paths.getPath(this.props.match.path, paths.ChooseEmployee)}`}
 					className="main-link"
-				>Выбрать сотрудника</Link>
+				>
+					<span className="title">Выбрать сотрудника</span>
+				</Link>
 				<Link 
 					to={`${paths.getPath(this.props.match.path, paths.ChooseServices)}`}
 					className="main-link"
-				>Выбрать услуги</Link>
+				>
+					<span className="title">Выбрать услуги</span>
+				</Link>
 				<Link 
 					to={`${paths.getPath(this.props.match.path, paths.ChooseDateTime)}`}
 					className="main-link"
-				>Выбрать дату и время</Link>
+				>
+					<span className="title">Выбрать дату и время</span>
+				</Link>
 				<Footer className="coal">
 					<Link 
 						to={`${paths.getPath(this.props.match.path, paths.MyAccount)}`}
@@ -53,7 +59,8 @@ class OnlineAppointment extends Component {
 
 function mapStateToProps(state) {
 	return {
-		paths: state.paths
+		paths: state.paths,
+		appointment: state.appointment
 	};
 }
 

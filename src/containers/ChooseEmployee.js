@@ -7,6 +7,8 @@ import * as actions from '../actions';
 
 import Header from '../components/header';
 
+import { pathsMethods } from '../reducers/paths';
+
 class ChooseEmployee extends Component {
 
 	// constructor(props) {
@@ -20,7 +22,7 @@ class ChooseEmployee extends Component {
 			<div className="new">
 				<Header title="Выбрать сотрудника">
 					<Link 
-						to={`${paths.getPath(this.props.match.path, paths.app)}`}
+						to={pathsMethods.getPath(paths, this.props.match.path, paths.__app)}
 						className="back-link"
 					>&larr;</Link>
 				</Header>

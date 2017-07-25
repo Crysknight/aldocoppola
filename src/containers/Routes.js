@@ -13,30 +13,35 @@ import ChooseEmployee from './ChooseEmployee';
 import ChooseServices from './ChooseServices';
 import ChooseDateTime from './ChooseDateTime';
 
+import { pathsMethods } from '../reducers/paths';
+
 class Routes extends Component {
 
   // Here we assign, which container will render at which path
   // We do it here to make it possible to map the paths' reducer to an array of Route components
   componentWillMount() {
     let paths = this.props.paths;
-    paths.app.component = OnlineAppointment;
+    paths.__app.component = OnlineAppointment;
     paths.ChooseCenter.component = ChooseCenter;
     paths.ChooseEmployee.component = ChooseEmployee;
     paths.ChooseServices.component = ChooseServices;
     paths.ChooseDateTime.component = ChooseDateTime;
-    // paths.Hello = {
-    //   pathString: `${paths.app.pathString}/hello/`,
-    //   component: ChooseCenter
-    // };
+  }
+
+  createArrayFromPathsObject(paths, pathArray) {
+    for (let path in paths) {
+      pathArray.push(paths[path]);
+      if (paths[path].childPaths) {
+        this.createArrayFromPathsObject(paths[path].childPaths, pathArray);
+      }
+    }
   }
 
   render() {
     // Here we create an array of paths in order to map through it
     let paths = this.props.paths;
     let pathArray = [];
-    for (let path in paths) {
-      pathArray.push(paths[path]);
-    }
+    this.createArrayFromPathsObject(paths, pathArray);
     let location = this.props.location.pathname;
     // Here we render ann app
     // Why is here such a gigantic bunch of code?
@@ -49,7 +54,7 @@ class Routes extends Component {
       <div id="ac_layout">
         <Link 
           className="app-switch"
-          to={`${paths.getAppSwitch(this.props.location.pathname)}`} 
+          to={pathsMethods.getAppSwitch(paths, this.props.location.pathname)} 
         >+</Link>
         <Switch>
           {pathArray.map((path, index) => {
@@ -60,7 +65,7 @@ class Routes extends Component {
                 <Route 
                   key={index}
                   exact
-                  path={`${paths.getPath(location, path)}`} 
+                  path={pathsMethods.getPath(paths, location, path)} 
                   component={path.component} 
                 />
               );  
@@ -69,12 +74,12 @@ class Routes extends Component {
                 <Route
                   key={index}
                   exact
-                  path={`${paths.getPath(location, path)}`}
+                  path={pathsMethods.getPath(paths, location, path)}
                   render={() => 
                     (
                       <Redirect
-                        from={`${paths.getPath(location, path)}`}
-                        to={`${paths.getPath(location, paths.ChooseCenter)}`}
+                        from={pathsMethods.getPath(paths, location, path)}
+                        to={pathsMethods.getPath(paths, location, paths.ChooseCenter)}
                       />
                     )
                   }/>

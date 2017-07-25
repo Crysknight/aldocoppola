@@ -8,6 +8,8 @@ import * as actions from '../actions';
 import Header from '../components/header';
 import Footer from '../components/footer';
 
+import { pathsMethods } from '../reducers/paths';
+
 class OnlineAppointment extends Component {
 
 	// constructor(props) {
@@ -21,33 +23,33 @@ class OnlineAppointment extends Component {
 			<div id="online_appointment">
 				<Header title="Онлайн запись" />
 				<Link 
-					to={`${paths.getPath(this.props.match.path, paths.ChooseCenter)}`}
+					to={pathsMethods.getPath(paths, this.props.match.path, paths.ChooseCenter)}
 					className="main-link chosen"
 				>
 					<span className="title">Изменить центр красоты</span>
 					<span className="info-text">{this.props.appointment.centerChosen.name}</span>
 				</Link>
 				<Link 
-					to={`${paths.getPath(this.props.match.path, paths.ChooseEmployee)}`}
+					to={pathsMethods.getPath(paths, this.props.match.path, paths.ChooseEmployee)}
 					className="main-link"
 				>
 					<span className="title">Выбрать сотрудника</span>
 				</Link>
 				<Link 
-					to={`${paths.getPath(this.props.match.path, paths.ChooseServices)}`}
+					to={pathsMethods.getPath(paths, this.props.match.path, paths.ChooseServices)}
 					className="main-link"
 				>
 					<span className="title">Выбрать услуги</span>
 				</Link>
 				<Link 
-					to={`${paths.getPath(this.props.match.path, paths.ChooseDateTime)}`}
+					to={pathsMethods.getPath(paths, this.props.match.path, paths.ChooseDateTime)}
 					className="main-link"
 				>
 					<span className="title">Выбрать дату и время</span>
 				</Link>
 				<Footer className="coal">
 					<Link 
-						to={`${paths.getPath(this.props.match.path, paths.MyAccount)}`}
+						to={pathsMethods.getPath(paths, this.props.match.path, paths.MyAccount)}
 						className="footer-link my-account-link"
 					>Личный кабинет</Link>
 				</Footer>

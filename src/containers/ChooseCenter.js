@@ -9,6 +9,8 @@ import Header from '../components/header';
 import Center from '../components/center';
 import Footer from '../components/footer';
 
+import { pathsMethods } from '../reducers/paths';
+
 class ChooseCenter extends Component {
 
 	// constructor(props) {
@@ -20,8 +22,9 @@ class ChooseCenter extends Component {
 	}
 
 	chooseCenter(id, name) {
+		let paths = this.props.paths;
 		this.props.chooseCenter(id, name);
-		this.props.history.push(this.props.paths.getPath(this.props.location.pathname, this.props.paths.app));
+		this.props.history.push(pathsMethods.getPath(paths, this.props.location.pathname, paths.__app));
 	}
 
 	renderCenters() {
@@ -44,7 +47,7 @@ class ChooseCenter extends Component {
 				{this.renderCenters()}
 				<Footer className="coal">
 					<Link 
-						to={`${paths.getPath(this.props.match.path, paths.MyAccount)}`}
+						to={pathsMethods.getPath(paths, this.props.match.path, paths.MyAccount)}
 						className="footer-link my-account-link"
 					>Личный кабинет</Link>
 				</Footer>

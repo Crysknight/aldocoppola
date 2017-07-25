@@ -10,16 +10,16 @@ import { paths } from '../reducers/paths';
 import ChooseServices from './ChooseServices';
 
 paths._testPath = {
-	pathString: paths.app.pathString + '_test/',
+	pathString: paths.__app.pathString + '_test/',
 	component: ChooseServices
 };
 
 const locationRoot = {
-	pathname: paths.app.pathString
+	pathname: paths.__app.pathString
 };
 
 const locationNested = {
-	pathname: '/test/bauble.html' + paths.app.pathString
+	pathname: '/test/bauble.html' + paths.__app.pathString
 };
 
 const locationChild = {
@@ -41,7 +41,7 @@ describe('Routes', () => {
 		store.dispatch({ type: 'CHOOSE_CENTER', payload: { name: 'Generic Name', id: 8 } });
 		const component = renderer.create(
 			<Provider store={store}>
-				<MemoryRouter initialEntries={[ paths.app.pathString ]}>
+				<MemoryRouter initialEntries={[ paths.__app.pathString ]}>
 					<Routes location={locationRoot} />
 				</MemoryRouter>
 			</Provider>
@@ -55,7 +55,7 @@ describe('Routes', () => {
 		store.dispatch({ type: 'CHOOSE_CENTER', payload: { name: 'Generic Name', id: 8 } });
 		const component = renderer.create(
 			<Provider store={store}>
-				<MemoryRouter initialEntries={[ '/test/bauble.html' + paths.app.pathString ]}>
+				<MemoryRouter initialEntries={[ '/test/bauble.html' + paths.__app.pathString ]}>
 					<Routes location={locationNested} />
 				</MemoryRouter>
 			</Provider>
@@ -95,7 +95,7 @@ describe('Routes', () => {
 		const store = createStore(allReducers, applyMiddleware(thunk));
 		const component = renderer.create(
 			<Provider store={store}>
-				<MemoryRouter initialEntries={[ '/test/bauble.html' + paths.app.pathString ]}>
+				<MemoryRouter initialEntries={[ '/test/bauble.html' + paths.__app.pathString ]}>
 					<Routes location={locationNested} />
 				</MemoryRouter>
 			</Provider>

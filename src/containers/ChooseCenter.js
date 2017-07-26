@@ -9,6 +9,8 @@ import Header from '../components/header';
 import Center from '../components/center';
 import Footer from '../components/footer';
 
+import SVGLock from '../components/svg-lock';
+
 import { pathsMethods } from '../reducers/paths';
 
 class ChooseCenter extends Component {
@@ -49,7 +51,7 @@ class ChooseCenter extends Component {
 					<Link 
 						to={pathsMethods.getPath(paths, this.props.match.path, paths.MyAccount)}
 						className="footer-link my-account-link"
-					>Личный кабинет</Link>
+					><SVGLock />Личный кабинет</Link>
 				</Footer>
 			</div>
 		);

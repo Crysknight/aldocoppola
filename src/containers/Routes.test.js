@@ -9,6 +9,8 @@ import allReducers from '../reducers';
 import { paths } from '../reducers/paths';
 import ChooseServices from './ChooseServices';
 
+
+
 paths._testPath = {
 	pathString: paths.__app.pathString + '_test/',
 	component: ChooseServices
@@ -34,11 +36,14 @@ const locationChooseCenter = {
 	pathname: '/test/bauble.html' + paths.ChooseCenter.pathString
 };
 
+
+
 describe('Routes', () => {
+
 
 	it('matches the snapshot on the rootpath', () => {
 		const store = createStore(allReducers);
-		store.dispatch({ type: 'CHOOSE_CENTER', payload: { name: 'Generic Name', id: 8 } });
+		store.dispatch({ type: 'CHOOSE_CENTER', payload: { name: 'TEST_NAME', id: 8 } });
 		const component = renderer.create(
 			<Provider store={store}>
 				<MemoryRouter initialEntries={[ paths.__app.pathString ]}>
@@ -47,12 +52,15 @@ describe('Routes', () => {
 			</Provider>
 		);
 		let tree = component.toJSON();
+
 		expect(tree).toMatchSnapshot();
+
 	});
+
 
 	it('matches the snapshot on the nested path', () => {
 		const store = createStore(allReducers);
-		store.dispatch({ type: 'CHOOSE_CENTER', payload: { name: 'Generic Name', id: 8 } });
+		store.dispatch({ type: 'CHOOSE_CENTER', payload: { name: 'TEST_NAME', id: 8 } });
 		const component = renderer.create(
 			<Provider store={store}>
 				<MemoryRouter initialEntries={[ '/test/bauble.html' + paths.__app.pathString ]}>
@@ -61,12 +69,15 @@ describe('Routes', () => {
 			</Provider>
 		);
 		let tree = component.toJSON();
+
 		expect(tree).toMatchSnapshot();
+
 	});
+
 
 	it('child path of the app matches the snapshot on the rootpath', () => {
 		const store = createStore(allReducers);
-		store.dispatch({ type: 'CHOOSE_CENTER', payload: { name: 'Generic Name', id: 8 } });
+		store.dispatch({ type: 'CHOOSE_CENTER', payload: { name: 'TEST_NAME', id: 8 } });
 		const component = renderer.create(
 			<Provider store={store}>
 				<MemoryRouter initialEntries={[ paths._testPath.pathString ]}>
@@ -75,8 +86,11 @@ describe('Routes', () => {
 			</Provider>
 		);
 		let tree = component.toJSON();
+
 		expect(tree).toMatchSnapshot();
+
 	});
+
 
 	it('doesn\'t render the app everywhere', () => {
 		const store = createStore(allReducers);
@@ -88,8 +102,11 @@ describe('Routes', () => {
 			</Provider>
 		);
 		let tree = component.toJSON();
+
 		expect(tree).toMatchSnapshot();
+
 	});
+
 
 	it('redirects to ChooseCenter if no center is chosen', () => {
 		const store = createStore(allReducers, applyMiddleware(thunk));
@@ -101,8 +118,11 @@ describe('Routes', () => {
 			</Provider>
 		);
 		let tree = component.toJSON();
+
 		expect(tree).toMatchSnapshot();
+
 	});
+
 
 	it('renders ChooseCenter properly when no center is chosen', () => {
 		const store = createStore(allReducers, applyMiddleware(thunk));
@@ -114,7 +134,10 @@ describe('Routes', () => {
 			</Provider>
 		);
 		let tree = component.toJSON();
+
 		expect(tree).toMatchSnapshot();
+		
 	});
+
 
 });

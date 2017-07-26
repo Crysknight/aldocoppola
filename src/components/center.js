@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import SVGArrowRight from '../components/svg-arrow-right';
+
 export default class Center extends Component {
 
 	// constructor(props) {
@@ -10,9 +12,10 @@ export default class Center extends Component {
 	render() {
 		return (
 			<div className="ac-center">
-				<div className="center-header" onClick={() => this.props.chooseCenter()}>
+				<div className="center-header" onClick={this.props.chooseCenter}>
 					<span className="center-city">{this.props.center.city}</span>
 					<h2 className="center-name">{this.props.center.name}</h2>
+					<SVGArrowRight />
 				</div>
 				<div className="center-address">
 					<p>{this.props.center.address}</p>

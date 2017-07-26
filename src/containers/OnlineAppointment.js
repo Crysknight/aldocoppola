@@ -3,10 +3,13 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-import * as actions from '../actions';
+// import actions from '../actions';
 
 import Header from '../components/header';
 import Footer from '../components/footer';
+
+import SVGLock from '../components/svg-lock';
+import SVGArrowRight from '../components/svg-arrow-right';
 
 import { pathsMethods } from '../reducers/paths';
 
@@ -28,30 +31,34 @@ class OnlineAppointment extends Component {
 				>
 					<span className="title">Изменить центр красоты</span>
 					<span className="info-text">{this.props.appointment.centerChosen.name}</span>
+					<SVGArrowRight />
 				</Link>
 				<Link 
 					to={pathsMethods.getPath(paths, this.props.match.path, paths.ChooseEmployee)}
 					className="main-link"
 				>
 					<span className="title">Выбрать сотрудника</span>
+					<SVGArrowRight />
 				</Link>
 				<Link 
 					to={pathsMethods.getPath(paths, this.props.match.path, paths.ChooseServices)}
 					className="main-link"
 				>
 					<span className="title">Выбрать услуги</span>
+					<SVGArrowRight />
 				</Link>
 				<Link 
 					to={pathsMethods.getPath(paths, this.props.match.path, paths.ChooseDateTime)}
 					className="main-link"
 				>
 					<span className="title">Выбрать дату и время</span>
+					<SVGArrowRight />
 				</Link>
 				<Footer className="coal">
 					<Link 
 						to={pathsMethods.getPath(paths, this.props.match.path, paths.MyAccount)}
 						className="footer-link my-account-link"
-					>Личный кабинет</Link>
+					><SVGLock />Личный кабинет</Link>
 				</Footer>
 			</div>
 		);

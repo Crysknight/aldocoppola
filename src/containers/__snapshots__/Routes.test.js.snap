@@ -80,7 +80,7 @@ exports[`Routes matches the snapshot on the nested path 1`] = `
       <span
         className="info-text"
       >
-        Generic Name
+        TEST_NAME
       </span>
     </a>
     <a
@@ -165,7 +165,7 @@ exports[`Routes matches the snapshot on the rootpath 1`] = `
       <span
         className="info-text"
       >
-        Generic Name
+        TEST_NAME
       </span>
     </a>
     <a

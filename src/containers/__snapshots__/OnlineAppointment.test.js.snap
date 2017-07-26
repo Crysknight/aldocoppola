@@ -1,0 +1,75 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`OnlineAppointment renders component properly 1`] = `
+<div
+  id="online_appointment"
+>
+  <div
+    className="ac-header"
+  >
+    <h3>
+      Онлайн запись
+    </h3>
+  </div>
+  <a
+    className="main-link chosen"
+    href="/test/bauble.html/_appliance/choose-center/"
+    onClick={[Function]}
+  >
+    <span
+      className="title"
+    >
+      Изменить центр красоты
+    </span>
+    <span
+      className="info-text"
+    >
+      TEST_NAME
+    </span>
+  </a>
+  <a
+    className="main-link"
+    href="/test/bauble.html/_appliance/choose-employee/"
+    onClick={[Function]}
+  >
+    <span
+      className="title"
+    >
+      Выбрать сотрудника
+    </span>
+  </a>
+  <a
+    className="main-link"
+    href="/test/bauble.html/_appliance/choose-services/"
+    onClick={[Function]}
+  >
+    <span
+      className="title"
+    >
+      Выбрать услуги
+    </span>
+  </a>
+  <a
+    className="main-link"
+    href="/test/bauble.html/_appliance/choose-datetime/"
+    onClick={[Function]}
+  >
+    <span
+      className="title"
+    >
+      Выбрать дату и время
+    </span>
+  </a>
+  <div
+    className="ac-footer coal"
+  >
+    <a
+      className="footer-link my-account-link"
+      href="/test/bauble.html/_appliance/"
+      onClick={[Function]}
+    >
+      Личный кабинет
+    </a>
+  </div>
+</div>
+`;

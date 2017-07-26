@@ -12,13 +12,6 @@
 		padding: 20px;
 		cursor: pointer;
 		position: relative;
-		&:after {
-			content: '\2192';
-			display: inline-block;
-			position: absolute;
-			right: 20px;
-			font-size: 1.8em;
-		}
 		span {
 			display: flex;
 			width: 100%;

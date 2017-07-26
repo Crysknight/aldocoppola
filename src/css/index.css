@@ -98,20 +98,68 @@
     color: #8d8d8d;
     text-decoration: none;
     box-shadow: 0 0 8px #e6e6e6; }
-    #online_appointment .main-link:after {
-      content: '\2192';
+    #online_appointment .main-link .svg-arrow-right {
       display: inline-block;
+      width: 20px;
+      height: 20px;
       position: absolute;
       right: 20px; }
+      #online_appointment .main-link .svg-arrow-right .cls-1 {
+        fill: none;
+        stroke: #e6e6e6;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-miterlimit: 10;
+        stroke-width: 2px; }
     #online_appointment .main-link.chosen {
       border-left: 5px solid #c21526;
       color: #020202; }
+      #online_appointment .main-link.chosen .svg-arrow-right .cls-1 {
+        stroke: #020202; }
     #online_appointment .main-link span {
       display: block;
       margin: 3px 0;
       width: 100%; }
     #online_appointment .main-link span.info-text {
       font-size: 0.7em; }
+  #online_appointment #svg_lock {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    margin-right: 10px;
+    margin-top: 3px; }
+    #online_appointment #svg_lock g {
+      fill: #ffffff; }
+
+#choose_center #svg_lock {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  margin-right: 10px;
+  margin-top: 3px; }
+  #choose_center #svg_lock g {
+    fill: #ffffff; }
+
+#choose_center .svg-arrow-right {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  right: 20px; }
+  #choose_center .svg-arrow-right .cls-1 {
+    fill: none;
+    stroke: #ffffff;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-miterlimit: 10;
+    stroke-width: 2px; }
+
+#choose_employee .svg-info {
+  display: inline-block;
+  width: 12px;
+  height: 12px; }
+  #choose_employee .svg-info g {
+    fill: #ffffff; }
 
 /* Components */
 .ac-header {
@@ -179,12 +227,6 @@
     padding: 20px;
     cursor: pointer;
     position: relative; }
-    .ac-center .center-header:after {
-      content: '\2192';
-      display: inline-block;
-      position: absolute;
-      right: 20px;
-      font-size: 1.8em; }
     .ac-center .center-header span {
       display: flex;
       width: 100%;
@@ -216,6 +258,18 @@
     .ac-center .center-footer .delimeter {
       background-color: #e6e6e6;
       width: 1.5px; }
+
+.ac-employee {
+  margin: 20px;
+  box-shadow: 0 0 8px #e6e6e6;
+  height: 75px;
+  background-color: #3c3c3c; }
+  .ac-employee > img, .ac-employee > div {
+    display: inline-block;
+    height: 100%; }
+  .ac-employee .image-filler {
+    width: 75px;
+    background-color: #8e4343; }
 
 /* =================================================================================================== */
 /* < COMMON STYLING > */

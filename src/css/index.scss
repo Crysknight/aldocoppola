@@ -5,11 +5,14 @@
 /* Containers */
 @import "./containers/routes";
 @import "./containers/online_appointment";
+@import "./containers/choose_center";
+@import "./containers/choose_employee";
 
 /* Components */
 @import "./components/header";
 @import "./components/footer";
 @import "./components/center";
+@import "./components/employee";
 
 /* =================================================================================================== */
 /* < COMMON STYLING > */

@@ -1,5 +1,5 @@
 import React from 'react';
-import OnlineAppointment from './OnlineAppointment';
+import ChooseCenter from './ChooseCenter';
 import renderer from 'react-test-renderer';
 import { MemoryRouter, Route } from 'react-router-dom';
 import { createStore, applyMiddleware } from 'redux';
@@ -10,16 +10,16 @@ import { paths } from '../reducers/paths';
 
 
 
-describe('OnlineAppointment', () => {
+describe('ChooseCenter', () => {
 
 
 	it('renders component properly', () => {
+
 		const store = createStore(allReducers, applyMiddleware(thunk));
-		store.dispatch({ type: 'CHOOSE_CENTER', payload: { name: 'TEST_NAME', id: 8 } });
 		const component = renderer.create(
 			<Provider store={store}>
-				<MemoryRouter initialEntries={[ '/test/bauble.html' + paths.__app.pathString ]}>
-					<Route path={'/test/bauble.html' + paths.__app.pathString} component={OnlineAppointment} />
+				<MemoryRouter initialEntries={[ '/test/bauble.html' + paths.ChooseCenter.pathString ]}>
+					<Route path={'/test/bauble.html' + paths.ChooseCenter.pathString} component={ChooseCenter} />
 				</MemoryRouter>
 			</Provider>
 		);

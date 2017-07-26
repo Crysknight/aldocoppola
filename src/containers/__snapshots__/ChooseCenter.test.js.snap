@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ChooseCenter renders component properly 1`] = `
+<div
+  id="choose_center"
+>
+  <div
+    className="ac-header"
+  >
+    <h3>
+      Выбрать центр красоты
+    </h3>
+  </div>
+  <div
+    className="ac-footer coal"
+  >
+    <a
+      className="footer-link my-account-link"
+      href="/test/bauble.html/_appliance/"
+      onClick={[Function]}
+    >
+      Личный кабинет
+    </a>
+  </div>
+</div>
+`;

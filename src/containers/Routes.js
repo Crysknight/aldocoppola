@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { Switch, Route, Redirect } from 'react-router';
 import { Link } from 'react-router-dom';
 
-import * as actions from '../actions';
+// import actions from '../actions';
 
 // Import the containers related to paths
 import OnlineAppointment from './OnlineAppointment';
@@ -17,16 +17,15 @@ import { pathsMethods } from '../reducers/paths';
 
 class Routes extends Component {
 
-  // Here we assign, which container will render at which path
-  // We do it here to make it possible to map the paths' reducer to an array of Route components
-  componentWillMount() {
-    let paths = this.props.paths;
-    paths.__app.component = OnlineAppointment;
-    paths.ChooseCenter.component = ChooseCenter;
-    paths.ChooseEmployee.component = ChooseEmployee;
-    paths.ChooseServices.component = ChooseServices;
-    paths.ChooseDateTime.component = ChooseDateTime;
-  }
+  // componentWillReceiveProps(nextProps) {
+  //   let chooseEmployeeChildren = nextProps.paths.ChooseEmployee.childPaths;
+  //   if (chooseEmployeeChildren) {
+  //     this.assignComponents();
+  //     for (let path in chooseEmployeeChildren) {
+  //       chooseEmployeeChildren[path].component = ChooseDateTime;
+  //     }
+  //   }
+  // }
 
   createArrayFromPathsObject(paths, pathArray) {
     for (let path in paths) {
@@ -38,8 +37,18 @@ class Routes extends Component {
   }
 
   render() {
-    // Here we create an array of paths in order to map through it
+    // Here we assign components to the paths and create an array of paths in order to map through it
     let paths = this.props.paths;
+    paths.__app.component = OnlineAppointment;
+    paths.ChooseCenter.component = ChooseCenter;
+    paths.ChooseEmployee.component = ChooseEmployee;
+    paths.ChooseServices.component = ChooseServices;
+    paths.ChooseDateTime.component = ChooseDateTime;
+    if (paths.ChooseEmployee.childPaths) {
+      for (let path in paths.ChooseEmployee.childPaths) {
+        paths.ChooseEmployee.childPaths[path].component = ChooseDateTime;
+      }
+    }
     let pathArray = [];
     this.createArrayFromPathsObject(paths, pathArray);
     let location = this.props.location.pathname;
@@ -48,7 +57,7 @@ class Routes extends Component {
     // Because we also stick a redirection in it, which works, when user
     // has no chosen center in the appointment reducer. The app redirects
     // him to ChooseCenter path. For that purpose in the paths reducer every
-    // path should have a property 'private', if set to true, it will redirect
+    // path should have a property 'privacy', if set to true, it will redirect
     // the user to ChooseCenter
     return (
       <div id="ac_layout">
@@ -58,9 +67,9 @@ class Routes extends Component {
         >+</Link>
         <Switch>
           {pathArray.map((path, index) => {
-            // Here we filter the paths, which are private.
+            // Here we filter the paths, which are privacy.
             // Though, we render all of them if the user has chosen a center in ChooseCenter
-            if (!path.private || (this.props.appointment && this.props.appointment.centerChosen)) {
+            if (!path.privacy || (this.props.appointment && this.props.appointment.centerChosen)) {
               return (
                 <Route 
                   key={index}

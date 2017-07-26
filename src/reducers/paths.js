@@ -1,3 +1,5 @@
+import { GOT_EMPLOYEES } from '../actions/types';
+
 // Basis of all widget paths (after this everything is widget)
 const appPath = '/_appliance/';
 
@@ -8,36 +10,30 @@ const appRegExp = new RegExp(appPath + '(.*)');
 const paths = {
 	__app: {
 		pathString: '',
-		private: true
+		privacy: true
 	},
 	ChooseCenter: {
 		pathString: 'choose-center/',
-		private: false
+		privacy: false
 	},
 	ChooseEmployee: {
 		pathString: 'choose-employee/',
-		private: true,
-		childPaths: {
-			Rebecca: {
-				pathString: 'employee1488/',
-				private: true
-			}
-		}
+		privacy: true
 	},
 	ChooseServices: {
 		pathString: 'choose-services/',
-		private: true
+		privacy: true
 	},
 	ChooseDateTime: {
 		pathString: 'choose-datetime/',
-		private: true
+		privacy: true
 	}
 };
 
 const pathsMethods = {};
 
 // Function for constructing pathstrings from the sctructure above
-// It doesn't check the 'pathStrings' consistency so please regard the following format
+// It doesn't check the 'pathString' consistency so please regard the following format
 // pathString: 'nameofthepathstring/' with slash at the end
 pathsMethods.createPathStrings = function (paths, nested) {
 	// Firstly, it loops through the paths object, finding properties that are paths too
@@ -70,7 +66,6 @@ pathsMethods.createPathStrings = function (paths, nested) {
 			}
 		}
 	}
-	// console.log(paths);
 };
 
 pathsMethods.createPathStrings(paths);
@@ -94,29 +89,34 @@ pathsMethods.getAppSwitch = function (paths, currentPath) {
 };
 
 // A function to create dynamic paths. 
-// Takes in a path object: properties are - 'pathName', 'pathString', 'component', 'parentPath' and 'privacy'
+// Takes in a path object: properties are - 'pathName', 'pathString', 'parentPath' and 'privacy'
 pathsMethods.createPath = function (paths, path) {
-	if (!path.pathString || !path.component || !path.pathName) {
-		throw new Error('no pathstring or component');
-		return;
+	console.log(paths);
+	if (!path.pathString || !path.pathName) {
+		throw new Error('pathString, or pathName properties missing');
 	}
 	if (path.pathString.match(/ /) !== null) {
-		throw new Error('wrong pathstring format');
-		return;
+		throw new Error('pathString should not contain spaces');
+	}
+	if (path.pathString.match(/^(\w|\d|-|_)*\/$/) === null) {
+		throw new Error('pathString should begin from a letter, number, \'-\', or \'_\' and end with one slash symbol');
 	}
 	let targetPath = { 
-		pathString: path.pathString, 
-		component: path.component, 
-		private: path.privacy 
+		pathString: path.pathString,
+		privacy: path.hasOwnProperty('privacy') ? path.privacy : true
 	}
-	if (!path.parentPath) {
+	// 'hasOwnProperty' because the 'parentPath' itself can be undefined
+	if (!path.hasOwnProperty('parentPath')) {
 		paths[path.pathName] = targetPath;
+	} else if (path.hasOwnProperty('parentPath') && !path.parentPath) {
+		throw new Error('Specified parentPath not found');
 	} else {
-	// Function creates a recursive function to search a parentPath inside the paths object
-	// In every path that has childPaths it also searches the parentPath in them recursively calling itself 
-		let pathsCrawler = function(targetPath, pathName, parentPath) {
+		// createPath's recursive function to search a parentPath inside the paths object
+		// In every path that has childPaths it also searches the parentPath in them recursively calling itself 
+		let pathsCrawler = function(paths, targetPath, pathName, parentPath) {
 			for (let path in paths) {
 				if (paths[path].pathString === parentPath.pathString) {
+					paths[path].childPaths = paths[path].childPaths ? paths[path].childPaths : {};
 					paths[path].childPaths[pathName] = targetPath;
 				} else if (paths[path].childPaths) {
 					pathsCrawler(paths[path].childPaths, targetPath, pathName, parentPath);
@@ -126,16 +126,35 @@ pathsMethods.createPath = function (paths, path) {
 		pathsCrawler(paths, targetPath, path.pathName, path.parentPath);
 	}
 	pathsMethods.createPathStrings(paths);
-	// console.log(paths);
 };
 
 // Export the paths and pathsMethods objects for testing purposes
 export { pathsMethods };
 export { paths };
-window.pathsMethods = pathsMethods;
+// window.pathsMethods = pathsMethods;
+// window.paths = paths;
 // console.log(paths);
 
 // Reducer, providing the paths object to the whole app
 export default (state = paths, action) => {
-	return state;
+	switch (action.type) {
+		case GOT_EMPLOYEES: {
+			let payload = action.payload;
+			let newState = JSON.stringify(state);
+			newState = JSON.parse(newState);
+			for (let employee of payload) {
+				let pathRecourse = 'employee' + employee.id;
+				pathsMethods.createPath(newState, {
+					pathName: pathRecourse,
+					pathString: pathRecourse + '/',
+					privace: true,
+					parentPath: newState.ChooseEmployee
+				});
+			}
+			return newState;
+		}
+		default: {
+			return state;
+		}
+	}
 };

@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import ImageFiller from './image-filler';
+
 import SVGArrowRight from './svg-arrow-right';
 
 export default class Employee extends Component {
@@ -16,7 +18,16 @@ export default class Employee extends Component {
 	render() {
 		return (
 			<div className="ac-employee" onClick={this.props.chooseEmployee}>
-				<div className="image-filler" />
+				{
+					this.props.employee.photo ? (
+						<img
+							src={this.props.employee.photo}
+							alt={`${this.props.employee.name} - ${this.props.employee.specialization}`}
+						/>
+					) : (
+						<ImageFiller />
+					)
+				}
 				<div className="employee-more-about" onClick={(e) => this.stopBubbling(e)}>
 					{this.props.children}
 				</div>

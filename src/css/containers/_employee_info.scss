@@ -1,0 +1,32 @@
+#employee_info {
+	.employee-photo {
+		text-align: center;
+		margin: 20px;
+	}
+	.image-filler {
+		width: 100px;
+		height: 100px;
+		border-radius: 50%;
+		span {
+			margin-top: 6px;
+		}
+	}
+	.employee-specialization, .employee-name {
+		text-align: center;
+		margin: 20px;
+	}
+	.employee-specialization {
+		font-size: 0.8em;
+		margin: 20px 0 7px 0;	
+	}
+	h3.employee-name {
+		font-family: $acRegular;
+		margin: 7px 0 30px 0;
+	}
+	.employee-description {
+		margin: 20px;
+		font-size: 0.9em;
+		line-height: 1.25;
+		color: $acCoal;
+	}
+}

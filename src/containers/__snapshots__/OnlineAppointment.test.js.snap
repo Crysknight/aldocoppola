@@ -69,7 +69,8 @@ exports[`OnlineAppointment renders component properly 1`] = `
     <span
       className="title"
     >
-      Выбрать сотрудника
+      Выбрать
+       сотрудника
     </span>
     <svg
       className="svg-arrow-right"

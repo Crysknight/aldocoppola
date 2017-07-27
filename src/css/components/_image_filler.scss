@@ -1,0 +1,27 @@
+.image-filler {
+	align-items: center;
+	align-content: center;
+	display: inline-flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	width: 80px;
+	height: 80px;
+	background-color: $acDimCherry;
+	span, .svg-person {
+		display: block;
+		width: 100%;
+		text-align: center;
+	}
+	span {
+		font-size: 0.7em;
+		margin-top: 4px;
+		color: transparentize($acWhite, 0.5);
+	}
+	.svg-person {
+		width: 20px;
+		height: 20px;
+		g {
+			fill: transparentize($acWhite, 0.5);
+		}
+	}
+}

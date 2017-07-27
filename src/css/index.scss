@@ -7,12 +7,14 @@
 @import "./containers/online_appointment";
 @import "./containers/choose_center";
 @import "./containers/choose_employee";
+@import "./containers/employee_info";
 
 /* Components */
 @import "./components/header";
 @import "./components/footer";
 @import "./components/center";
 @import "./components/employee";
+@import "./components/image_filler";
 
 /* =================================================================================================== */
 /* < COMMON STYLING > */
@@ -24,6 +26,7 @@ body {
   font-family: $acRegular;
   font-size: 16px;
   line-height: 1;
+  color: $acDark;
 }
 
 h2 {

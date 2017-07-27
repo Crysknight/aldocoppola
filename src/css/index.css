@@ -175,17 +175,34 @@
     stroke-miterlimit: 10;
     stroke-width: 2px; }
 
-#choose_employee #svg_person {
-  display: inline-block;
-  width: 12px;
-  height: 12px;
-  margin-right: 10px;
-  margin-top: 3px; }
-  #choose_employee #svg_person g {
-    fill: #ffffff; }
+#employee_info .employee-photo {
+  text-align: center;
+  margin: 20px; }
 
-#choose_employee .footer-link {
-  cursor: pointer; }
+#employee_info .image-filler {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%; }
+  #employee_info .image-filler span {
+    margin-top: 6px; }
+
+#employee_info .employee-specialization, #employee_info .employee-name {
+  text-align: center;
+  margin: 20px; }
+
+#employee_info .employee-specialization {
+  font-size: 0.8em;
+  margin: 20px 0 7px 0; }
+
+#employee_info h3.employee-name {
+  font-family: "SourceSansPro-Regular";
+  margin: 7px 0 30px 0; }
+
+#employee_info .employee-description {
+  margin: 20px;
+  font-size: 0.9em;
+  line-height: 1.25;
+  color: #333333; }
 
 /* Components */
 .ac-header {
@@ -235,7 +252,14 @@
     font-size: 0.8em;
     height: 50px;
     width: 100%;
-    align-items: center; }
+    align-items: center;
+    cursor: pointer; }
+  .ac-footer .svg-person {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    margin-right: 10px;
+    margin-top: 3px; }
   .ac-footer.white {
     background-color: #ffffff; }
     .ac-footer.white .footer-link {
@@ -244,6 +268,8 @@
     background-color: #333333; }
     .ac-footer.coal .footer-link {
       color: #ffffff; }
+    .ac-footer.coal .svg-person g {
+      fill: #ffffff; }
   .ac-footer.cherry {
     background-color: #c21526; }
     .ac-footer.cherry .footer-link {
@@ -309,9 +335,8 @@
     align-content: center;
     flex-wrap: wrap;
     height: 100%; }
-  .ac-employee .image-filler {
-    width: 80px;
-    background-color: #8e4343; }
+  .ac-employee .image-filler, .ac-employee img {
+    width: 80px; }
   .ac-employee .employee-more-about {
     margin: 0 20px; }
   .ac-employee .employee-info {
@@ -323,6 +348,29 @@
     .ac-employee .employee-info span.employee-specialization {
       font-size: 0.7em; }
 
+.image-filler {
+  align-items: center;
+  align-content: center;
+  display: inline-flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 80px;
+  height: 80px;
+  background-color: #8e4343; }
+  .image-filler span, .image-filler .svg-person {
+    display: block;
+    width: 100%;
+    text-align: center; }
+  .image-filler span {
+    font-size: 0.7em;
+    margin-top: 4px;
+    color: rgba(255, 255, 255, 0.5); }
+  .image-filler .svg-person {
+    width: 20px;
+    height: 20px; }
+    .image-filler .svg-person g {
+      fill: rgba(255, 255, 255, 0.5); }
+
 /* =================================================================================================== */
 /* < COMMON STYLING > */
 /* =================================================================================================== */
@@ -331,7 +379,8 @@ body {
   padding: 0;
   font-family: "SourceSansPro-Regular";
   font-size: 16px;
-  line-height: 1; }
+  line-height: 1;
+  color: #020202; }
 
 h2 {
   font-size: 1.4em;

@@ -28,11 +28,13 @@ class Routes extends Component {
   //   }
   // }
 
-  createArrayFromPathsObject(paths, pathArray) {
+  // A function to create an array of paths. It recursively loops through the paths object
+  // handling every path on the first level and in 'childPaths' and pushing it into the pathsArray
+  createArrayFromPathsObject(paths, pathsArray) {
     for (let path in paths) {
-      pathArray.push(paths[path]);
+      pathsArray.push(paths[path]);
       if (paths[path].childPaths) {
-        this.createArrayFromPathsObject(paths[path].childPaths, pathArray);
+        this.createArrayFromPathsObject(paths[path].childPaths, pathsArray);
       }
     }
   }
@@ -50,12 +52,12 @@ class Routes extends Component {
         paths.ChooseEmployee.childPaths[path].component = EmployeeInfo;
       }
     }
-    let pathArray = [];
-    this.createArrayFromPathsObject(paths, pathArray);
+    let pathsArray = [];
+    this.createArrayFromPathsObject(paths, pathsArray);
     let location = this.props.location.pathname;
     // Here we render ann app
     // Why is here such a gigantic bunch of code?
-    // Because we also stick a redirection in it, which works, when user
+    // Because we also stick a redirection in it, which works when user
     // has no chosen center in the appointment reducer. The app redirects
     // him to ChooseCenter path. For that purpose in the paths reducer every
     // path should have a property 'privacy', if set to true, it will redirect
@@ -67,7 +69,7 @@ class Routes extends Component {
           to={pathsMethods.getAppSwitch(paths, this.props.location.pathname)} 
         >+</Link>
         <Switch>
-          {pathArray.map((path, index) => {
+          {pathsArray.map((path, index) => {
             // Here we filter the paths, which are privacy.
             // Though, we render all of them if the user has chosen a center in ChooseCenter
             if (!path.privacy || (this.props.appointment && this.props.appointment.centerChosen)) {

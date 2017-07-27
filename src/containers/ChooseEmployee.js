@@ -66,8 +66,7 @@ class ChooseEmployee extends Component {
 				</Header>
 				{this.renderEmployees()}
 				<Footer className="coal">
-					<div 
-						to={pathsMethods.getPath(paths, this.props.match.path, paths.MyAccount)}
+					<div
 						className="footer-link"
 						onClick={() => this.chooseEmployee(-1, 'Любой сотрудник')}
 					><SVGPerson />Пропустить выбор сотрудника</div>

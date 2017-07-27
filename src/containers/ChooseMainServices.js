@@ -25,7 +25,7 @@ class ChooseMainServices extends Component {
 
 	renderServices() {
 		let paths = this.props.paths;
-		return this.props.services.map((service, index) => {
+		return this.props.mainServices.map((service, index) => {
 			return (
 				<Link
 					key={index}
@@ -63,7 +63,7 @@ class ChooseMainServices extends Component {
 function mapStateToProps(state) {
 	return {
 		paths: state.paths,
-		services: state.services
+		mainServices: state.mainServices
 	};
 }
 

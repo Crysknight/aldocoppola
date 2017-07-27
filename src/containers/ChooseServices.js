@@ -6,11 +6,12 @@ import { Link } from 'react-router-dom';
 import actions from '../actions';
 
 import Header from '../components/header';
+import Service from '../components/service';
 
 import SVGArrowLeft from '../components/svg-arrow-left';
-import SVGArrowRight from '../components/svg-arrow-right';
 
 import { pathsMethods } from '../reducers/paths';
+import { mainServicesMethods} from '../reducers/mainServices';
 
 class ChooseServices extends Component {
 
@@ -20,36 +21,41 @@ class ChooseServices extends Component {
 	// }
 
 	componentWillMount() {
-		this.props.loadMainServices();
+		this.props.loadServices();
+	}
+
+	getMainService() {
+		let paths = this.props.paths;
+		let mainServices = this.props.mainServices;
+		let regExp = new RegExp(paths.ChooseServices.pathString + 'service([\\w|\\d]*)\\/');
+		let id = +this.props.match.path.replace(regExp, '$1');
+		return mainServicesMethods.findMainServiceById(mainServices, id);
+	}
+
+	chooseService(id) {
+		this.props.chooseService(id);
 	}
 
 	renderServices() {
-		let paths = this.props.paths;
 		return this.props.services.map((service, index) => {
 			return (
-				<Link
+				<Service
 					key={index}
-					to={pathsMethods.getPath(
-						paths,
-						this.props.match.path,
-						paths.ChooseServices.childPaths['service' + service.id]
-					)}
-					className="service-link"
-				>
-					<p>{service.title}</p>
-					<SVGArrowRight />
-				</Link>
+					service={service}
+					chooseService={() => this.chooseService(service.id)}
+				/>
 			);
 		});
 	}
 
 	render() {
 		let paths = this.props.paths;
+		let mainService = this.getMainService();
 		return (
 			<div id="choose_services">
-				<Header title="Выбрать услуги">
+				<Header title={mainService.title}>
 					<Link 
-						to={pathsMethods.getPath(paths, this.props.match.path, paths.__app)}
+						to={pathsMethods.getPath(paths, this.props.match.path, paths.ChooseServices)}
 						className="back-link"
 					><SVGArrowLeft /></Link>
 				</Header>
@@ -63,13 +69,15 @@ class ChooseServices extends Component {
 function mapStateToProps(state) {
 	return {
 		paths: state.paths,
-		services: state.services
+		services: state.services,
+		mainServices: state.mainServices
 	};
 }
 
 function matchDispatchToProps(dispatch) {
 	return bindActionCreators({
-		loadMainServices: actions.loadMainServices
+		loadServices: actions.loadServices,
+		chooseService: actions.chooseService
 	}, dispatch);
 }
 

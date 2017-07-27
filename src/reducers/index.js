@@ -3,6 +3,7 @@ import paths from './paths';
 import centers from './centers';
 import appointment from './appointment';
 import employees from './employees';
+import mainServices from './mainServices';
 import services from './services';
 
 const allReducers = combineReducers({
@@ -10,6 +11,7 @@ const allReducers = combineReducers({
 	centers: centers,
 	appointment: appointment,
 	employees: employees,
+	mainServices: mainServices,
 	services: services
 });
 

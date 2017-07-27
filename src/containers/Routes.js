@@ -11,6 +11,7 @@ import OnlineAppointment from './OnlineAppointment';
 import ChooseCenter from './ChooseCenter';
 import ChooseEmployee from './ChooseEmployee';
 import ChooseMainServices from './ChooseMainServices';
+import ChooseServices from './ChooseServices';
 import ChooseDateTime from './ChooseDateTime';
 import EmployeeInfo from './EmployeeInfo';
 
@@ -50,6 +51,11 @@ class Routes extends Component {
     if (paths.ChooseEmployee.childPaths) {
       for (let path in paths.ChooseEmployee.childPaths) {
         paths.ChooseEmployee.childPaths[path].component = EmployeeInfo;
+      }
+    }
+    if (paths.ChooseServices.childPaths) {
+      for (let path in paths.ChooseServices.childPaths) {
+        paths.ChooseServices.childPaths[path].component = ChooseServices;
       }
     }
     let pathsArray = [];

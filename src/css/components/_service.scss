@@ -1,0 +1,45 @@
+.ac-service {
+	margin: 20px;
+	display: flex;
+	align-items: flex-start;
+	height: 110px;
+	background-color: $acWhite;
+	box-shadow: $acSmoothShadow;
+	.service-checkbox {
+		display: inline-flex;
+		height: 100%;
+		align-items: center;
+		align-content: center;
+		justify-content: center;
+		cursor: pointer;
+		svg {
+			width: 25px;
+			height: 25px;
+			margin: 20px;
+		}
+	}
+	.service-info {
+		display: inline-flex;
+		height: 100%;
+		align-items: center;
+		align-content: center;
+		flex-wrap: wrap;
+		padding-right: 20px;
+		p {
+			margin: 4px 0;
+		}
+		.service-title {
+			font-family: $acSemibold;
+		}
+		.service-price {
+			display: inline-block;
+			font-family: $acSemibold;
+			font-size: 0.9em;
+		}
+		.service-time {
+			display: inline-block;
+			margin-left: 15px;
+			font-size: 0.8em;
+		}
+	}
+}

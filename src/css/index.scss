@@ -16,6 +16,8 @@
 @import "./components/center";
 @import "./components/employee";
 @import "./components/image_filler";
+@import "./components/svg_arrows";
+@import "./components/service";
 
 /* =================================================================================================== */
 /* < COMMON STYLING > */
@@ -42,19 +44,4 @@ h3 {
 
 .label {
 	color: $acTextGrey;
-}
-
-.svg-arrow-right, .svg-arrow-left {
-  display: inline-block;
-  width: 20px;
-  height: 20px;
-  position: absolute;
-  right: 20px;
-  .cls-1 {
-    fill: none;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-    stroke-miterlimit: 10;
-    stroke-width: 2px;
-  }
 }

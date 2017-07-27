@@ -1,4 +1,4 @@
-#choose_main_services, #choose_services {
+#choose_main_services {
 	.svg-arrow-right {
 		.cls-1 {
 			stroke: $acDark;
@@ -13,7 +13,7 @@
 		margin: 20px;
 		height: 70px;
 		padding-left: 20px;
-		font-family: $acRegular;
+		font-family: $acSemibold;
 		color: $acDark;
 		text-decoration: none;
 		position: relative;

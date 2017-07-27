@@ -108,22 +108,6 @@ describe('Routes', () => {
 	});
 
 
-	it('redirects to ChooseCenter if no center is chosen', () => {
-		const store = createStore(allReducers, applyMiddleware(thunk));
-		const component = renderer.create(
-			<Provider store={store}>
-				<MemoryRouter initialEntries={[ '/test/bauble.html' + paths.__app.pathString ]}>
-					<Routes location={locationNested} />
-				</MemoryRouter>
-			</Provider>
-		);
-		let tree = component.toJSON();
-
-		expect(tree).toMatchSnapshot();
-
-	});
-
-
 	it('renders ChooseCenter properly when no center is chosen', () => {
 		const store = createStore(allReducers, applyMiddleware(thunk));
 		const component = renderer.create(

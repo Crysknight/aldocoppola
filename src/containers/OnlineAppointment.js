@@ -21,34 +21,38 @@ class OnlineAppointment extends Component {
 	// }
 
 	render() {
-		let paths = this.props.paths;
+		let props = this.props;
+		let paths = props.paths;
 		return (
 			<div id="online_appointment">
 				<Header title="Онлайн запись" />
 				<Link 
-					to={pathsMethods.getPath(paths, this.props.match.path, paths.ChooseCenter)}
+					to={pathsMethods.getPath(paths, props.match.path, paths.ChooseCenter)}
 					className="main-link chosen"
 				>
 					<span className="title">Изменить центр красоты</span>
-					<span className="info-text">{this.props.appointment.centerChosen.name}</span>
+					<span className="info-text">{props.appointment.centerChosen.name}</span>
 					<SVGArrowRight />
 				</Link>
 				<Link 
-					to={pathsMethods.getPath(paths, this.props.match.path, paths.ChooseEmployee)}
-					className="main-link"
+					to={pathsMethods.getPath(paths, props.match.path, paths.ChooseEmployee)}
+					className={`main-link${props.appointment.employeeChosen ? ' chosen' : ''}`}
 				>
-					<span className="title">Выбрать сотрудника</span>
+					<span className="title">{props.appointment.employeeChosen ? 'Изменить' : 'Выбрать'} сотрудника</span>
+					{props.appointment.employeeChosen && (
+						<span className="info-text">{props.appointment.employeeChosen.name}</span>
+					)}
 					<SVGArrowRight />
 				</Link>
 				<Link 
-					to={pathsMethods.getPath(paths, this.props.match.path, paths.ChooseServices)}
+					to={pathsMethods.getPath(paths, props.match.path, paths.ChooseServices)}
 					className="main-link"
 				>
 					<span className="title">Выбрать услуги</span>
 					<SVGArrowRight />
 				</Link>
 				<Link 
-					to={pathsMethods.getPath(paths, this.props.match.path, paths.ChooseDateTime)}
+					to={pathsMethods.getPath(paths, props.match.path, paths.ChooseDateTime)}
 					className="main-link"
 				>
 					<span className="title">Выбрать дату и время</span>
@@ -56,7 +60,7 @@ class OnlineAppointment extends Component {
 				</Link>
 				<Footer className="coal">
 					<Link 
-						to={pathsMethods.getPath(paths, this.props.match.path, paths.MyAccount)}
+						to={pathsMethods.getPath(paths, props.match.path, paths.MyAccount)}
 						className="footer-link my-account-link"
 					><SVGLock />Личный кабинет</Link>
 				</Footer>

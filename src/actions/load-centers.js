@@ -22,5 +22,5 @@ export default () => dispatch => {
 				}
 			]
 		});
-	}, 1000);
+	}, 100);
 };

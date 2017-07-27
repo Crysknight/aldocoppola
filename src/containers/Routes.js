@@ -12,6 +12,7 @@ import ChooseCenter from './ChooseCenter';
 import ChooseEmployee from './ChooseEmployee';
 import ChooseServices from './ChooseServices';
 import ChooseDateTime from './ChooseDateTime';
+import EmployeeInfo from './EmployeeInfo';
 
 import { pathsMethods } from '../reducers/paths';
 
@@ -46,7 +47,7 @@ class Routes extends Component {
     paths.ChooseDateTime.component = ChooseDateTime;
     if (paths.ChooseEmployee.childPaths) {
       for (let path in paths.ChooseEmployee.childPaths) {
-        paths.ChooseEmployee.childPaths[path].component = ChooseDateTime;
+        paths.ChooseEmployee.childPaths[path].component = EmployeeInfo;
       }
     }
     let pathArray = [];

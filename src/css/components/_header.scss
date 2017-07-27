@@ -15,10 +15,22 @@
 	.back-link {
 		position: absolute;
 		right: 20px;
-		color: $acWhite;
-		text-decoration: none;
-		font-size: 1.4em;
+		width: 20px;
+		height: 20px;
 		display: inline-block;
 		vertical-align: middle;
+	}
+	.svg-arrow-left {
+		display: inline-block;
+		width: 20px;
+		height: 20px;
+    .cls-1 {
+      fill: none;
+      stroke: $acWhite;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-miterlimit: 10;
+      stroke-width: 2px;
+    }
 	}
 }

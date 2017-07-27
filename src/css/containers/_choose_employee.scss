@@ -7,4 +7,32 @@
 			fill: $acWhite;
 		}
 	}
+	.svg-arrow-right {
+		display: inline-block;
+		width: 20px;
+		height: 20px;
+		position: absolute;
+		right: 20px;
+    .cls-1 {
+      fill: none;
+      stroke: $acWhite;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-miterlimit: 10;
+      stroke-width: 2px;
+    }
+	}
+	#svg_person {
+		display: inline-block;
+		width: 12px;
+		height: 12px;
+		margin-right: 10px;
+		margin-top: 3px;
+		g {
+			fill: $acWhite;
+		}
+	}
+	.footer-link {
+		cursor: pointer;
+	}
 }

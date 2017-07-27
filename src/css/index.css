@@ -161,6 +161,32 @@
   #choose_employee .svg-info g {
     fill: #ffffff; }
 
+#choose_employee .svg-arrow-right {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  right: 20px; }
+  #choose_employee .svg-arrow-right .cls-1 {
+    fill: none;
+    stroke: #ffffff;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-miterlimit: 10;
+    stroke-width: 2px; }
+
+#choose_employee #svg_person {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  margin-right: 10px;
+  margin-top: 3px; }
+  #choose_employee #svg_person g {
+    fill: #ffffff; }
+
+#choose_employee .footer-link {
+  cursor: pointer; }
+
 /* Components */
 .ac-header {
   background-color: #020202;
@@ -178,11 +204,21 @@
   .ac-header .back-link {
     position: absolute;
     right: 20px;
-    color: #ffffff;
-    text-decoration: none;
-    font-size: 1.4em;
+    width: 20px;
+    height: 20px;
     display: inline-block;
     vertical-align: middle; }
+  .ac-header .svg-arrow-left {
+    display: inline-block;
+    width: 20px;
+    height: 20px; }
+    .ac-header .svg-arrow-left .cls-1 {
+      fill: none;
+      stroke: #ffffff;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-miterlimit: 10;
+      stroke-width: 2px; }
 
 .ac-footer {
   position: absolute;
@@ -262,14 +298,30 @@
 .ac-employee {
   margin: 20px;
   box-shadow: 0 0 8px #e6e6e6;
-  height: 75px;
-  background-color: #3c3c3c; }
+  height: 80px;
+  background-color: #3c3c3c;
+  position: relative;
+  cursor: pointer; }
   .ac-employee > img, .ac-employee > div {
-    display: inline-block;
+    display: inline-flex;
+    vertical-align: top;
+    align-items: center;
+    align-content: center;
+    flex-wrap: wrap;
     height: 100%; }
   .ac-employee .image-filler {
-    width: 75px;
+    width: 80px;
     background-color: #8e4343; }
+  .ac-employee .employee-more-about {
+    margin: 0 20px; }
+  .ac-employee .employee-info {
+    color: #ffffff; }
+    .ac-employee .employee-info span {
+      display: block;
+      width: 100%;
+      margin: 3px 0; }
+    .ac-employee .employee-info span.employee-specialization {
+      font-size: 0.7em; }
 
 /* =================================================================================================== */
 /* < COMMON STYLING > */

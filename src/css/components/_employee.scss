@@ -1,14 +1,34 @@
 .ac-employee {
 	margin: 20px;
 	box-shadow: 0 0 8px $acLabelGrey;
-	height: 75px;
+	height: 80px;
 	background-color: $acPaleCoal;
+	position: relative;
+	cursor: pointer;
 	&>img, &>div {
-		display: inline-block;
+		display: inline-flex;
+		vertical-align: top;
+		align-items: center;
+		align-content: center;
+		flex-wrap: wrap;
 		height: 100%;
 	}
 	.image-filler {
-		width: 75px;
+		width: 80px;
 		background-color: $acDimCherry;
+	}
+	.employee-more-about {
+		margin: 0 20px;
+	}
+	.employee-info {
+		color: $acWhite;
+		span {
+			display: block;
+			width: 100%;
+			margin: 3px 0;
+		}
+		span.employee-specialization {
+			font-size: 0.7em;
+		}
 	}
 }

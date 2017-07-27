@@ -6,10 +6,12 @@ import { Link } from 'react-router-dom';
 import actions from '../actions';
 
 import Header from '../components/header';
-// import Footer from '../components/footer';
+import Footer from '../components/footer';
 import Employee from '../components/employee';
 
 import SVGInfo from '../components/svg-info';
+import SVGPerson from '../components/svg-person';
+import SVGArrowLeft from '../components/svg-arrow-left';
 
 import { pathsMethods } from '../reducers/paths';
 
@@ -24,8 +26,10 @@ class ChooseEmployee extends Component {
 		this.props.loadEmployees();
 	}
 
-	chooseEmployee() {
-
+	chooseEmployee(id, name) {
+		let paths = this.props.paths;
+		this.props.chooseEmployee(id, name);
+		this.props.history.push(pathsMethods.getPath(paths, this.props.location.pathname, paths.__app));
 	}
 
 	renderEmployees() {
@@ -35,6 +39,7 @@ class ChooseEmployee extends Component {
 				<Employee
 					key={index}
 					employee={employee}
+					chooseEmployee={() => this.chooseEmployee(employee.id, employee.name)}
 				>
 					<Link 
 						to={pathsMethods.getPath(
@@ -57,9 +62,16 @@ class ChooseEmployee extends Component {
 					<Link 
 						to={pathsMethods.getPath(paths, this.props.match.path, paths.__app)}
 						className="back-link"
-					>&larr;</Link>
+					><SVGArrowLeft /></Link>
 				</Header>
 				{this.renderEmployees()}
+				<Footer className="coal">
+					<div 
+						to={pathsMethods.getPath(paths, this.props.match.path, paths.MyAccount)}
+						className="footer-link"
+						onClick={() => this.chooseEmployee(-1, 'Любой сотрудник')}
+					><SVGPerson />Пропустить выбор сотрудника</div>
+				</Footer>
 			</div>
 		);
 	}
@@ -75,7 +87,8 @@ function mapStateToProps(state) {
 
 function matchDispatchToProps(dispatch) {
 	return bindActionCreators({
-		loadEmployees: actions.loadEmployees
+		loadEmployees: actions.loadEmployees,
+		chooseEmployee: actions.chooseEmployee
 	}, dispatch);
 }
 

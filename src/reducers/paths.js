@@ -4,7 +4,7 @@ import { GOT_EMPLOYEES } from '../actions/types';
 const appPath = '/_appliance/';
 
 // Regular expression to find any path related to the widget
-const appRegExp = new RegExp(appPath + '(.*)');
+const appRegExp = new RegExp(appPath.slice(0, -1) + '(.*)');
 
 // Object with paths used by the app
 const paths = {
@@ -35,7 +35,7 @@ const pathsMethods = {};
 // Function for constructing pathstrings from the sctructure above
 // It doesn't check the 'pathString' consistency so please regard the following format
 // pathString: 'nameofthepathstring/' with slash at the end
-pathsMethods.createPathStrings = function (paths, nested) {
+pathsMethods.createPathStrings = (paths, nested) => {
 	// Firstly, it loops through the paths object, finding properties that are paths too
 	for (let path in paths) {
 		// Do not process the root path of the widget
@@ -71,7 +71,7 @@ pathsMethods.createPathStrings = function (paths, nested) {
 pathsMethods.createPathStrings(paths);
 
 // A function to get the path of the specific page
-pathsMethods.getPath = function (paths, currentPath, path) {
+pathsMethods.getPath = (paths, currentPath, path) => {
 	if (!path) {
 		return currentPath.replace(appRegExp, '') + paths.__app.pathString;
 	}
@@ -79,7 +79,7 @@ pathsMethods.getPath = function (paths, currentPath, path) {
 };
 
 // A function to create a Link that opens and closes the app
-pathsMethods.getAppSwitch = function (paths, currentPath) {
+pathsMethods.getAppSwitch = (paths, currentPath) => {
 	currentPath = currentPath === '/' ? '' : currentPath;
 	if (currentPath.match(appRegExp)) {
 		return currentPath.replace(appRegExp, '');
@@ -90,8 +90,7 @@ pathsMethods.getAppSwitch = function (paths, currentPath) {
 
 // A function to create dynamic paths. 
 // Takes in a path object: properties are - 'pathName', 'pathString', 'parentPath' and 'privacy'
-pathsMethods.createPath = function (paths, path) {
-	console.log(paths);
+pathsMethods.createPath = (paths, path) => {
 	if (!path.pathString || !path.pathName) {
 		throw new Error('pathString, or pathName properties missing');
 	}

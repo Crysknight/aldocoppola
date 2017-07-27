@@ -1,6 +1,6 @@
 .ac-center {
 	margin: 20px;
-	box-shadow: 0 0 8px $acLabelGrey;
+	box-shadow: $acSmoothShadow;
 	.center-header {
 		background-color: $acCoal;
 		color: $acWhite;

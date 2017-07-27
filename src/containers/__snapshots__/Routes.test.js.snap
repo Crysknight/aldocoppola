@@ -12,7 +12,7 @@ exports[`Routes child path of the app matches the snapshot on the rootpath 1`] =
     +
   </a>
   <div
-    className="new"
+    id="choose_main_services"
   >
     <div
       className="ac-header"
@@ -25,7 +25,47 @@ exports[`Routes child path of the app matches the snapshot on the rootpath 1`] =
         href="/_appliance/"
         onClick={[Function]}
       >
-        ←
+        <svg
+          className="svg-arrow-left"
+          viewBox="782.586 1497.586 18.414 12.828"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <g
+            data-name="Symbol 1 – 2"
+            id="Symbol_1_2"
+            transform="translate(450 1473)"
+          >
+            <g
+              data-name="Стрелка назад"
+              id="Стрелка_назад"
+              transform="translate(351 37) rotate(180)"
+            >
+              <line
+                className="cls-1"
+                data-name="Line 7"
+                id="Line_7"
+                transform="translate(12 6)"
+                x1="5"
+                y2="5"
+              />
+              <line
+                className="cls-1"
+                data-name="Line 8"
+                id="Line_8"
+                transform="translate(12 1)"
+                x1="5"
+                y1="5"
+              />
+              <line
+                className="cls-1"
+                data-name="Line 9"
+                id="Line_9"
+                transform="translate(1 6)"
+                x1="16"
+              />
+            </g>
+          </g>
+        </svg>
       </a>
     </div>
   </div>

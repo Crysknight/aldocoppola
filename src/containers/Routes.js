@@ -10,7 +10,7 @@ import { Link } from 'react-router-dom';
 import OnlineAppointment from './OnlineAppointment';
 import ChooseCenter from './ChooseCenter';
 import ChooseEmployee from './ChooseEmployee';
-import ChooseServices from './ChooseServices';
+import ChooseMainServices from './ChooseMainServices';
 import ChooseDateTime from './ChooseDateTime';
 import EmployeeInfo from './EmployeeInfo';
 
@@ -45,7 +45,7 @@ class Routes extends Component {
     paths.__app.component = OnlineAppointment;
     paths.ChooseCenter.component = ChooseCenter;
     paths.ChooseEmployee.component = ChooseEmployee;
-    paths.ChooseServices.component = ChooseServices;
+    paths.ChooseServices.component = ChooseMainServices;
     paths.ChooseDateTime.component = ChooseDateTime;
     if (paths.ChooseEmployee.childPaths) {
       for (let path in paths.ChooseEmployee.childPaths) {

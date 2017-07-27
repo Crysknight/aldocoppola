@@ -12,7 +12,7 @@ import SVGArrowRight from '../components/svg-arrow-right';
 
 import { pathsMethods } from '../reducers/paths';
 
-class ChooseServices extends Component {
+class ChooseMainServices extends Component {
 
 	// constructor(props) {
 		// super(props);
@@ -46,7 +46,7 @@ class ChooseServices extends Component {
 	render() {
 		let paths = this.props.paths;
 		return (
-			<div id="choose_services">
+			<div id="choose_main_services">
 				<Header title="Выбрать услуги">
 					<Link 
 						to={pathsMethods.getPath(paths, this.props.match.path, paths.__app)}
@@ -73,4 +73,4 @@ function matchDispatchToProps(dispatch) {
 	}, dispatch);
 }
 
-export default connect(mapStateToProps, matchDispatchToProps)(ChooseServices);
+export default connect(mapStateToProps, matchDispatchToProps)(ChooseMainServices);

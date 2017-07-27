@@ -1,4 +1,4 @@
-import { GOT_EMPLOYEES } from '../actions/types';
+import { GOT_EMPLOYEES, GOT_MAIN_SERVICES } from '../actions/types';
 
 // Basis of all widget paths (after this everything is widget)
 const appPath = '/_appliance/';
@@ -146,8 +146,23 @@ export default (state = paths, action) => {
 				pathsMethods.createPath(newState, {
 					pathName: pathRecourse,
 					pathString: pathRecourse + '/',
-					privace: true,
+					privacy: true,
 					parentPath: newState.ChooseEmployee
+				});
+			}
+			return newState;
+		}
+		case GOT_MAIN_SERVICES: {
+			let payload = action.payload;
+			let newState = JSON.stringify(state);
+			newState = JSON.parse(newState);
+			for (let service of payload) {
+				let pathRecourse = 'service' + service.id;
+				pathsMethods.createPath(newState, {
+					pathName: pathRecourse,
+					pathString: pathRecourse + '/',
+					privacy: true,
+					parentPath: newState.ChooseServices
 				});
 			}
 			return newState;

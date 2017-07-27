@@ -7,13 +7,13 @@ import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 import allReducers from '../reducers';
 import { paths } from '../reducers/paths';
-import ChooseServices from './ChooseServices';
+import ChooseMainServices from './ChooseMainServices';
 
 
 
 paths._testPath = {
 	pathString: paths.__app.pathString + '_test/',
-	component: ChooseServices
+	component: ChooseMainServices
 };
 
 const locationRoot = {
@@ -76,7 +76,7 @@ describe('Routes', () => {
 
 
 	it('child path of the app matches the snapshot on the rootpath', () => {
-		const store = createStore(allReducers);
+		const store = createStore(allReducers, applyMiddleware(thunk));
 		store.dispatch({ type: 'CHOOSE_CENTER', payload: { name: 'TEST_NAME', id: 8 } });
 		const component = renderer.create(
 			<Provider store={store}>

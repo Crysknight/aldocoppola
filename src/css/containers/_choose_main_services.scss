@@ -1,0 +1,21 @@
+#choose_main_services, #choose_services {
+	.svg-arrow-right {
+		.cls-1 {
+			stroke: $acDark;
+		}
+	}
+	.service-link {
+		display: flex;
+		align-items: center;
+		justify-content: flex-start;
+		background-color: $acWhite;
+		box-shadow: $acSmoothShadow;
+		margin: 20px;
+		height: 70px;
+		padding-left: 20px;
+		font-family: $acRegular;
+		color: $acDark;
+		text-decoration: none;
+		position: relative;
+	}
+}

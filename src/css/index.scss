@@ -8,6 +8,7 @@
 @import "./containers/choose_center";
 @import "./containers/choose_employee";
 @import "./containers/employee_info";
+@import "./containers/choose_main_services";
 
 /* Components */
 @import "./components/header";
@@ -41,4 +42,19 @@ h3 {
 
 .label {
 	color: $acTextGrey;
+}
+
+.svg-arrow-right, .svg-arrow-left {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  right: 20px;
+  .cls-1 {
+    fill: none;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-miterlimit: 10;
+    stroke-width: 2px;
+  }
 }

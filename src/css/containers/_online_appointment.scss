@@ -18,18 +18,8 @@
 		text-decoration: none;
 		box-shadow: 0 0 8px $acLabelGrey;
 		.svg-arrow-right {
-			display: inline-block;
-			width: 20px;
-			height: 20px;
-			position: absolute;
-			right: 20px;
 	    .cls-1 {
-	      fill: none;
-	      stroke: $acLabelGrey;
-	      stroke-linecap: round;
-	      stroke-linejoin: round;
-	      stroke-miterlimit: 10;
-	      stroke-width: 2px;
+	      stroke: $acLabelGrey;	    
 	    }
 		}
 		&.chosen {

@@ -98,19 +98,8 @@
     color: #8d8d8d;
     text-decoration: none;
     box-shadow: 0 0 8px #e6e6e6; }
-    #online_appointment .main-link .svg-arrow-right {
-      display: inline-block;
-      width: 20px;
-      height: 20px;
-      position: absolute;
-      right: 20px; }
-      #online_appointment .main-link .svg-arrow-right .cls-1 {
-        fill: none;
-        stroke: #e6e6e6;
-        stroke-linecap: round;
-        stroke-linejoin: round;
-        stroke-miterlimit: 10;
-        stroke-width: 2px; }
+    #online_appointment .main-link .svg-arrow-right .cls-1 {
+      stroke: #e6e6e6; }
     #online_appointment .main-link.chosen {
       border-left: 5px solid #c21526;
       color: #020202; }
@@ -140,19 +129,8 @@
   #choose_center #svg_lock g {
     fill: #ffffff; }
 
-#choose_center .svg-arrow-right {
-  display: inline-block;
-  width: 20px;
-  height: 20px;
-  position: absolute;
-  right: 20px; }
-  #choose_center .svg-arrow-right .cls-1 {
-    fill: none;
-    stroke: #ffffff;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-    stroke-miterlimit: 10;
-    stroke-width: 2px; }
+#choose_center .svg-arrow-right .cls-1 {
+  stroke: #ffffff; }
 
 #choose_employee .svg-info {
   display: inline-block;
@@ -161,19 +139,8 @@
   #choose_employee .svg-info g {
     fill: #ffffff; }
 
-#choose_employee .svg-arrow-right {
-  display: inline-block;
-  width: 20px;
-  height: 20px;
-  position: absolute;
-  right: 20px; }
-  #choose_employee .svg-arrow-right .cls-1 {
-    fill: none;
-    stroke: #ffffff;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-    stroke-miterlimit: 10;
-    stroke-width: 2px; }
+#choose_employee .svg-arrow-right .cls-1 {
+  stroke: #ffffff; }
 
 #employee_info .employee-photo {
   text-align: center;
@@ -204,6 +171,23 @@
   line-height: 1.25;
   color: #333333; }
 
+#choose_main_services .svg-arrow-right .cls-1, #choose_services .svg-arrow-right .cls-1 {
+  stroke: #020202; }
+
+#choose_main_services .service-link, #choose_services .service-link {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  background-color: #ffffff;
+  box-shadow: 0 0 8px #e6e6e6;
+  margin: 20px;
+  height: 70px;
+  padding-left: 20px;
+  font-family: "SourceSansPro-Regular";
+  color: #020202;
+  text-decoration: none;
+  position: relative; }
+
 /* Components */
 .ac-header {
   background-color: #020202;
@@ -220,22 +204,13 @@
     vertical-align: middle; }
   .ac-header .back-link {
     position: absolute;
-    right: 20px;
+    right: 0;
     width: 20px;
     height: 20px;
     display: inline-block;
     vertical-align: middle; }
-  .ac-header .svg-arrow-left {
-    display: inline-block;
-    width: 20px;
-    height: 20px; }
-    .ac-header .svg-arrow-left .cls-1 {
-      fill: none;
-      stroke: #ffffff;
-      stroke-linecap: round;
-      stroke-linejoin: round;
-      stroke-miterlimit: 10;
-      stroke-width: 2px; }
+  .ac-header .svg-arrow-left .cls-1 {
+    stroke: #ffffff; }
 
 .ac-footer {
   position: absolute;
@@ -323,7 +298,6 @@
 
 .ac-employee {
   margin: 20px;
-  box-shadow: 0 0 8px #e6e6e6;
   height: 80px;
   background-color: #3c3c3c;
   position: relative;
@@ -392,3 +366,16 @@ h3 {
 
 .label {
   color: #8d8d8d; }
+
+.svg-arrow-right, .svg-arrow-left {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  right: 20px; }
+  .svg-arrow-right .cls-1, .svg-arrow-left .cls-1 {
+    fill: none;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-miterlimit: 10;
+    stroke-width: 2px; }

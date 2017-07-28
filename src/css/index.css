@@ -201,7 +201,23 @@
   #ac_layout #submit_services #services_summary {
     position: absolute;
     bottom: 55px;
-    background-color: #ffffff; }
+    background-color: #ffffff;
+    height: 70px;
+    width: 100%; }
+    #ac_layout #submit_services #services_summary .summary-price, #ac_layout #submit_services #services_summary .summary-time {
+      display: inline-block;
+      padding: 17px; }
+      #ac_layout #submit_services #services_summary .summary-price span, #ac_layout #submit_services #services_summary .summary-time span {
+        display: block;
+        font-size: 1.1em; }
+      #ac_layout #submit_services #services_summary .summary-price span.label, #ac_layout #submit_services #services_summary .summary-time span.label {
+        color: #020202;
+        margin: 4px 0;
+        font-size: 0.7em; }
+    #ac_layout #submit_services #services_summary .summary-price {
+      float: left; }
+    #ac_layout #submit_services #services_summary .summary-time {
+      float: right; }
 
 /* Components */
 .ac-header {

@@ -4,5 +4,26 @@
 		position: absolute;
 		bottom: 55px;
 		background-color: $acWhite;
+		height: 70px;
+		width: 100%;
+		.summary-price, .summary-time {
+			display: inline-block;
+			padding: 17px;
+			span {
+				display: block;
+				font-size: 1.1em;
+			}
+			span.label {
+				color: $acDark;
+				margin: 4px 0;
+				font-size: 0.7em;
+			}
+		}
+		.summary-price {
+			float: left;
+		}
+		.summary-time {
+			float: right;
+		}
 	}
 }

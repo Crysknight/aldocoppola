@@ -6,9 +6,12 @@ import { Link } from 'react-router-dom';
 import actions from '../actions';
 
 import Header from '../components/header';
+import Content from '../components/content';
+import Footer from '../components/footer';
 import Service from '../components/service';
 
 import SVGArrowLeft from '../components/svg-arrow-left';
+import SVGCheckboxChecked from '../components/svg-checkbox-checked';
 
 import { pathsMethods } from '../reducers/paths';
 import { mainServicesMethods} from '../reducers/mainServices';
@@ -21,13 +24,18 @@ class ChooseServices extends Component {
 	// }
 
 	componentWillMount() {
-		this.props.loadServices();
+		if (this.props.services.length === 0) {
+			this.props.loadServices();
+		}
 	}
 
 	getMainService() {
 		let paths = this.props.paths;
 		let mainServices = this.props.mainServices;
-		let regExp = new RegExp(paths.ChooseServices.pathString + 'service([\\w|\\d]*)\\/');
+		let regExp = new RegExp(
+			pathsMethods.getPath(paths, this.props.match.path, paths.ChooseServices) + 
+			'service([\\w|\\d]*)\\/'
+		);
 		let id = +this.props.match.path.replace(regExp, '$1');
 		return mainServicesMethods.findMainServiceById(mainServices, id);
 	}
@@ -36,16 +44,20 @@ class ChooseServices extends Component {
 		this.props.chooseService(id);
 	}
 
-	renderServices() {
-		return this.props.services.map((service, index) => {
-			return (
-				<Service
-					key={index}
-					service={service}
-					chooseService={() => this.chooseService(service.id)}
-				/>
+	renderServices(mainServiceId) {
+		return this.props.services
+			.filter(service => service.mainServiceId === mainServiceId)
+			.map((service, index) => 
+				{
+					return (
+						<Service
+							key={index}
+							service={service}
+							chooseService={() => this.chooseService(service.id)}
+						/>
+					);
+				}
 			);
-		});
 	}
 
 	render() {
@@ -54,12 +66,26 @@ class ChooseServices extends Component {
 		return (
 			<div id="choose_services">
 				<Header title={mainService.title}>
-					<Link 
-						to={pathsMethods.getPath(paths, this.props.match.path, paths.ChooseServices)}
+					<div 
+						onClick={() => this.props.history.goBack()}
 						className="back-link"
-					><SVGArrowLeft /></Link>
+					><SVGArrowLeft /></div>
 				</Header>
-				{this.renderServices()}
+				<Content>{this.renderServices(mainService.id)}</Content>
+				<Footer className="coal">
+					{
+						this.props.services.filter(service => service.checked).length > 0 ? (
+								<Link
+									to={pathsMethods.getPath(paths, this.props.match.path, paths.ChooseServices.childPaths.SubmitServices)}
+									className="footer-link"
+								><SVGCheckboxChecked />
+									Просмотреть выбранные услуги ({this.props.services.filter(service => service.checked).length}) и подтвердить
+								</Link>
+						) : (
+							null
+						)
+					}
+				</Footer>
 			</div>
 		);
 	}

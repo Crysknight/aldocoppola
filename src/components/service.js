@@ -3,6 +3,8 @@ import React, { Component } from 'react';
 import SVGCheckbox from './svg-checkbox';
 import SVGCheckboxChecked from './svg-checkbox-checked';
 
+import { servicesMethods } from '../reducers/services';
+
 export default class Service extends Component {
 
 	// constructor(props) {
@@ -28,7 +30,7 @@ export default class Service extends Component {
 					</p>
 					<p className="service-price-and-time">
 						<span className="service-price">{this.props.service.price}</span>
-						<span className="service-time">{this.props.service.time}</span>
+						<span className="service-time">{servicesMethods.getTimeString(this.props.service.time)}</span>
 					</p>
 				</div>
 			</div>

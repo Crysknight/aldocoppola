@@ -6,9 +6,12 @@ import { Link } from 'react-router-dom';
 import actions from '../actions';
 
 import Header from '../components/header';
+import Content from '../components/content';
+import Footer from '../components/footer';
 
 import SVGArrowLeft from '../components/svg-arrow-left';
 import SVGArrowRight from '../components/svg-arrow-right';
+import SVGCheckboxChecked from '../components/svg-checkbox-checked';
 
 import { pathsMethods } from '../reducers/paths';
 
@@ -53,7 +56,21 @@ class ChooseMainServices extends Component {
 						className="back-link"
 					><SVGArrowLeft /></Link>
 				</Header>
-				{this.renderServices()}
+				<Content>{this.renderServices()}</Content>
+				<Footer className="coal">
+					{
+						this.props.services.filter(service => service.checked).length > 0 ? (
+							<Link
+								to={pathsMethods.getPath(paths, this.props.match.path, paths.ChooseServices.childPaths.SubmitServices)}
+								className="footer-link"
+							><SVGCheckboxChecked />
+								Просмотреть выбранные услуги ({this.props.services.filter(service => service.checked).length}) и подтвердить
+							</Link>
+						) : (
+							null
+						)
+					}
+				</Footer>
 			</div>
 		);
 	}
@@ -63,7 +80,8 @@ class ChooseMainServices extends Component {
 function mapStateToProps(state) {
 	return {
 		paths: state.paths,
-		mainServices: state.mainServices
+		mainServices: state.mainServices,
+		services: state.services
 	};
 }
 

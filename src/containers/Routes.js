@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { Switch, Route, Redirect } from 'react-router';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 
 // import actions from '../actions';
 
@@ -14,20 +14,11 @@ import ChooseMainServices from './ChooseMainServices';
 import ChooseServices from './ChooseServices';
 import ChooseDateTime from './ChooseDateTime';
 import EmployeeInfo from './EmployeeInfo';
+import SubmitServices from './SubmitServices';
 
 import { pathsMethods } from '../reducers/paths';
 
 class Routes extends Component {
-
-  // componentWillReceiveProps(nextProps) {
-  //   let chooseEmployeeChildren = nextProps.paths.ChooseEmployee.childPaths;
-  //   if (chooseEmployeeChildren) {
-  //     this.assignComponents();
-  //     for (let path in chooseEmployeeChildren) {
-  //       chooseEmployeeChildren[path].component = ChooseDateTime;
-  //     }
-  //   }
-  // }
 
   // A function to create an array of paths. It recursively loops through the paths object
   // handling every path on the first level and in 'childPaths' and pushing it into the pathsArray
@@ -41,6 +32,7 @@ class Routes extends Component {
   }
 
   render() {
+
     // Here we assign components to the paths and create an array of paths in order to map through it
     let paths = this.props.paths;
     paths.__app.component = OnlineAppointment;
@@ -48,6 +40,7 @@ class Routes extends Component {
     paths.ChooseEmployee.component = ChooseEmployee;
     paths.ChooseServices.component = ChooseMainServices;
     paths.ChooseDateTime.component = ChooseDateTime;
+    paths.ChooseServices.childPaths.SubmitServices.component = SubmitServices;
     if (paths.ChooseEmployee.childPaths) {
       for (let path in paths.ChooseEmployee.childPaths) {
         paths.ChooseEmployee.childPaths[path].component = EmployeeInfo;
@@ -55,12 +48,23 @@ class Routes extends Component {
     }
     if (paths.ChooseServices.childPaths) {
       for (let path in paths.ChooseServices.childPaths) {
+        if (path === 'SubmitServices') continue;
         paths.ChooseServices.childPaths[path].component = ChooseServices;
       }
     }
+
     let pathsArray = [];
     this.createArrayFromPathsObject(paths, pathsArray);
     let location = this.props.location.pathname;
+
+    // Expose the function getAppSwitch to the window, to use it everywhere on the page
+    // window._getAppSwitch = () => pathsMethods.getAppSwitch(paths, this.props.location.pathname);
+    if (document.getElementById('_ac_switch_app')) {
+      document.getElementById('_ac_switch_app').onclick = () => {
+        this.props.history.push(pathsMethods.getAppSwitch(paths, this.props.location.pathname));
+      };
+    }
+
     // Here we render ann app
     // Why is here such a gigantic bunch of code?
     // Because we also stick a redirection in it, which works when user
@@ -70,10 +74,6 @@ class Routes extends Component {
     // the user to ChooseCenter
     return (
       <div id="ac_layout">
-        <Link 
-          className="app-switch"
-          to={pathsMethods.getAppSwitch(paths, this.props.location.pathname)} 
-        >+</Link>
         <Switch>
           {pathsArray.map((path, index) => {
             // Here we filter the paths, which are privacy.
@@ -125,3 +125,9 @@ function matchDispatchToProps(dispatch) {
 }
 
 export default connect(mapStateToProps, matchDispatchToProps)(Routes);
+
+
+        // <Link 
+        //   className="app-switch"
+        //   to={pathsMethods.getAppSwitch(paths, this.props.location.pathname)} 
+        // >+</Link>

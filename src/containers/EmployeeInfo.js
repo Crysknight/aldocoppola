@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import actions from '../actions';
 
 import Header from '../components/header';
+import Content from '../components/content';
 import Footer from '../components/footer';
 import ImageFiller from '../components/image-filler';
 
@@ -25,7 +26,11 @@ class EmployeeInfo extends Component {
 	getEmployee() {
 		let paths = this.props.paths;
 		let employees = this.props.employees;
-		let regExp = new RegExp(paths.ChooseEmployee.pathString + 'employee([\\w|\\d]*)\\/');
+		let regExp = new RegExp(
+			pathsMethods.getPath(paths, this.props.match.path, paths.ChooseEmployee) + 
+			'employee([\\w|\\d]*)\\/'
+		);
+		console.log(regExp);
 		let id = +this.props.match.path.replace(regExp, '$1');
 		return employeesMethods.findEmployeeById(employees, id);
 	}
@@ -47,27 +52,29 @@ class EmployeeInfo extends Component {
 						className="back-link"
 					><SVGArrowLeft /></Link>
 				</Header>
-				<div className="employee-photo">
-					{
-						employee.photo ? (
-							<img
-								src={employee.photo}
-								alt={`${employee.name} - ${employee.specialization}`}
-							/>
-						) : (
-							<ImageFiller />
-						)
-					}
-				</div>
-				<p className="employee-specialization">
-					{employee.specialization}
-				</p>
-				<h3 className="employee-name">
-					{employee.name}
-				</h3>
-				<p className="employee-description">
-					{employee.description}
-				</p>
+				<Content>
+					<div className="employee-photo">
+						{
+							employee.photo ? (
+								<img
+									src={employee.photo}
+									alt={`${employee.name} - ${employee.specialization}`}
+								/>
+							) : (
+								<ImageFiller />
+							)
+						}
+					</div>
+					<p className="employee-specialization">
+						{employee.specialization}
+					</p>
+					<h3 className="employee-name">
+						{employee.name}
+					</h3>
+					<p className="employee-description">
+						{employee.description}
+					</p>
+				</Content>
 				<Footer className="coal">
 					<div
 						className="footer-link"

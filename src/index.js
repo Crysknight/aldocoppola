@@ -25,5 +25,5 @@ ReactDOM.render((
 			</Switch>
 		</BrowserRouter>
 	</Provider>
-), document.getElementById('root'));
+), document.getElementById('_ac_root'));
 registerServiceWorker();

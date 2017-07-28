@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import actions from '../actions';
 
 import Header from '../components/header';
+import Content from '../components/content';
 import Footer from '../components/footer';
 import Employee from '../components/employee';
 
@@ -64,7 +65,7 @@ class ChooseEmployee extends Component {
 						className="back-link"
 					><SVGArrowLeft /></Link>
 				</Header>
-				{this.renderEmployees()}
+				<Content>{this.renderEmployees()}</Content>
 				<Footer className="coal">
 					<div
 						className="footer-link"

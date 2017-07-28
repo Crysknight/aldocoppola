@@ -1,12 +1,18 @@
 #ac_layout {
 	position: relative;
 	display: inline-block;
+	height: 100%;
 	&>div {
 		width: 375px;
 		height: 667px;
 		border: 2px solid $acLabelGrey;
 		background-color: $acLayoutGrey;
 		position: relative;
+		overflow: hidden;
+		height: 100%;
+		padding-top: 56px;
+		padding-bottom: 55px;
+		box-sizing: border-box;
 	}
 	.app-switch {
 		display: inline-block;

@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import actions from '../actions';
 
 import Header from '../components/header';
+import Content from '../components/content';
 import Center from '../components/center';
 import Footer from '../components/footer';
 
@@ -46,7 +47,7 @@ class ChooseCenter extends Component {
 		return (
 			<div id="choose_center">
 				<Header title="Выбрать центр красоты" />
-				{this.renderCenters()}
+				<Content>{this.renderCenters()}</Content>
 				<Footer className="coal">
 					<Link 
 						to={pathsMethods.getPath(paths, this.props.match.path, paths.MyAccount)}

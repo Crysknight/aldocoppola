@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 // import actions from '../actions';
 
 import Header from '../components/header';
+import Content from '../components/content';
 import Footer from '../components/footer';
 
 import SVGLock from '../components/svg-lock';
@@ -26,38 +27,40 @@ class OnlineAppointment extends Component {
 		return (
 			<div id="online_appointment">
 				<Header title="Онлайн запись" />
-				<Link 
-					to={pathsMethods.getPath(paths, props.match.path, paths.ChooseCenter)}
-					className="main-link chosen"
-				>
-					<span className="title">Изменить центр красоты</span>
-					<span className="info-text">{props.appointment.centerChosen.name}</span>
-					<SVGArrowRight />
-				</Link>
-				<Link 
-					to={pathsMethods.getPath(paths, props.match.path, paths.ChooseEmployee)}
-					className={`main-link${props.appointment.employeeChosen ? ' chosen' : ''}`}
-				>
-					<span className="title">{props.appointment.employeeChosen ? 'Изменить' : 'Выбрать'} сотрудника</span>
-					{props.appointment.employeeChosen && (
-						<span className="info-text">{props.appointment.employeeChosen.name}</span>
-					)}
-					<SVGArrowRight />
-				</Link>
-				<Link 
-					to={pathsMethods.getPath(paths, props.match.path, paths.ChooseServices)}
-					className="main-link"
-				>
-					<span className="title">Выбрать услуги</span>
-					<SVGArrowRight />
-				</Link>
-				<Link 
-					to={pathsMethods.getPath(paths, props.match.path, paths.ChooseDateTime)}
-					className="main-link"
-				>
-					<span className="title">Выбрать дату и время</span>
-					<SVGArrowRight />
-				</Link>
+				<Content>
+					<Link 
+						to={pathsMethods.getPath(paths, props.match.path, paths.ChooseCenter)}
+						className="main-link chosen"
+					>
+						<span className="title">Изменить центр красоты</span>
+						<span className="info-text">{props.appointment.centerChosen.name}</span>
+						<SVGArrowRight />
+					</Link>
+					<Link 
+						to={pathsMethods.getPath(paths, props.match.path, paths.ChooseEmployee)}
+						className={`main-link${props.appointment.employeeChosen ? ' chosen' : ''}`}
+					>
+						<span className="title">{props.appointment.employeeChosen ? 'Изменить' : 'Выбрать'} сотрудника</span>
+						{props.appointment.employeeChosen && (
+							<span className="info-text">{props.appointment.employeeChosen.name}</span>
+						)}
+						<SVGArrowRight />
+					</Link>
+					<Link 
+						to={pathsMethods.getPath(paths, props.match.path, paths.ChooseServices)}
+						className="main-link"
+					>
+						<span className="title">Выбрать услуги</span>
+						<SVGArrowRight />
+					</Link>
+					<Link 
+						to={pathsMethods.getPath(paths, props.match.path, paths.ChooseDateTime)}
+						className="main-link"
+					>
+						<span className="title">Выбрать дату и время</span>
+						<SVGArrowRight />
+					</Link>
+				</Content>
 				<Footer className="coal">
 					<Link 
 						to={pathsMethods.getPath(paths, props.match.path, paths.MyAccount)}

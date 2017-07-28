@@ -7,16 +7,18 @@
 		align-content: center;
 		justify-content: flex-start;
 		flex-wrap: wrap;
-		margin: 15px 0;
 		height: 70px;
+		margin-bottom: 20px;
 		background-color: $acWhite;
-		margin: 20px;
 		padding-left: 20px;
 		box-sizing: border-box;
 		border-left: 5px solid $acLabelGrey;
 		color: $acTextGrey;
 		text-decoration: none;
 		box-shadow: 0 0 8px $acLabelGrey;
+		&:last-child {
+			margin-bottom: 0;
+		}
 		.svg-arrow-right {
 	    .cls-1 {
 	      stroke: $acLabelGrey;	    

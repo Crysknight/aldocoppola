@@ -1,9 +1,12 @@
 .ac-employee {
-	margin: 20px;
+	margin-bottom: 20px;
 	height: 80px;
 	background-color: $acPaleCoal;
 	position: relative;
 	cursor: pointer;
+	&:last-child {
+		margin-bottom: 0;
+	}
 	&>img, &>div {
 		display: inline-flex;
 		vertical-align: top;

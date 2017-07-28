@@ -22,7 +22,13 @@ const paths = {
 	},
 	ChooseServices: {
 		pathString: 'choose-services/',
-		privacy: true
+		privacy: true,
+		childPaths: {
+			SubmitServices: {
+				pathString: 'submit-services/',
+				privacy: true
+			}
+		}
 	},
 	ChooseDateTime: {
 		pathString: 'choose-datetime/',
@@ -80,11 +86,10 @@ pathsMethods.getPath = (paths, currentPath, path) => {
 
 // A function to create a Link that opens and closes the app
 pathsMethods.getAppSwitch = (paths, currentPath) => {
-	currentPath = currentPath === '/' ? '' : currentPath;
 	if (currentPath.match(appRegExp)) {
 		return currentPath.replace(appRegExp, '');
 	} else {
-		return currentPath + paths.__app.pathString;
+		return currentPath.replace(/\/$/, '') + paths.__app.pathString;
 	}
 };
 

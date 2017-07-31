@@ -9,7 +9,8 @@
 		flex-wrap: wrap;
 		margin-bottom: 20px;
 		background-color: $acWhite;
-		padding: 20px 50px 20px 20px;
+		height: 70px;
+		padding: 0 50px 0 20px;
 		box-sizing: border-box;
 		border-left: 5px solid $acLabelGrey;
 		color: $acTextGrey;
@@ -31,6 +32,10 @@
 					stroke: $acDark;
 				}
 			}
+		}
+		&.services.chosen {
+			height: auto;
+			padding: 20px 50px 20px 20px;
 		}
 		span {
 			display: block;

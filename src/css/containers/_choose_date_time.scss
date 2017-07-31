@@ -1,0 +1,73 @@
+#choose_date_time {
+	.ac-content {
+		padding: 0;
+	}
+	.top-slider {
+		height: 75px;
+		background-color: $acCoal;
+		color: $acWhite;
+		.slick-list, .slick-track {
+			height: 100%;
+		}
+	}
+	.slick-arrow {
+		position: absolute;
+		&.slick-prev {
+			left: 5px;
+		}
+		&.slick-next {
+			right: 5px;
+		}
+	}
+	.slick-slide.month {
+		span {
+			display: block;
+			text-align: center;
+			font-family: $acLight;
+			transition: all 0.3s;
+		}
+		.month-name {
+			font-size: 0.8em;
+			margin-top: 29px;
+		}
+		.month-year {
+			color: transparent;
+			font-size: 0.7em;
+		}
+	}
+	.slick-center.month {
+		background-color: $acPaleCoal;
+		.month-name {
+			font-size: 1.2em;
+			margin-top: 17px;
+			margin-bottom: 6px;
+		}
+		.month-year {
+			color: transparentize($acWhite, 0.5);
+		}
+	}
+	.bottom-slider {
+		.slick-slide {
+			padding: 30px 20px;
+			box-sizing: border-box;
+		}
+		table {
+			width: 100%;
+			td {
+				vertical-align: middle;
+				text-align: center;
+				padding: 10px;
+			}
+			.day5, .day6 {
+				color: $acTextGrey;
+			}
+		}
+	}
+	.svg-arrow-left, .svg-arrow-right {
+		position: absolute;
+		z-index: 500;
+		cls-1 {
+			stroke: $acWhite;
+		}
+	}
+}

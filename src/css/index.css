@@ -12,6 +12,8 @@
 /* < COMPLEX VALUES > */
 /* =================================================================================================== */
 /* Shadows */
+@import url(~slick-carousel/slick/slick.css);
+@import url(~slick-carousel/slick/slick-theme.css);
 @font-face {
   font-family: 'SourceSansPro-Black';
   src: url("../fonts/SourceSansPro/SourceSansPro-Black.eot");
@@ -96,7 +98,8 @@
     flex-wrap: wrap;
     margin-bottom: 20px;
     background-color: #ffffff;
-    padding: 20px 50px 20px 20px;
+    height: 70px;
+    padding: 0 50px 0 20px;
     box-sizing: border-box;
     border-left: 5px solid #e6e6e6;
     color: #8d8d8d;
@@ -111,6 +114,9 @@
       color: #020202; }
       #online_appointment .main-link.chosen .svg-arrow-right .cls-1 {
         stroke: #020202; }
+    #online_appointment .main-link.services.chosen {
+      height: auto;
+      padding: 20px 50px 20px 20px; }
     #online_appointment .main-link span {
       display: block;
       margin: 3px 0;
@@ -202,6 +208,65 @@
     #ac_layout #confirm_services #services_summary .summary-time {
       float: right; }
 
+#choose_date_time .ac-content {
+  padding: 0; }
+
+#choose_date_time .top-slider {
+  height: 75px;
+  background-color: #333333;
+  color: #ffffff; }
+  #choose_date_time .top-slider .slick-list, #choose_date_time .top-slider .slick-track {
+    height: 100%; }
+
+#choose_date_time .slick-arrow {
+  position: absolute; }
+  #choose_date_time .slick-arrow.slick-prev {
+    left: 5px; }
+  #choose_date_time .slick-arrow.slick-next {
+    right: 5px; }
+
+#choose_date_time .slick-slide.month span {
+  display: block;
+  text-align: center;
+  font-family: "SourceSansPro-Light";
+  transition: all 0.3s; }
+
+#choose_date_time .slick-slide.month .month-name {
+  font-size: 0.8em;
+  margin-top: 29px; }
+
+#choose_date_time .slick-slide.month .month-year {
+  color: transparent;
+  font-size: 0.7em; }
+
+#choose_date_time .slick-center.month {
+  background-color: #3c3c3c; }
+  #choose_date_time .slick-center.month .month-name {
+    font-size: 1.2em;
+    margin-top: 17px;
+    margin-bottom: 6px; }
+  #choose_date_time .slick-center.month .month-year {
+    color: rgba(255, 255, 255, 0.5); }
+
+#choose_date_time .bottom-slider .slick-slide {
+  padding: 30px 20px;
+  box-sizing: border-box; }
+
+#choose_date_time .bottom-slider table {
+  width: 100%; }
+  #choose_date_time .bottom-slider table td {
+    vertical-align: middle;
+    text-align: center;
+    padding: 10px; }
+  #choose_date_time .bottom-slider table .day5, #choose_date_time .bottom-slider table .day6 {
+    color: #8d8d8d; }
+
+#choose_date_time .svg-arrow-left, #choose_date_time .svg-arrow-right {
+  position: absolute;
+  z-index: 500; }
+  #choose_date_time .svg-arrow-left cls-1, #choose_date_time .svg-arrow-right cls-1 {
+    stroke: #ffffff; }
+
 /* Components */
 .ac-header {
   background-color: #020202;
@@ -236,6 +301,7 @@
 .ac-content {
   padding: 20px;
   overflow: auto;
+  overflow-x: hidden;
   height: 100%;
   box-sizing: border-box; }
 
@@ -443,6 +509,7 @@
       display: inline-block;
       font-size: 0.8em; }
 
+/* Slick */
 /* =================================================================================================== */
 /* < COMMON STYLING > */
 /* =================================================================================================== */

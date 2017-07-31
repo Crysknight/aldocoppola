@@ -5,6 +5,7 @@ import appointment from './appointment';
 import employees from './employees';
 import mainServices from './mainServices';
 import services from './services';
+import calendar from './calendar';
 
 const allReducers = combineReducers({
 	paths: paths,
@@ -12,7 +13,8 @@ const allReducers = combineReducers({
 	appointment: appointment,
 	employees: employees,
 	mainServices: mainServices,
-	services: services
+	services: services,
+	calendar: calendar
 });
 
 export default allReducers;

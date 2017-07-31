@@ -12,6 +12,9 @@ exports[`ChooseCenter renders component properly 1`] = `
     </h3>
   </div>
   <div
+    className="ac-content"
+  />
+  <div
     className="ac-footer coal"
   >
     <a

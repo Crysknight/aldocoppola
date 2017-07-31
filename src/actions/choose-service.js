@@ -1,8 +1,8 @@
 import { CHOOSE_SERVICE } from './types';
 
-export default (id) => {
+export default (id, single) => {
 	return {
 		type: CHOOSE_SERVICE,
-		payload: id
+		payload: { id, single }
 	};
 };

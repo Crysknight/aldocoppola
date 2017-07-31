@@ -60,12 +60,18 @@ class ChooseMainServices extends Component {
 				<Footer className="coal">
 					{
 						this.props.services.filter(service => service.checked).length > 0 ? (
-							<Link
-								to={pathsMethods.getPath(paths, this.props.match.path, paths.ChooseServices.childPaths.SubmitServices)}
-								className="footer-link"
-							><SVGCheckboxChecked />
-								Просмотреть выбранные услуги ({this.props.services.filter(service => service.checked).length}) и подтвердить
-							</Link>
+								<Link
+									to={pathsMethods.getPath(paths, this.props.match.path, paths.ChooseServices.childPaths.ConfirmServices)}
+									className="footer-link"
+								><SVGCheckboxChecked />
+									{this.props.appointment.employeeChosen && this.props.appointment.employeeChosen.id !== -1 ? 
+										(
+											<span>Просмотреть выбранные услуги ({this.props.services.filter(service => service.checked).length}) и подтвердить</span>
+										) : (
+											<span>Просмотреть выбранную услугу и подтвердить</span>
+										)
+									}
+								</Link>
 						) : (
 							null
 						)
@@ -81,7 +87,8 @@ function mapStateToProps(state) {
 	return {
 		paths: state.paths,
 		mainServices: state.mainServices,
-		services: state.services
+		services: state.services,
+		appointment: state.appointment
 	};
 }
 

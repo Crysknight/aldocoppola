@@ -1,16 +1,23 @@
-import { CHOOSE_CENTER } from '../actions/types';
-import { CHOOSE_EMPLOYEE } from '../actions/types';
+import { CHOOSE_CENTER, CHOOSE_EMPLOYEE, CONFIRM_SERVICES } from '../actions/types';
 
 export default (state = {}, action) => {
 	switch (action.type) {
 		case CHOOSE_CENTER: {
-			let newState = Object.assign({}, state);
+			let newState = JSON.stringify(state);
+			newState = JSON.parse(newState);
 			newState.centerChosen = action.payload;
 			return newState;
 		}
 		case CHOOSE_EMPLOYEE: {
-			let newState = Object.assign({}, state);
+			let newState = JSON.stringify(state);
+			newState = JSON.parse(newState);
 			newState.employeeChosen = action.payload;
+			return newState;
+		}
+		case CONFIRM_SERVICES: {
+			let newState = JSON.stringify(state);
+			newState = JSON.parse(newState);
+			newState.servicesChosen = action.payload;
 			return newState;
 		}
 		default: {

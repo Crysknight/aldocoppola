@@ -4,13 +4,6 @@ exports[`Routes child path of the app matches the snapshot on the rootpath 1`] =
 <div
   id="ac_layout"
 >
-  <a
-    className="app-switch"
-    href="/"
-    onClick={[Function]}
-  >
-    +
-  </a>
   <div
     id="choose_main_services"
   >
@@ -68,6 +61,12 @@ exports[`Routes child path of the app matches the snapshot on the rootpath 1`] =
         </svg>
       </a>
     </div>
+    <div
+      className="ac-content"
+    />
+    <div
+      className="ac-footer coal"
+    />
   </div>
 </div>
 `;
@@ -75,28 +74,13 @@ exports[`Routes child path of the app matches the snapshot on the rootpath 1`] =
 exports[`Routes doesn't render the app everywhere 1`] = `
 <div
   id="ac_layout"
->
-  <a
-    className="app-switch"
-    href="/test/bauble.html/_appliance/"
-    onClick={[Function]}
-  >
-    +
-  </a>
-</div>
+/>
 `;
 
 exports[`Routes matches the snapshot on the nested path 1`] = `
 <div
   id="ac_layout"
 >
-  <a
-    className="app-switch"
-    href="/test/bauble.html"
-    onClick={[Function]}
-  >
-    +
-  </a>
   <div
     id="online_appointment"
   >
@@ -107,192 +91,196 @@ exports[`Routes matches the snapshot on the nested path 1`] = `
         Онлайн запись
       </h3>
     </div>
-    <a
-      className="main-link chosen"
-      href="/test/bauble.html/_appliance/choose-center/"
-      onClick={[Function]}
+    <div
+      className="ac-content"
     >
-      <span
-        className="title"
+      <a
+        className="main-link chosen"
+        href="/test/bauble.html/_appliance/choose-center/"
+        onClick={[Function]}
       >
-        Изменить центр красоты
-      </span>
-      <span
-        className="info-text"
-      >
-        TEST_NAME
-      </span>
-      <svg
-        className="svg-arrow-right"
-        viewBox="763 178.586 18.414 12.828"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <g
-          data-name="Стрелка вперед"
-          transform="translate(763 179)"
+        <span
+          className="title"
         >
-          <line
-            className="cls-1"
-            data-name="Line 7"
-            id="Line_7"
-            transform="translate(12 6)"
-            x1="5"
-            y2="5"
-          />
-          <line
-            className="cls-1"
-            data-name="Line 8"
-            id="Line_8"
-            transform="translate(12 1)"
-            x1="5"
-            y1="5"
-          />
-          <line
-            className="cls-1"
-            data-name="Line 9"
-            id="Line_9"
-            transform="translate(1 6)"
-            x1="16"
-          />
-        </g>
-      </svg>
-    </a>
-    <a
-      className="main-link"
-      href="/test/bauble.html/_appliance/choose-employee/"
-      onClick={[Function]}
-    >
-      <span
-        className="title"
-      >
-        Выбрать
-         сотрудника
-      </span>
-      <svg
-        className="svg-arrow-right"
-        viewBox="763 178.586 18.414 12.828"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <g
-          data-name="Стрелка вперед"
-          transform="translate(763 179)"
+          Изменить центр красоты
+        </span>
+        <span
+          className="info-text"
         >
-          <line
-            className="cls-1"
-            data-name="Line 7"
-            id="Line_7"
-            transform="translate(12 6)"
-            x1="5"
-            y2="5"
-          />
-          <line
-            className="cls-1"
-            data-name="Line 8"
-            id="Line_8"
-            transform="translate(12 1)"
-            x1="5"
-            y1="5"
-          />
-          <line
-            className="cls-1"
-            data-name="Line 9"
-            id="Line_9"
-            transform="translate(1 6)"
-            x1="16"
-          />
-        </g>
-      </svg>
-    </a>
-    <a
-      className="main-link"
-      href="/test/bauble.html/_appliance/choose-services/"
-      onClick={[Function]}
-    >
-      <span
-        className="title"
-      >
-        Выбрать услуги
-      </span>
-      <svg
-        className="svg-arrow-right"
-        viewBox="763 178.586 18.414 12.828"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <g
-          data-name="Стрелка вперед"
-          transform="translate(763 179)"
+          TEST_NAME
+        </span>
+        <svg
+          className="svg-arrow-right"
+          viewBox="763 178.586 18.414 12.828"
+          xmlns="http://www.w3.org/2000/svg"
         >
-          <line
-            className="cls-1"
-            data-name="Line 7"
-            id="Line_7"
-            transform="translate(12 6)"
-            x1="5"
-            y2="5"
-          />
-          <line
-            className="cls-1"
-            data-name="Line 8"
-            id="Line_8"
-            transform="translate(12 1)"
-            x1="5"
-            y1="5"
-          />
-          <line
-            className="cls-1"
-            data-name="Line 9"
-            id="Line_9"
-            transform="translate(1 6)"
-            x1="16"
-          />
-        </g>
-      </svg>
-    </a>
-    <a
-      className="main-link"
-      href="/test/bauble.html/_appliance/choose-datetime/"
-      onClick={[Function]}
-    >
-      <span
-        className="title"
+          <g
+            data-name="Стрелка вперед"
+            transform="translate(763 179)"
+          >
+            <line
+              className="cls-1"
+              data-name="Line 7"
+              id="Line_7"
+              transform="translate(12 6)"
+              x1="5"
+              y2="5"
+            />
+            <line
+              className="cls-1"
+              data-name="Line 8"
+              id="Line_8"
+              transform="translate(12 1)"
+              x1="5"
+              y1="5"
+            />
+            <line
+              className="cls-1"
+              data-name="Line 9"
+              id="Line_9"
+              transform="translate(1 6)"
+              x1="16"
+            />
+          </g>
+        </svg>
+      </a>
+      <a
+        className="main-link"
+        href="/test/bauble.html/_appliance/choose-employee/"
+        onClick={[Function]}
       >
-        Выбрать дату и время
-      </span>
-      <svg
-        className="svg-arrow-right"
-        viewBox="763 178.586 18.414 12.828"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <g
-          data-name="Стрелка вперед"
-          transform="translate(763 179)"
+        <span
+          className="title"
         >
-          <line
-            className="cls-1"
-            data-name="Line 7"
-            id="Line_7"
-            transform="translate(12 6)"
-            x1="5"
-            y2="5"
-          />
-          <line
-            className="cls-1"
-            data-name="Line 8"
-            id="Line_8"
-            transform="translate(12 1)"
-            x1="5"
-            y1="5"
-          />
-          <line
-            className="cls-1"
-            data-name="Line 9"
-            id="Line_9"
-            transform="translate(1 6)"
-            x1="16"
-          />
-        </g>
-      </svg>
-    </a>
+          Выбрать
+           сотрудника
+        </span>
+        <svg
+          className="svg-arrow-right"
+          viewBox="763 178.586 18.414 12.828"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <g
+            data-name="Стрелка вперед"
+            transform="translate(763 179)"
+          >
+            <line
+              className="cls-1"
+              data-name="Line 7"
+              id="Line_7"
+              transform="translate(12 6)"
+              x1="5"
+              y2="5"
+            />
+            <line
+              className="cls-1"
+              data-name="Line 8"
+              id="Line_8"
+              transform="translate(12 1)"
+              x1="5"
+              y1="5"
+            />
+            <line
+              className="cls-1"
+              data-name="Line 9"
+              id="Line_9"
+              transform="translate(1 6)"
+              x1="16"
+            />
+          </g>
+        </svg>
+      </a>
+      <a
+        className="main-link"
+        href="/test/bauble.html/_appliance/choose-services/"
+        onClick={[Function]}
+      >
+        <span
+          className="title"
+        >
+          Выбрать услуги
+        </span>
+        <svg
+          className="svg-arrow-right"
+          viewBox="763 178.586 18.414 12.828"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <g
+            data-name="Стрелка вперед"
+            transform="translate(763 179)"
+          >
+            <line
+              className="cls-1"
+              data-name="Line 7"
+              id="Line_7"
+              transform="translate(12 6)"
+              x1="5"
+              y2="5"
+            />
+            <line
+              className="cls-1"
+              data-name="Line 8"
+              id="Line_8"
+              transform="translate(12 1)"
+              x1="5"
+              y1="5"
+            />
+            <line
+              className="cls-1"
+              data-name="Line 9"
+              id="Line_9"
+              transform="translate(1 6)"
+              x1="16"
+            />
+          </g>
+        </svg>
+      </a>
+      <a
+        className="main-link"
+        href="/test/bauble.html/_appliance/choose-datetime/"
+        onClick={[Function]}
+      >
+        <span
+          className="title"
+        >
+          Выбрать дату и время
+        </span>
+        <svg
+          className="svg-arrow-right"
+          viewBox="763 178.586 18.414 12.828"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <g
+            data-name="Стрелка вперед"
+            transform="translate(763 179)"
+          >
+            <line
+              className="cls-1"
+              data-name="Line 7"
+              id="Line_7"
+              transform="translate(12 6)"
+              x1="5"
+              y2="5"
+            />
+            <line
+              className="cls-1"
+              data-name="Line 8"
+              id="Line_8"
+              transform="translate(12 1)"
+              x1="5"
+              y1="5"
+            />
+            <line
+              className="cls-1"
+              data-name="Line 9"
+              id="Line_9"
+              transform="translate(1 6)"
+              x1="16"
+            />
+          </g>
+        </svg>
+      </a>
+    </div>
     <div
       className="ac-footer coal"
     >
@@ -351,13 +339,6 @@ exports[`Routes matches the snapshot on the rootpath 1`] = `
 <div
   id="ac_layout"
 >
-  <a
-    className="app-switch"
-    href="/"
-    onClick={[Function]}
-  >
-    +
-  </a>
   <div
     id="online_appointment"
   >
@@ -368,192 +349,196 @@ exports[`Routes matches the snapshot on the rootpath 1`] = `
         Онлайн запись
       </h3>
     </div>
-    <a
-      className="main-link chosen"
-      href="/_appliance/choose-center/"
-      onClick={[Function]}
+    <div
+      className="ac-content"
     >
-      <span
-        className="title"
+      <a
+        className="main-link chosen"
+        href="/_appliance/choose-center/"
+        onClick={[Function]}
       >
-        Изменить центр красоты
-      </span>
-      <span
-        className="info-text"
-      >
-        TEST_NAME
-      </span>
-      <svg
-        className="svg-arrow-right"
-        viewBox="763 178.586 18.414 12.828"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <g
-          data-name="Стрелка вперед"
-          transform="translate(763 179)"
+        <span
+          className="title"
         >
-          <line
-            className="cls-1"
-            data-name="Line 7"
-            id="Line_7"
-            transform="translate(12 6)"
-            x1="5"
-            y2="5"
-          />
-          <line
-            className="cls-1"
-            data-name="Line 8"
-            id="Line_8"
-            transform="translate(12 1)"
-            x1="5"
-            y1="5"
-          />
-          <line
-            className="cls-1"
-            data-name="Line 9"
-            id="Line_9"
-            transform="translate(1 6)"
-            x1="16"
-          />
-        </g>
-      </svg>
-    </a>
-    <a
-      className="main-link"
-      href="/_appliance/choose-employee/"
-      onClick={[Function]}
-    >
-      <span
-        className="title"
-      >
-        Выбрать
-         сотрудника
-      </span>
-      <svg
-        className="svg-arrow-right"
-        viewBox="763 178.586 18.414 12.828"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <g
-          data-name="Стрелка вперед"
-          transform="translate(763 179)"
+          Изменить центр красоты
+        </span>
+        <span
+          className="info-text"
         >
-          <line
-            className="cls-1"
-            data-name="Line 7"
-            id="Line_7"
-            transform="translate(12 6)"
-            x1="5"
-            y2="5"
-          />
-          <line
-            className="cls-1"
-            data-name="Line 8"
-            id="Line_8"
-            transform="translate(12 1)"
-            x1="5"
-            y1="5"
-          />
-          <line
-            className="cls-1"
-            data-name="Line 9"
-            id="Line_9"
-            transform="translate(1 6)"
-            x1="16"
-          />
-        </g>
-      </svg>
-    </a>
-    <a
-      className="main-link"
-      href="/_appliance/choose-services/"
-      onClick={[Function]}
-    >
-      <span
-        className="title"
-      >
-        Выбрать услуги
-      </span>
-      <svg
-        className="svg-arrow-right"
-        viewBox="763 178.586 18.414 12.828"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <g
-          data-name="Стрелка вперед"
-          transform="translate(763 179)"
+          TEST_NAME
+        </span>
+        <svg
+          className="svg-arrow-right"
+          viewBox="763 178.586 18.414 12.828"
+          xmlns="http://www.w3.org/2000/svg"
         >
-          <line
-            className="cls-1"
-            data-name="Line 7"
-            id="Line_7"
-            transform="translate(12 6)"
-            x1="5"
-            y2="5"
-          />
-          <line
-            className="cls-1"
-            data-name="Line 8"
-            id="Line_8"
-            transform="translate(12 1)"
-            x1="5"
-            y1="5"
-          />
-          <line
-            className="cls-1"
-            data-name="Line 9"
-            id="Line_9"
-            transform="translate(1 6)"
-            x1="16"
-          />
-        </g>
-      </svg>
-    </a>
-    <a
-      className="main-link"
-      href="/_appliance/choose-datetime/"
-      onClick={[Function]}
-    >
-      <span
-        className="title"
+          <g
+            data-name="Стрелка вперед"
+            transform="translate(763 179)"
+          >
+            <line
+              className="cls-1"
+              data-name="Line 7"
+              id="Line_7"
+              transform="translate(12 6)"
+              x1="5"
+              y2="5"
+            />
+            <line
+              className="cls-1"
+              data-name="Line 8"
+              id="Line_8"
+              transform="translate(12 1)"
+              x1="5"
+              y1="5"
+            />
+            <line
+              className="cls-1"
+              data-name="Line 9"
+              id="Line_9"
+              transform="translate(1 6)"
+              x1="16"
+            />
+          </g>
+        </svg>
+      </a>
+      <a
+        className="main-link"
+        href="/_appliance/choose-employee/"
+        onClick={[Function]}
       >
-        Выбрать дату и время
-      </span>
-      <svg
-        className="svg-arrow-right"
-        viewBox="763 178.586 18.414 12.828"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <g
-          data-name="Стрелка вперед"
-          transform="translate(763 179)"
+        <span
+          className="title"
         >
-          <line
-            className="cls-1"
-            data-name="Line 7"
-            id="Line_7"
-            transform="translate(12 6)"
-            x1="5"
-            y2="5"
-          />
-          <line
-            className="cls-1"
-            data-name="Line 8"
-            id="Line_8"
-            transform="translate(12 1)"
-            x1="5"
-            y1="5"
-          />
-          <line
-            className="cls-1"
-            data-name="Line 9"
-            id="Line_9"
-            transform="translate(1 6)"
-            x1="16"
-          />
-        </g>
-      </svg>
-    </a>
+          Выбрать
+           сотрудника
+        </span>
+        <svg
+          className="svg-arrow-right"
+          viewBox="763 178.586 18.414 12.828"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <g
+            data-name="Стрелка вперед"
+            transform="translate(763 179)"
+          >
+            <line
+              className="cls-1"
+              data-name="Line 7"
+              id="Line_7"
+              transform="translate(12 6)"
+              x1="5"
+              y2="5"
+            />
+            <line
+              className="cls-1"
+              data-name="Line 8"
+              id="Line_8"
+              transform="translate(12 1)"
+              x1="5"
+              y1="5"
+            />
+            <line
+              className="cls-1"
+              data-name="Line 9"
+              id="Line_9"
+              transform="translate(1 6)"
+              x1="16"
+            />
+          </g>
+        </svg>
+      </a>
+      <a
+        className="main-link"
+        href="/_appliance/choose-services/"
+        onClick={[Function]}
+      >
+        <span
+          className="title"
+        >
+          Выбрать услуги
+        </span>
+        <svg
+          className="svg-arrow-right"
+          viewBox="763 178.586 18.414 12.828"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <g
+            data-name="Стрелка вперед"
+            transform="translate(763 179)"
+          >
+            <line
+              className="cls-1"
+              data-name="Line 7"
+              id="Line_7"
+              transform="translate(12 6)"
+              x1="5"
+              y2="5"
+            />
+            <line
+              className="cls-1"
+              data-name="Line 8"
+              id="Line_8"
+              transform="translate(12 1)"
+              x1="5"
+              y1="5"
+            />
+            <line
+              className="cls-1"
+              data-name="Line 9"
+              id="Line_9"
+              transform="translate(1 6)"
+              x1="16"
+            />
+          </g>
+        </svg>
+      </a>
+      <a
+        className="main-link"
+        href="/_appliance/choose-datetime/"
+        onClick={[Function]}
+      >
+        <span
+          className="title"
+        >
+          Выбрать дату и время
+        </span>
+        <svg
+          className="svg-arrow-right"
+          viewBox="763 178.586 18.414 12.828"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <g
+            data-name="Стрелка вперед"
+            transform="translate(763 179)"
+          >
+            <line
+              className="cls-1"
+              data-name="Line 7"
+              id="Line_7"
+              transform="translate(12 6)"
+              x1="5"
+              y2="5"
+            />
+            <line
+              className="cls-1"
+              data-name="Line 8"
+              id="Line_8"
+              transform="translate(12 1)"
+              x1="5"
+              y1="5"
+            />
+            <line
+              className="cls-1"
+              data-name="Line 9"
+              id="Line_9"
+              transform="translate(1 6)"
+              x1="16"
+            />
+          </g>
+        </svg>
+      </a>
+    </div>
     <div
       className="ac-footer coal"
     >
@@ -612,13 +597,6 @@ exports[`Routes renders ChooseCenter properly when no center is chosen 1`] = `
 <div
   id="ac_layout"
 >
-  <a
-    className="app-switch"
-    href="/test/bauble.html"
-    onClick={[Function]}
-  >
-    +
-  </a>
   <div
     id="choose_center"
   >
@@ -629,6 +607,9 @@ exports[`Routes renders ChooseCenter properly when no center is chosen 1`] = `
         Выбрать центр красоты
       </h3>
     </div>
+    <div
+      className="ac-content"
+    />
     <div
       className="ac-footer coal"
     >

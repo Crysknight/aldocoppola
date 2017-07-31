@@ -40,11 +40,13 @@ class ChooseServices extends Component {
 		return mainServicesMethods.findMainServiceById(mainServices, id);
 	}
 
-	chooseService(id) {
-		this.props.chooseService(id);
+	chooseService(id, single) {
+		this.props.chooseService(id, single);
 	}
 
 	renderServices(mainServiceId) {
+		let single = !(this.props.appointment.employeeChosen && this.props.appointment.employeeChosen.id !== -1);
+		console.log(single);
 		return this.props.services
 			.filter(service => service.mainServiceId === mainServiceId)
 			.map((service, index) => 
@@ -53,7 +55,7 @@ class ChooseServices extends Component {
 						<Service
 							key={index}
 							service={service}
-							chooseService={() => this.chooseService(service.id)}
+							chooseService={() => this.chooseService(service.id, single)}
 						/>
 					);
 				}
@@ -76,10 +78,16 @@ class ChooseServices extends Component {
 					{
 						this.props.services.filter(service => service.checked).length > 0 ? (
 								<Link
-									to={pathsMethods.getPath(paths, this.props.match.path, paths.ChooseServices.childPaths.SubmitServices)}
+									to={pathsMethods.getPath(paths, this.props.match.path, paths.ChooseServices.childPaths.ConfirmServices)}
 									className="footer-link"
 								><SVGCheckboxChecked />
-									Просмотреть выбранные услуги ({this.props.services.filter(service => service.checked).length}) и подтвердить
+									{this.props.appointment.employeeChosen && this.props.appointment.employeeChosen.id !== -1 ? 
+										(
+											<span>Просмотреть выбранные услуги ({this.props.services.filter(service => service.checked).length}) и подтвердить</span>
+										) : (
+											<span>Просмотреть выбранную услугу и подтвердить</span>
+										)
+									}
 								</Link>
 						) : (
 							null
@@ -96,7 +104,8 @@ function mapStateToProps(state) {
 	return {
 		paths: state.paths,
 		services: state.services,
-		mainServices: state.mainServices
+		mainServices: state.mainServices,
+		appointment: state.appointment
 	};
 }
 

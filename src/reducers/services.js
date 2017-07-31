@@ -1,4 +1,4 @@
-import { GOT_SERVICES, CHOOSE_SERVICE } from '../actions/types';
+import { GOT_SERVICES, CHOOSE_SERVICE, CHOOSE_EMPLOYEE } from '../actions/types';
 
 const servicesMethods = {};
 
@@ -31,9 +31,19 @@ export default (state = [], action) => {
 		case CHOOSE_SERVICE: {
 			let newState = [ ...state ];
 			for (let service of newState) {
-				if (service.id === action.payload) {
+				if (action.payload.single) {
+					service.checked = service.checked ? false : service.checked;
+				}
+				if (service.id === action.payload.id) {
 					service.checked = service.checked ? false : true;
 				}
+			}
+			return newState;
+		}
+		case CHOOSE_EMPLOYEE: {
+			let newState = [ ...state ];
+			for (let service of newState) {
+				service.checked = service.checked ? false : service.checked;
 			}
 			return newState;
 		}

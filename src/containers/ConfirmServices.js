@@ -11,6 +11,7 @@ import Footer from '../components/footer';
 import Service from '../components/service';
 
 import SVGArrowLeft from '../components/svg-arrow-left';
+import SVGCheckboxChecked from '../components/svg-checkbox-checked';
 
 import { pathsMethods } from '../reducers/paths';
 import { servicesMethods } from '../reducers/services';
@@ -25,8 +26,16 @@ class SubmitServices extends Component {
 		}
 	}
 
+	// Here it is actually unchoosing the service
 	chooseService(id) {
 		this.props.chooseService(id);
+	}
+
+	confirmServices() {
+		let paths = this.props.paths;
+		let services = this.props.services.filter(service => service.checked);
+		this.props.confirmServices(services);
+		this.props.history.push(pathsMethods.getPath(paths, this.props.location.pathname, paths.__app));
 	}
 
 	renderServices() {
@@ -43,10 +52,9 @@ class SubmitServices extends Component {
 
 	render() {
 		let summaryPrice = '104 044 RUB';
-		let summaryTime = this.props.services.reduce((sum, current) => sum + current.time, 0);
-		console.log(summaryTime);
+		let summaryTime = this.props.services.filter(service => service.checked).reduce((sum, current) => sum + current.time, 0);
 		return (
-			<div id="submit_services">
+			<div id="confirm_services">
 				<Header title="Выбранные услуги">
 					<div 
 						onClick={() => this.props.history.goBack()}
@@ -64,7 +72,14 @@ class SubmitServices extends Component {
 						<span>{servicesMethods.getTimeString(summaryTime)}</span>
 					</div>
 				</div>
-				<Footer className="coal"></Footer>
+				<Footer className="coal">
+					<div 
+						className="footer-link"
+						onClick={() => this.confirmServices()}
+					>
+						<SVGCheckboxChecked />Подтвердить
+					</div>
+				</Footer>
 			</div>
 		);
 	}
@@ -80,7 +95,8 @@ function mapStateToProps(state) {
 
 function matchDispatchToProps(dispatch) {
 	return bindActionCreators({
-		chooseService: actions.chooseService
+		chooseService: actions.chooseService,
+		confirmServices: actions.confirmServices
 	}, dispatch);
 }
 

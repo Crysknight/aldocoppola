@@ -14,7 +14,7 @@ import ChooseMainServices from './ChooseMainServices';
 import ChooseServices from './ChooseServices';
 import ChooseDateTime from './ChooseDateTime';
 import EmployeeInfo from './EmployeeInfo';
-import SubmitServices from './SubmitServices';
+import ConfirmServices from './ConfirmServices';
 
 import { pathsMethods } from '../reducers/paths';
 
@@ -40,7 +40,7 @@ class Routes extends Component {
     paths.ChooseEmployee.component = ChooseEmployee;
     paths.ChooseServices.component = ChooseMainServices;
     paths.ChooseDateTime.component = ChooseDateTime;
-    paths.ChooseServices.childPaths.SubmitServices.component = SubmitServices;
+    paths.ChooseServices.childPaths.ConfirmServices.component = ConfirmServices;
     if (paths.ChooseEmployee.childPaths) {
       for (let path in paths.ChooseEmployee.childPaths) {
         paths.ChooseEmployee.childPaths[path].component = EmployeeInfo;
@@ -48,10 +48,10 @@ class Routes extends Component {
     }
     if (paths.ChooseServices.childPaths) {
       for (let path in paths.ChooseServices.childPaths) {
-        if (path === 'SubmitServices') continue;
         paths.ChooseServices.childPaths[path].component = ChooseServices;
       }
     }
+    paths.ChooseServices.childPaths.ConfirmServices.component = ConfirmServices;
 
     let pathsArray = [];
     this.createArrayFromPathsObject(paths, pathsArray);

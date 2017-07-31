@@ -10,6 +10,7 @@ import chooseEmployee from './choose-employee';
 import loadMainServices from './load-main-services';
 import loadServices from './load-services';
 import chooseService from './choose-service';
+import confirmServices from './confirm-services';
 
 export default {
 	loadCenters: loadCenters,
@@ -18,5 +19,6 @@ export default {
 	chooseEmployee: chooseEmployee,
 	loadMainServices: loadMainServices,
 	loadServices: loadServices,
-	chooseService: chooseService
+	chooseService: chooseService,
+	confirmServices: confirmServices
 };

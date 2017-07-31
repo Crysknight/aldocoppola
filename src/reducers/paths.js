@@ -24,8 +24,8 @@ const paths = {
 		pathString: 'choose-services/',
 		privacy: true,
 		childPaths: {
-			SubmitServices: {
-				pathString: 'submit-services/',
+			ConfirmServices: {
+				pathString: 'confirm-services/',
 				privacy: true
 			}
 		}

@@ -94,10 +94,9 @@
     align-content: center;
     justify-content: flex-start;
     flex-wrap: wrap;
-    height: 70px;
     margin-bottom: 20px;
     background-color: #ffffff;
-    padding-left: 20px;
+    padding: 20px 50px 20px 20px;
     box-sizing: border-box;
     border-left: 5px solid #e6e6e6;
     color: #8d8d8d;
@@ -117,32 +116,16 @@
       margin: 3px 0;
       width: 100%; }
     #online_appointment .main-link span.info-text {
-      font-size: 0.7em; }
-  #online_appointment #svg_lock {
-    display: inline-block;
-    width: 12px;
-    height: 12px;
-    margin-right: 10px;
-    margin-top: 3px; }
-    #online_appointment #svg_lock g {
-      fill: #ffffff; }
-
-#choose_center #svg_lock {
-  display: inline-block;
-  width: 12px;
-  height: 12px;
-  margin-right: 10px;
-  margin-top: 3px; }
-  #choose_center #svg_lock g {
-    fill: #ffffff; }
+      font-size: 0.7em;
+      line-height: 1.2; }
 
 #choose_center .svg-arrow-right .cls-1 {
   stroke: #ffffff; }
 
 #choose_employee .svg-info {
   display: inline-block;
-  width: 12px;
-  height: 12px; }
+  width: 16px;
+  height: 16px; }
   #choose_employee .svg-info g {
     fill: #ffffff; }
 
@@ -196,27 +179,27 @@
   #choose_main_services .service-link:last-child {
     margin-bottom: 0; }
 
-#ac_layout #submit_services {
+#ac_layout #confirm_services {
   padding-bottom: 125px; }
-  #ac_layout #submit_services #services_summary {
+  #ac_layout #confirm_services #services_summary {
     position: absolute;
     bottom: 55px;
     background-color: #ffffff;
     height: 70px;
     width: 100%; }
-    #ac_layout #submit_services #services_summary .summary-price, #ac_layout #submit_services #services_summary .summary-time {
+    #ac_layout #confirm_services #services_summary .summary-price, #ac_layout #confirm_services #services_summary .summary-time {
       display: inline-block;
-      padding: 17px; }
-      #ac_layout #submit_services #services_summary .summary-price span, #ac_layout #submit_services #services_summary .summary-time span {
+      padding: 16px 17px 18px 17px; }
+      #ac_layout #confirm_services #services_summary .summary-price span, #ac_layout #confirm_services #services_summary .summary-time span {
         display: block;
         font-size: 1.1em; }
-      #ac_layout #submit_services #services_summary .summary-price span.label, #ac_layout #submit_services #services_summary .summary-time span.label {
+      #ac_layout #confirm_services #services_summary .summary-price span.label, #ac_layout #confirm_services #services_summary .summary-time span.label {
         color: #020202;
         margin: 4px 0;
         font-size: 0.7em; }
-    #ac_layout #submit_services #services_summary .summary-price {
+    #ac_layout #confirm_services #services_summary .summary-price {
       float: left; }
-    #ac_layout #submit_services #services_summary .summary-time {
+    #ac_layout #confirm_services #services_summary .summary-time {
       float: right; }
 
 /* Components */
@@ -268,17 +251,30 @@
     text-decoration: none;
     display: inline-flex;
     justify-content: center;
-    font-size: 0.8em;
+    font-size: 0.7em;
     height: 50px;
     width: 100%;
     align-items: center;
     cursor: pointer; }
   .ac-footer .svg-person {
     display: inline-block;
-    width: 12px;
-    height: 12px;
-    margin-right: 10px;
-    margin-top: 3px; }
+    width: 16px;
+    height: 16px;
+    margin-right: 10px; }
+  .ac-footer .svg-checkbox-checked {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    margin-right: 10px; }
+    .ac-footer .svg-checkbox-checked g {
+      fill: #ffffff; }
+  .ac-footer .svg-lock {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    margin-right: 10px; }
+    .ac-footer .svg-lock g {
+      fill: #ffffff; }
   .ac-footer.white {
     background-color: #ffffff; }
     .ac-footer.white .footer-link {

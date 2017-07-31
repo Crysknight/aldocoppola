@@ -48,9 +48,14 @@ class OnlineAppointment extends Component {
 					</Link>
 					<Link 
 						to={pathsMethods.getPath(paths, props.match.path, paths.ChooseServices)}
-						className="main-link"
+						className={`main-link${props.appointment.servicesChosen ? ' chosen' : ''}`}
 					>
-						<span className="title">Выбрать услуги</span>
+						<span className="title">{props.appointment.servicesChosen ? 'Изменить' : 'Выбрать'} услуги</span>
+						{props.appointment.servicesChosen && props.appointment.servicesChosen.map((service, index) => {
+							return (
+								<span key={index} className="info-text">{service.title}</span>
+							);
+						})}
 						<SVGArrowRight />
 					</Link>
 					<Link 

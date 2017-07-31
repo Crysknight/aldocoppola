@@ -10,7 +10,7 @@
 		text-decoration: none;
 		display: inline-flex;
 		justify-content: center;
-		font-size: 0.8em;
+		font-size: 0.7em;
 		height: 50px;
 		width: 100%;
 		align-items: center;
@@ -18,10 +18,27 @@
 	}
 	.svg-person {
 		display: inline-block;
-		width: 12px;
-		height: 12px;
+		width: 16px;
+		height: 16px;
 		margin-right: 10px;
-		margin-top: 3px;
+	}
+	.svg-checkbox-checked {
+		display: inline-block;
+		width: 16px;
+		height: 16px;
+		margin-right: 10px;
+		g {
+			fill: $acWhite;
+		}
+	}
+	.svg-lock {
+		display: inline-block;
+		width: 16px;
+		height: 16px;
+		margin-right: 10px;
+		g {
+			fill: $acWhite;
+		}
 	}
 	&.white {
 		background-color: $acWhite;

@@ -140,7 +140,11 @@
 
 #employee_info .employee-photo {
   text-align: center;
-  margin-bottom: 20px; }
+  margin: 0 auto 20px auto;
+  width: 100px; }
+  #employee_info .employee-photo img {
+    width: 100%;
+    border-radius: 50%; }
 
 #employee_info .image-filler {
   width: 100px;
@@ -209,7 +213,7 @@
       float: right; }
 
 #choose_date_time .ac-content {
-  padding: 0; }
+  padding-top: 0; }
 
 #choose_date_time .top-slider {
   height: 75px;
@@ -257,15 +261,44 @@
   #choose_date_time .bottom-slider table td {
     vertical-align: middle;
     text-align: center;
-    padding: 10px; }
+    transition: all 0.3s; }
+    #choose_date_time .bottom-slider table td span {
+      display: block;
+      margin: 0 auto;
+      padding: 10px;
+      width: 36px;
+      height: 100%;
+      box-sizing: border-box;
+      cursor: pointer; }
   #choose_date_time .bottom-slider table .day5, #choose_date_time .bottom-slider table .day6 {
-    color: #8d8d8d; }
+    color: #8e4343; }
+  #choose_date_time .bottom-slider table .available span {
+    background-color: #e6e6e6; }
+  #choose_date_time .bottom-slider table .chosen span {
+    background-color: #8e4343;
+    color: #ffffff;
+    border-radius: 50%; }
+  #choose_date_time .bottom-slider table .available.chosen span {
+    background-color: #c21526; }
+  #choose_date_time .bottom-slider table .past span {
+    cursor: default;
+    color: #e6e6e6; }
 
-#choose_date_time .svg-arrow-left, #choose_date_time .svg-arrow-right {
+#choose_date_time .slider-arrows .svg-arrow-left, #choose_date_time .slider-arrows .svg-arrow-right {
   position: absolute;
-  z-index: 500; }
-  #choose_date_time .svg-arrow-left cls-1, #choose_date_time .svg-arrow-right cls-1 {
+  top: 72px;
+  z-index: 500;
+  padding: 10px;
+  cursor: pointer;
+  user-select: none; }
+  #choose_date_time .slider-arrows .svg-arrow-left .cls-1, #choose_date_time .slider-arrows .svg-arrow-right .cls-1 {
     stroke: #ffffff; }
+
+#choose_date_time .slider-arrows .svg-arrow-left {
+  left: 0; }
+
+#choose_date_time .slider-arrows .svg-arrow-right {
+  right: 0; }
 
 /* Components */
 .ac-header {

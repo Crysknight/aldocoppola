@@ -32,7 +32,13 @@ const paths = {
 	},
 	ChooseDateTime: {
 		pathString: 'choose-datetime/',
-		privacy: true
+		privacy: true,
+		childPaths: {
+			CertainDate: {
+				pathString: 'date/',
+				privacy: true
+			}
+		}
 	}
 };
 

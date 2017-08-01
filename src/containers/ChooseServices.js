@@ -46,7 +46,6 @@ class ChooseServices extends Component {
 
 	renderServices(mainServiceId) {
 		let single = !(this.props.appointment.employeeChosen && this.props.appointment.employeeChosen.id !== -1);
-		console.log(single);
 		return this.props.services
 			.filter(service => service.mainServiceId === mainServiceId)
 			.map((service, index) => 

@@ -6,11 +6,14 @@ import chooseCenter from './choose-center';
 import loadEmployees from './load-employees';
 import chooseEmployee from './choose-employee';
 
-//Services
+// Services
 import loadMainServices from './load-main-services';
 import loadServices from './load-services';
 import chooseService from './choose-service';
 import confirmServices from './confirm-services';
+
+// Date
+import chooseDate from './choose-date';
 
 export default {
 	loadCenters: loadCenters,
@@ -20,5 +23,6 @@ export default {
 	loadMainServices: loadMainServices,
 	loadServices: loadServices,
 	chooseService: chooseService,
-	confirmServices: confirmServices
+	confirmServices: confirmServices,
+	chooseDate: chooseDate
 };

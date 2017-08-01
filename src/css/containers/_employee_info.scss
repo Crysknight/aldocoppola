@@ -1,7 +1,12 @@
 #employee_info {
 	.employee-photo {
 		text-align: center;
-		margin-bottom: 20px;
+		margin: 0 auto 20px auto;
+		width: 100px;
+		img {
+			width: 100%;
+			border-radius: 50%;
+		}
 	}
 	.image-filler {
 		width: 100px;

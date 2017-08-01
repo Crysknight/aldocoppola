@@ -1,6 +1,6 @@
 #choose_date_time {
 	.ac-content {
-		padding: 0;
+		padding-top: 0;
 	}
 	.top-slider {
 		height: 75px;
@@ -56,18 +56,54 @@
 			td {
 				vertical-align: middle;
 				text-align: center;
-				padding: 10px;
+				transition: all 0.3s;
+				span {
+					display: block;
+					margin: 0 auto;
+					padding: 10px;
+					width: 36px;
+					height: 100%;
+					box-sizing: border-box;
+					cursor: pointer;
+				}
 			}
 			.day5, .day6 {
-				color: $acTextGrey;
+				color: $acDimCherry;
+			}
+			.available span {
+				background-color: $acLabelGrey;
+			}
+			.chosen span {
+				background-color: $acDimCherry;
+				color: $acWhite;
+				border-radius: 50%;
+			}
+			.available.chosen span {
+				background-color: $acCherry;
+			}
+			.past span {
+				cursor: default;
+				color: $acLabelGrey;
 			}
 		}
 	}
-	.svg-arrow-left, .svg-arrow-right {
-		position: absolute;
-		z-index: 500;
-		cls-1 {
-			stroke: $acWhite;
+	.slider-arrows {
+		.svg-arrow-left, .svg-arrow-right {
+			position: absolute;
+			top: 72px;
+			z-index: 500;
+			padding: 10px;
+			cursor: pointer;
+			user-select: none;
+			.cls-1 {
+				stroke: $acWhite;
+			}
+		}
+		.svg-arrow-left {
+			left: 0;
+		}
+		.svg-arrow-right {
+			right: 0;
 		}
 	}
 }

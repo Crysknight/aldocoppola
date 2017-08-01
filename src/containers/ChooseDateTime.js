@@ -4,12 +4,14 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import Slider from 'react-slick';
 
-// import actions from '../actions';
+import actions from '../actions';
 
 import Header from '../components/header';
+import Content from '../components/content';
+import Footer from '../components/footer';
 
 import SVGArrowLeft from '../components/svg-arrow-left';
-import SVGArrowRight from '../components/svg-arrow-left';
+import SVGArrowRight from '../components/svg-arrow-right';
 
 import { pathsMethods } from '../reducers/paths';
 
@@ -26,8 +28,56 @@ class ChooseDateTime extends Component {
 		});
 	}
 
+	// Terrible workaround. Needed because react-slick doesn't have asNavFor implemented.
+	// So, what's here happening is that first time the user scrolls the slider (which is possible
+	// only through clicking on arrows. No additional methods possible) the ChooseDateTime object
+	// receives two properties - the current slider scroll point, and the maximum point, calculated
+	// from the total amount of slides. Then, on every click theese methods scroll both sliders and
+	// manipulate the current slider scroll point property. They also don't work at the beginning and
+	// the end of the sliders accordingly, and they freeze themselves for 300 ms, so that the slider
+	// could catch up with the properties (without this feature the slider will get lost if the user
+	// will click on arrow with high frequency. In order for this feature to work, the speed option
+	// of the sliders should be lesser than 300 or whatever you are freezing them for)
+	slidersNext() {
+		if (!this.sliderFreeze) {
+			if (!this.sliderScrollMax) {
+				this.sliderScrollMax = this.topSlider.props.children.length - 1;
+				this.sliderScroll = 0;
+			}
+			if (this.sliderScroll < this.sliderScrollMax) {
+				this.topSlider.slickNext();
+				this.bottomSlider.slickNext();
+				this.sliderScroll++;
+				this.sliderFreeze = true;
+				setTimeout(() => this.sliderFreeze = false, 300);
+			}
+		}
+	}
+
+	slidersPrev() {
+		if (!this.sliderFreeze) {
+			if (!this.sliderScrollMax) {
+				this.sliderScrollMax = this.topSlider.props.children.length - 1;
+				this.sliderScroll = 0;
+			}
+			if (this.sliderScroll > 0) {
+				this.topSlider.slickPrev();
+				this.bottomSlider.slickPrev();
+				this.sliderScroll--;
+				this.sliderFreeze = true;
+				setTimeout(() => this.sliderFreeze = false, 300);
+			}
+		}
+	}
+
+	chooseDate(month, date) {
+		this.props.chooseDate(month, date);
+	}
+
 	getBottomSlider() {
-		return this.props.calendar.map((month, index) => {
+		let calendar = JSON.stringify(this.props.calendar);
+		calendar = JSON.parse(calendar);
+		return calendar.map((month, index) => {
 			let firstDay = month.days[0].dayOfWeek;
 			let slicedMonth = [];
 			let week = 0;
@@ -55,18 +105,31 @@ class ChooseDateTime extends Component {
 								<td>СР</td>
 								<td>ЧТ</td>
 								<td>ПТ</td>
-								<td>СБ</td>
-								<td>ВС</td>
+								<td className="day5">СБ</td>
+								<td className="day6">ВС</td>
 							</tr>
 							{slicedMonth.map((week, index) => {
 								return (
 									<tr key={index}>
 										{week.map((day, index) => {
-											return (
-												<td className={`day${day.dayOfWeek}`} key={index}>
-													{day.date ? day.date : ''}
-												</td>
-											);
+											let dayDisplay;
+											if (!day.date) {
+												dayDisplay = <td key={index}>{null}</td>;
+											} else if (day.past) {
+												dayDisplay = <td key={index} className="day past"><span>{day.date}</span></td>;
+											} else {
+												dayDisplay = (
+													<td
+														className={`day${day.dayOfWeek}${day.workHours ? ' available' : ''}${day.chosen ? ' chosen' : ''}`}
+														key={index}
+													>
+														<span
+															onClick={() => this.chooseDate(month.number, day.date)}
+														>{day.date}</span>
+													</td>
+												);
+											}
+											return dayDisplay;
 										})}
 									</tr>
 								);
@@ -80,13 +143,13 @@ class ChooseDateTime extends Component {
 
 	render() {
 		let paths = this.props.paths;
+		let calendar = this.props.calendar;
 		const settingsTopSlider = {
 			className: 'top-slider',
-			speed: 300,
+			speed: 250,
 			infinite: false,
-			focusOnSelect: true,
 			centerMode: true,
-			centerPadding: '0px',
+			centerPadding: '20px',
 			slidesToShow: 3,
 			slidesToScroll: 1,
 			arrows: false,
@@ -95,13 +158,26 @@ class ChooseDateTime extends Component {
 		};
 		const settingsBottomSlider = {
 			className: 'bottom-slider',
-			speed: 300,
+			speed: 250,
 			infinite: false,
 			slidesToShow: 1,
+			adaptiveHeight: true,
 			arrows: false,
 			swipeToSlide: false,
 			draggable: false
 		};
+		let appointmentAvailable = null;
+		let chosenDay = {};
+		if (calendar.filter(month => month.chosen).length > 0) {
+			appointmentAvailable = false;
+			let chosenMonth = calendar.filter(month => month.chosen)[0];
+			let chosenDate = chosenMonth.days.filter(date => date.chosen)[0];
+			chosenDay.month = chosenMonth.number;
+			chosenDay.date = chosenDate.date;
+			if (chosenDate.workHours) {
+				appointmentAvailable = true;
+			}
+		}
 		return (
 			<div id="choose_date_time">
 				<Header title="Выбрать дату">
@@ -110,14 +186,45 @@ class ChooseDateTime extends Component {
 						className="back-link"
 					><SVGArrowLeft /></div>
 				</Header>
-				<SVGArrowLeft />
-				<SVGArrowRight />
+				<div className="slider-arrows">
+					<div onClick={() => this.slidersPrev()}><SVGArrowLeft /></div>
+					<div onClick={() => this.slidersNext()}><SVGArrowRight /></div>
+				</div>
 				<Slider ref={slider => this.topSlider = slider} { ...settingsTopSlider }>
 					{this.getTopSlider()}
 				</Slider>
 				<Slider ref={slider => this.bottomSlider = slider} { ...settingsBottomSlider }>
 					{this.getBottomSlider()}
 				</Slider>
+				<Content>
+					{appointmentAvailable === null ? (null) : (<div>
+						{appointmentAvailable ? 
+							(
+								<span className="appointment-available">Запись доступна</span>
+							) : (
+								<span className="appointment-unavailable">Запись недоступна</span>
+							)
+						}
+					</div>)}
+				</Content>
+				{appointmentAvailable ?
+					(
+						<Footer className="coal">
+							<Link
+								to={
+									pathsMethods.getPath(paths, this.props.match.path, paths.ChooseDateTime.childPaths.CertainDate) + 
+									'?month=' +
+									chosenDay.month + 
+									'&date=' +
+									chosenDay.date
+								}
+								className="footer-link"
+							>Посмотреть</Link>
+						</Footer>
+					) : (
+						null
+					)
+				}
 			</div>
 		);
 	}
@@ -133,7 +240,7 @@ function mapStateToProps(state) {
 
 function matchDispatchToProps(dispatch) {
 	return bindActionCreators({
-		
+		chooseDate: actions.chooseDate
 	}, dispatch);
 }
 

@@ -4,5 +4,5 @@ export default (services) => {
 	return {
 		type: CONFIRM_SERVICES,
 		payload: services
-	}
+	};
 };

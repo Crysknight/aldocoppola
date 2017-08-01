@@ -6,23 +6,31 @@ export default () => dispatch => {
 			[
 				{
 					id: 0,
-					title: 'Парикмахерские услуги'
+					title: 'HAIR'
 				},
 				{
 					id: 1,
-					title: 'Визаж'
+					title: 'MAKE UP'
 				},
 				{
 					id: 2,
-					title: 'Маникюрные услуги'
+					title: 'NAILS'
 				},
 				{
 					id: 3,
-					title: 'Процедуры для лица'
+					title: 'FACE'
 				},
 				{
 					id: 4,
-					title: 'Процедуры для тела'
+					title: 'BODY'
+				},
+				{
+					id: 5,
+					title: 'BARBER'
+				},
+				{
+					id: 6,
+					title: 'WEDDING'
 				}
 			]
 		});

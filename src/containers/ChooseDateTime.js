@@ -11,7 +11,8 @@ import Content from '../components/content';
 import Footer from '../components/footer';
 
 import SVGArrowLeft from '../components/svg-arrow-left';
-import SVGArrowRight from '../components/svg-arrow-right';
+import SVGArrowLeftSlider from '../components/svg-arrow-left-slider';
+import SVGArrowRightSlider from '../components/svg-arrow-right-slider';
 
 import { pathsMethods } from '../reducers/paths';
 
@@ -187,8 +188,8 @@ class ChooseDateTime extends Component {
 					><SVGArrowLeft /></div>
 				</Header>
 				<div className="slider-arrows">
-					<div onClick={() => this.slidersPrev()}><SVGArrowLeft /></div>
-					<div onClick={() => this.slidersNext()}><SVGArrowRight /></div>
+					<div onClick={() => this.slidersPrev()}><SVGArrowLeftSlider /></div>
+					<div onClick={() => this.slidersNext()}><SVGArrowRightSlider /></div>
 				</div>
 				<Slider ref={slider => this.topSlider = slider} { ...settingsTopSlider }>
 					{this.getTopSlider()}
@@ -211,13 +212,7 @@ class ChooseDateTime extends Component {
 					(
 						<Footer className="coal">
 							<Link
-								to={
-									pathsMethods.getPath(paths, this.props.match.path, paths.ChooseDateTime.childPaths.CertainDate) + 
-									'?month=' +
-									chosenDay.month + 
-									'&date=' +
-									chosenDay.date
-								}
+								to={pathsMethods.getPath(paths, this.props.match.path, paths.ChooseDateTime.childPaths.CertainDate)}
 								className="footer-link"
 							>Посмотреть</Link>
 						</Footer>

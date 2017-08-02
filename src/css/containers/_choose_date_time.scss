@@ -10,15 +10,6 @@
 			height: 100%;
 		}
 	}
-	.slick-arrow {
-		position: absolute;
-		&.slick-prev {
-			left: 5px;
-		}
-		&.slick-next {
-			right: 5px;
-		}
-	}
 	.slick-slide.month {
 		span {
 			display: block;
@@ -88,7 +79,7 @@
 		}
 	}
 	.slider-arrows {
-		.svg-arrow-left, .svg-arrow-right {
+		.svg-arrow-left-slider, .svg-arrow-right-slider {
 			position: absolute;
 			top: 72px;
 			z-index: 500;
@@ -99,10 +90,10 @@
 				stroke: $acWhite;
 			}
 		}
-		.svg-arrow-left {
+		.svg-arrow-left-slider {
 			left: 0;
 		}
-		.svg-arrow-right {
+		.svg-arrow-right-slider {
 			right: 0;
 		}
 	}

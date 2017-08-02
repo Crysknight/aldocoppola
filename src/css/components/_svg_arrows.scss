@@ -12,3 +12,17 @@
     stroke-width: 2px;
   }
 }
+.svg-arrow-right-slider, .svg-arrow-left-slider {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  right: 20px;
+  .cls-1 {
+    fill:none;
+    stroke:#222;
+    stroke-linecap:round;
+    stroke-linejoin:round;
+    stroke-width:2px;
+  }
+}

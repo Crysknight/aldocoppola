@@ -1,0 +1,64 @@
+#certain_date {
+	.top-slider {
+		height: 90px;
+		background-color: $acCoal;
+		color: $acWhite;
+		.slick-list, .slick-track {
+			height: 100%;
+		}
+	}
+	.slick-slide {
+		span {
+			display: block;
+			text-align: center;
+			font-family: $acLight;
+			transition: all 0.3s;
+			color: transparent;
+		}
+		.date-month-name, .date-name {
+			font-size: 0.7em;
+		}
+		.date-month-name {
+			margin-top: 16px;
+		}
+		.date-date {
+			font-size: 1.2em;
+			margin: 4px 0;
+		}
+	}
+	.slick-slide.slick-active.date {
+		span {
+			color: transparentize($acWhite, 0.5);
+		}
+	}
+	.slick-slide.slick-center.date {
+		background-color: $acPaleCoal;
+		span {
+			color: $acWhite;
+		}
+	}
+	.slider-arrows {
+		.svg-arrow-left-slider, .svg-arrow-right-slider {
+			position: absolute;
+			top: 79px;
+			z-index: 500;
+			padding: 10px;
+			cursor: pointer;
+			user-select: none;
+			.cls-1 {
+				stroke: $acWhite;
+			}
+		}
+		.svg-arrow-left-slider {
+			left: 0;
+		}
+		.svg-arrow-right-slider {
+			right: 0;
+		}
+	}
+	.bottom-slider {
+		.date-segment {
+			margin: 20px;
+		}
+	}
+}

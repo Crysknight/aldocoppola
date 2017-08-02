@@ -17,11 +17,14 @@ const getCalendar = (numberOfMonths) => {
 		let numberOfDays = moment([year, number]).daysInMonth();
 		for (let j = 1; j <= numberOfDays; j++) {
 			let dayOfWeek = +moment([year, number, j]).format('d') - 1;
+			let dayOfWeekName = moment([year, number, j]).format('dddd');
+			dayOfWeekName = dayOfWeekName.charAt(0).toUpperCase() + dayOfWeekName.slice(1);
 			let day = moment([year, number, j]);
 			let today = moment([moment().year(), moment().month(), moment().date()]);
 			days.push({
 				date: j,
 				dayOfWeek: dayOfWeek === -1 ? 6 : dayOfWeek,
+				dayOfWeekName,
 				past: moment(today).isAfter(day)
 			});
 		}
@@ -53,8 +56,20 @@ export default (state = getCalendar(8), action) => {
 					if (calendarMonth.number === month) {
 						for (let calendarDate of calendarMonth.days) {
 							if (calendarDate.date === date) {
-								calendarDate.workHours = calendarDate.workHours ? calendarDate.workHours : [];
-								calendarDate.workHours.push(workHour.format('HH:mm'));
+								calendarDate.workHours = calendarDate.workHours ? calendarDate.workHours : {};
+								let morningBorder = workHour.clone().hour(12).minute(0);
+								let dayBorder = workHour.clone().hour(18).minute(0);
+								if (workHour.isSameOrBefore(morningBorder)) {
+									calendarDate.workHours["Утро"] = calendarDate.workHours["Утро"] ? calendarDate.workHours["Утро"] : [];
+									calendarDate.workHours["Утро"].push(workHour.format('HH:mm'));
+								} else if (workHour.isSameOrBefore(dayBorder)) {
+									calendarDate.workHours["День"] = calendarDate.workHours["День"] ? calendarDate.workHours["День"] : [];
+									calendarDate.workHours["День"].push(workHour.format('HH:mm'));
+								} else {
+									calendarDate.workHours["Вечер"] = calendarDate.workHours["Вечер"] ? calendarDate.workHours["Вечер"] : [];
+									calendarDate.workHours["Вечер"].push(workHour.format('HH:mm'));
+								}
+								// calendarDate.workHours.push(workHour.format('HH:mm'));
 							}
 						}
 					}

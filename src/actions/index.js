@@ -14,6 +14,8 @@ import confirmServices from './confirm-services';
 
 // Date
 import chooseDate from './choose-date';
+import chooseTime from './choose-time';
+import confirmDateTime from './confirm-date-time';
 
 export default {
 	loadCenters: loadCenters,
@@ -24,5 +26,7 @@ export default {
 	loadServices: loadServices,
 	chooseService: chooseService,
 	confirmServices: confirmServices,
-	chooseDate: chooseDate
+	chooseDate: chooseDate,
+	chooseTime: chooseTime,
+	confirmDateTime: confirmDateTime
 };

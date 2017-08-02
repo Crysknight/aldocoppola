@@ -60,5 +60,33 @@
 		.date-segment {
 			margin: 20px;
 		}
+		h3 {
+			font-size: 1em;
+			margin: 30px 0 5px;
+			font-family: $acRegular;
+		}
+		.time {
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+			margin: 15px 10px 0 10px;
+			background-color: $acWhite;
+			box-shadow: $acSmoothShadow;
+			height: 35px;
+			width: 97px;
+			font-size: 0.9em;
+			cursor: pointer;
+			transition: all 0.2s;
+			&:nth-child(3n+1) {
+				margin-left: 0;
+			}
+			&:nth-child(3n) {
+				margin-right: 0;
+			}
+			&.chosen {
+				background-color: $acCherry;
+				color: $acWhite;
+			}
+		}
 	}
 }

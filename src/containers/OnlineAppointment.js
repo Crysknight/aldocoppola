@@ -60,9 +60,12 @@ class OnlineAppointment extends Component {
 					</Link>
 					<Link 
 						to={pathsMethods.getPath(paths, props.match.path, paths.ChooseDateTime)}
-						className="main-link"
+						className={`main-link ${props.appointment.dateTimeChosen ? ' chosen' : ''}`}
 					>
-						<span className="title">Выбрать дату и время</span>
+						<span className="title">{props.appointment.dateTimeChosen ? 'Изменить' : 'Выбрать'} дату и время</span>
+						{props.appointment.dateTimeChosen && (
+							<span className="info-text">{`${props.appointment.dateTimeChosen.dateString}`}</span>
+						)}
 						<SVGArrowRight />
 					</Link>
 				</Content>

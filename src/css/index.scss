@@ -1,64 +1,68 @@
-/* Base */
-@import "./base/variables";
-@import "./base/fonts";
-
-/* Containers */
-@import "./containers/routes";
-@import "./containers/online_appointment";
-@import "./containers/choose_center";
-@import "./containers/choose_employee";
-@import "./containers/employee_info";
-@import "./containers/choose_main_services";
-@import "./containers/confirm_services";
-@import "./containers/choose_date_time";
-@import "./containers/certain_date";
-
-/* Components */
-@import "./components/header";
-@import "./components/content";
-@import "./components/footer";
-@import "./components/center";
-@import "./components/employee";
-@import "./components/image_filler";
-@import "./components/svg_arrows";
-@import "./components/service";
-
-/* Slick */
-@import "~slick-carousel/slick/slick.css";
-@import "~slick-carousel/slick/slick-theme.css";
+  /* Base */
+  @import "./base/variables";
+  @import "./base/fonts";
 
 /* =================================================================================================== */
 /* < COMMON STYLING > */
 /* =================================================================================================== */
 
-body {
-  margin: 0;
-  padding: 0;
+
+#_ac_root {
+
+  /* Containers */
+  @import "./containers/routes";
+  @import "./containers/online_appointment";
+  @import "./containers/choose_center";
+  @import "./containers/choose_employee";
+  @import "./containers/employee_info";
+  @import "./containers/choose_main_services";
+  @import "./containers/confirm_services";
+  @import "./containers/choose_date_time";
+  @import "./containers/certain_date";
+
+  /* Components */
+  @import "./components/header";
+  @import "./components/content";
+  @import "./components/footer";
+  @import "./components/center";
+  @import "./components/employee";
+  @import "./components/image_filler";
+  @import "./components/svg_arrows";
+  @import "./components/service";
+
+  /* Slick */
+  @import "~slick-carousel/slick/slick.css";
+  @import "~slick-carousel/slick/slick-theme.css";
+
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  text-align: left;
+  right: 0;
+  z-index: 10005;
+  height: 100%;
   font-family: $acRegular;
   font-size: 16px;
   line-height: 1;
   color: $acDark;
-}
 
-h2 {
-	font-size: 1.4em;
-	font-family: $acExtraLight;
-}
+  h2 {
+    font-size: 1.4em;
+    font-family: $acExtraLight;
+  }
 
-h3 {
-	font-size: 1.2em;
-	font-family: $acExtraLight;
-}
+  h3 {
+    font-size: 1.2em;
+    font-family: $acExtraLight;
+  }
 
-#_ac_root {
-  display: inline-block;
-  position: absolute;
-  top: 0;
-  right: 0;
-  z-index: 666;
-  height: 100%;
-}
+  p {
+    font-size: 1em;
+    line-height: 1;
+  }
 
-.label {
-	color: $acTextGrey;
+  .label {
+    color: $acTextGrey;
+  }
+
 }

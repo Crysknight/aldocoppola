@@ -1,11 +1,3 @@
-export const GOT_CENTERS = 'GOT_CENTERS';
-
-export const GOT_EMPLOYEES = 'GOT_EMPLOYEES';
-
-export const GOT_MAIN_SERVICES = 'GOT_MAIN_SERVICES';
-
-export const GOT_SERVICES = 'GOT_SERVICES';
-
 export const CHOOSE_CENTER = 'CHOOSE_CENTER';
 
 export const CHOOSE_DATE = 'CHOOSE_DATE';
@@ -14,4 +6,16 @@ export const CHOOSE_EMPLOYEE = 'CHOOSE_EMPLOYEE';
 
 export const CHOOSE_SERVICE = 'CHOOSE_SERVICE';
 
+export const CHOOSE_TIME = 'CHOOSE_TIME';
+
+export const CONFIRM_DATE_TIME = 'CONFIRM_DATE_TIME';
+
 export const CONFIRM_SERVICES = 'CONFIRM_SERVICES';
+
+export const GOT_CENTERS = 'GOT_CENTERS';
+
+export const GOT_EMPLOYEES = 'GOT_EMPLOYEES';
+
+export const GOT_MAIN_SERVICES = 'GOT_MAIN_SERVICES';
+
+export const GOT_SERVICES = 'GOT_SERVICES';

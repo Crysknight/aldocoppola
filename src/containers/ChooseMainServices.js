@@ -48,8 +48,9 @@ class ChooseMainServices extends Component {
 
 	render() {
 		let paths = this.props.paths;
+		let servicesChecked = this.props.services.filter(service => service.checked).length;
 		return (
-			<div id="choose_main_services">
+			<div id="choose_main_services" className={servicesChecked ? 'has-services' : ''}>
 				<Header title="Выбрать услуги">
 					<Link 
 						to={pathsMethods.getPath(paths, this.props.match.path, paths.__app)}
@@ -57,26 +58,26 @@ class ChooseMainServices extends Component {
 					><SVGArrowLeft /></Link>
 				</Header>
 				<Content>{this.renderServices()}</Content>
-				<Footer className="coal">
 					{
 						this.props.services.filter(service => service.checked).length > 0 ? (
+							<Footer className="coal">
 								<Link
 									to={pathsMethods.getPath(paths, this.props.match.path, paths.ChooseServices.childPaths.ConfirmServices)}
 									className="footer-link"
 								><SVGCheckboxChecked />
 									{this.props.appointment.employeeChosen && this.props.appointment.employeeChosen.id !== -1 ? 
 										(
-											<span>Просмотреть выбранные услуги ({this.props.services.filter(service => service.checked).length}) и подтвердить</span>
+											<span>Просмотреть выбранные услуги ({servicesChecked}) и подтвердить</span>
 										) : (
 											<span>Просмотреть выбранную услугу и подтвердить</span>
 										)
 									}
 								</Link>
+							</Footer>
 						) : (
 							null
 						)
 					}
-				</Footer>
 			</div>
 		);
 	}

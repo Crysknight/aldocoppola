@@ -35,7 +35,11 @@ class SubmitServices extends Component {
 		let paths = this.props.paths;
 		let services = this.props.services.filter(service => service.checked);
 		this.props.confirmServices(services);
-		this.props.history.push(pathsMethods.getPath(paths, this.props.location.pathname, paths.__app));
+		if (this.props.appointments.length === 0) {
+			this.props.history.push(pathsMethods.getPath(paths, this.props.location.pathname, paths.__app));
+		} else {
+			this.props.history.push(pathsMethods.getPath(paths, this.props.location.pathname, paths.AddAppointment));
+		}
 	}
 
 	renderServices() {
@@ -62,16 +66,18 @@ class SubmitServices extends Component {
 					><SVGArrowLeft /></div>
 				</Header>
 				<Content>{this.renderServices()}</Content>
-				<div id="services_summary">
-					<div className="summary-price">
-						<span className="label">Суммарная стоимость</span>
-						<span>{summaryPrice}</span>
+				{this.props.services.filter(service => service.checked).length > 1 && (
+					<div id="services_summary">
+						<div className="summary-price">
+							<span className="label">Суммарная стоимость</span>
+							<span>{summaryPrice}</span>
+						</div>
+						<div className="summary-time">
+							<span className="label">Суммарное время</span>
+							<span>{servicesMethods.getTimeString(summaryTime)}</span>
+						</div>
 					</div>
-					<div className="summary-time">
-						<span className="label">Суммарное время</span>
-						<span>{servicesMethods.getTimeString(summaryTime)}</span>
-					</div>
-				</div>
+				)}
 				<Footer className="coal">
 					<div 
 						className="footer-link"
@@ -89,7 +95,8 @@ class SubmitServices extends Component {
 function mapStateToProps(state) {
 	return {
 		paths: state.paths,
-		services: state.services
+		services: state.services,
+		appointments: state.appointments
 	};
 }
 

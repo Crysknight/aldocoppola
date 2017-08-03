@@ -55,26 +55,22 @@
 					width: 36px;
 					height: 100%;
 					box-sizing: border-box;
-					cursor: pointer;
+					color: $acTextGrey;
+					cursor: default;
 				}
 			}
-			.day5, .day6 {
-				color: $acDimCherry;
+			td.available {
+				cursor: pointer;
 			}
 			.available span {
-				background-color: $acLabelGrey;
+				color: $acDark;
+				font-family: $acRegular;
+				cursor: pointer;
 			}
-			.chosen span {
-				background-color: $acDimCherry;
+			.available:hover span {
+				background-color: $acCherry;
 				color: $acWhite;
 				border-radius: 50%;
-			}
-			.available.chosen span {
-				background-color: $acCherry;
-			}
-			.past span {
-				cursor: default;
-				color: $acLabelGrey;
 			}
 		}
 	}
@@ -96,5 +92,17 @@
 		.svg-arrow-right-slider {
 			right: 0;
 		}
+	}
+	.appointment-available, .appointment-unavailable {
+		display: block;
+		margin: 10px 0;
+		font-size: 0.9em;
+	}
+	.appointment-available {
+		font-family: $acRegular;
+	}
+	.appointment-unavailable {
+		font-family: $acLight;
+		color: $acTextGrey;
 	}
 }

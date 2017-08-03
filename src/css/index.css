@@ -89,6 +89,10 @@
       padding-top: 56px;
       padding-bottom: 55px;
       box-sizing: border-box; }
+      #_ac_root #ac_layout > div#choose_main_services, #_ac_root #ac_layout > div#choose_services {
+        padding-bottom: 0; }
+      #_ac_root #ac_layout > div#choose_main_services.has-services, #_ac_root #ac_layout > div#choose_services.has-services {
+        padding-bottom: 55px; }
     #_ac_root #ac_layout .app-switch {
       display: inline-block;
       width: 30px;
@@ -103,9 +107,9 @@
       text-align: center;
       text-decoration: none;
       transform: rotate(45deg); }
-  #_ac_root #online_appointment {
+  #_ac_root #online_appointment, #_ac_root #appointments_list {
     background-color: #f5f5f5; }
-    #_ac_root #online_appointment .main-link {
+    #_ac_root #online_appointment .main-link, #_ac_root #appointments_list .main-link {
       display: flex;
       position: relative;
       align-items: center;
@@ -120,26 +124,37 @@
       border-left: 5px solid #e6e6e6;
       color: #8d8d8d;
       text-decoration: none;
-      box-shadow: 0 0 8px #e6e6e6; }
-      #_ac_root #online_appointment .main-link:last-child {
+      box-shadow: 0 0 8px #e6e6e6;
+      cursor: pointer; }
+      #_ac_root #online_appointment .main-link:last-child, #_ac_root #appointments_list .main-link:last-child {
         margin-bottom: 0; }
-      #_ac_root #online_appointment .main-link .svg-arrow-right .cls-1 {
+      #_ac_root #online_appointment .main-link .svg-arrow-right .cls-1, #_ac_root #appointments_list .main-link .svg-arrow-right .cls-1 {
         stroke: #e6e6e6; }
-      #_ac_root #online_appointment .main-link.chosen {
+      #_ac_root #online_appointment .main-link.chosen, #_ac_root #appointments_list .main-link.chosen {
         border-left: 5px solid #c21526;
         color: #020202; }
-        #_ac_root #online_appointment .main-link.chosen .svg-arrow-right .cls-1 {
+        #_ac_root #online_appointment .main-link.chosen .svg-arrow-right .cls-1, #_ac_root #appointments_list .main-link.chosen .svg-arrow-right .cls-1 {
           stroke: #020202; }
-      #_ac_root #online_appointment .main-link.services.chosen {
+      #_ac_root #online_appointment .main-link.services.chosen, #_ac_root #appointments_list .main-link.services.chosen {
         height: auto;
         padding: 20px 50px 20px 20px; }
-      #_ac_root #online_appointment .main-link span {
+      #_ac_root #online_appointment .main-link.disabled, #_ac_root #appointments_list .main-link.disabled {
+        cursor: default;
+        border-left: 5px solid rgba(230, 230, 230, 0.4);
+        box-shadow: none;
+        color: #e6e6e6; }
+      #_ac_root #online_appointment .main-link span, #_ac_root #appointments_list .main-link span {
         display: block;
         margin: 3px 0;
         width: 100%; }
-      #_ac_root #online_appointment .main-link span.info-text {
+      #_ac_root #online_appointment .main-link span.info-text, #_ac_root #appointments_list .main-link span.info-text {
         font-size: 0.7em;
         line-height: 1.2; }
+    #_ac_root #online_appointment .bg-white, #_ac_root #appointments_list .bg-white {
+      margin: -20px;
+      margin-bottom: 20px;
+      padding: 20px;
+      background-color: #ffffff; }
   #_ac_root #choose_center .svg-arrow-right .cls-1 {
     stroke: #ffffff; }
   #_ac_root #choose_employee .svg-info {
@@ -258,20 +273,18 @@
         width: 36px;
         height: 100%;
         box-sizing: border-box;
-        cursor: pointer; }
-    #_ac_root #choose_date_time .bottom-slider table .day5, #_ac_root #choose_date_time .bottom-slider table .day6 {
-      color: #8e4343; }
+        color: #8d8d8d;
+        cursor: default; }
+    #_ac_root #choose_date_time .bottom-slider table td.available {
+      cursor: pointer; }
     #_ac_root #choose_date_time .bottom-slider table .available span {
-      background-color: #e6e6e6; }
-    #_ac_root #choose_date_time .bottom-slider table .chosen span {
-      background-color: #8e4343;
+      color: #020202;
+      font-family: "SourceSansPro-Regular";
+      cursor: pointer; }
+    #_ac_root #choose_date_time .bottom-slider table .available:hover span {
+      background-color: #c21526;
       color: #ffffff;
       border-radius: 50%; }
-    #_ac_root #choose_date_time .bottom-slider table .available.chosen span {
-      background-color: #c21526; }
-    #_ac_root #choose_date_time .bottom-slider table .past span {
-      cursor: default;
-      color: #e6e6e6; }
   #_ac_root #choose_date_time .slider-arrows .svg-arrow-left-slider, #_ac_root #choose_date_time .slider-arrows .svg-arrow-right-slider {
     position: absolute;
     top: 72px;
@@ -285,6 +298,15 @@
     left: 0; }
   #_ac_root #choose_date_time .slider-arrows .svg-arrow-right-slider {
     right: 0; }
+  #_ac_root #choose_date_time .appointment-available, #_ac_root #choose_date_time .appointment-unavailable {
+    display: block;
+    margin: 10px 0;
+    font-size: 0.9em; }
+  #_ac_root #choose_date_time .appointment-available {
+    font-family: "SourceSansPro-Regular"; }
+  #_ac_root #choose_date_time .appointment-unavailable {
+    font-family: "SourceSansPro-Light";
+    color: #8d8d8d; }
   #_ac_root #certain_date .top-slider {
     height: 90px;
     background-color: #333333;
@@ -345,7 +367,7 @@
       margin-left: 0; }
     #_ac_root #certain_date .bottom-slider .time:nth-child(3n) {
       margin-right: 0; }
-    #_ac_root #certain_date .bottom-slider .time.chosen {
+    #_ac_root #certain_date .bottom-slider .time:hover {
       background-color: #c21526;
       color: #ffffff; }
   #_ac_root .ac-header {
@@ -557,9 +579,18 @@
     margin-bottom: 20px;
     display: flex;
     align-items: flex-start;
-    height: 110px;
+    padding: 20px 20px 20px 0;
     background-color: #ffffff;
     box-shadow: 0 0 8px #e6e6e6; }
+    #_ac_root .ac-service.single {
+      display: flex;
+      align-items: center;
+      padding-left: 20px;
+      padding-right: 50px;
+      cursor: pointer;
+      position: relative; }
+      #_ac_root .ac-service.single .svg-arrow-right .cls-1 {
+        stroke: #020202; }
     #_ac_root .ac-service:last-child {
       margin-bottom: 0; }
     #_ac_root .ac-service .service-checkbox {
@@ -581,10 +612,11 @@
       flex-wrap: wrap;
       padding-right: 20px; }
       #_ac_root .ac-service .service-info p {
-        margin: 4px 0;
-        width: 100%; }
+        width: 100%;
+        margin: 0; }
       #_ac_root .ac-service .service-info .service-title {
-        font-family: "SourceSansPro-Semibold"; }
+        font-family: "SourceSansPro-Semibold";
+        margin-bottom: 4px; }
       #_ac_root .ac-service .service-info .service-price {
         display: inline-block;
         font-family: "SourceSansPro-Semibold";

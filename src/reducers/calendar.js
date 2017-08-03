@@ -1,7 +1,7 @@
 import moment from 'moment';
 import 'moment/locale/ru';
 
-import { CHOOSE_EMPLOYEE, CHOOSE_DATE, CHOOSE_TIME } from '../actions/types';
+import { CHOOSE_EMPLOYEE, CHOOSE_DATE } from '../actions/types';
 
 const getCalendar = (numberOfMonths) => {
 
@@ -48,6 +48,11 @@ export default (state = getCalendar(8), action) => {
 		case CHOOSE_EMPLOYEE: {
 			let newState = JSON.stringify(state);
 			newState = JSON.parse(newState);
+			for (let calendarMonth of newState) {
+				for (let calendarDate of calendarMonth.days) {
+					delete calendarDate.workHours;
+				}
+			}
 			for (let workHour of action.payload.workHoursFree) {
 				workHour = moment(workHour, 'YYYY-MM-DD hh:mm');
 				let month = workHour.month();
@@ -93,29 +98,6 @@ export default (state = getCalendar(8), action) => {
 					for (let calendarDate of calendarMonth.days) {
 						if (calendarDate.date === date) {
 							calendarDate.chosen = true;
-						}
-					}
-				}
-			}
-			return newState;
-		}
-		case CHOOSE_TIME: {
-			let newState = JSON.stringify(state);
-			newState = JSON.parse(newState);
-			let month = action.payload.date.monthNumber;
-			let date = action.payload.date.date;
-			for (let calendarMonth of newState) {
-				calendarMonth.chosen = calendarMonth.chosen ? false : calendarMonth.chosen;
-				for (let calendarDate of calendarMonth.days) {
-					calendarDate.chosen = calendarDate.chosen ? false : calendarDate.chosen;
-					calendarDate.timeChosen = calendarDate.timeChosen ? null : calendarDate.timeChosen;
-				}
-				if (calendarMonth.number === month) {
-					calendarMonth.chosen = true;
-					for (let calendarDate of calendarMonth.days) {
-						if (calendarDate.date === date) {
-							calendarDate.chosen = true;
-							calendarDate.timeChosen = action.payload.time;
 						}
 					}
 				}

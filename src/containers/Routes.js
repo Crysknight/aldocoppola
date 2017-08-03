@@ -16,6 +16,8 @@ import ChooseDateTime from './ChooseDateTime';
 import EmployeeInfo from './EmployeeInfo';
 import ConfirmServices from './ConfirmServices';
 import CertainDate from './CertainDate';
+import AppointmentsList from './AppointmentsList';
+import ConfirmAppointments from './ConfirmAppointments';
 
 import { pathsMethods } from '../reducers/paths';
 
@@ -35,8 +37,13 @@ class Routes extends Component {
   render() {
 
     // Here we assign components to the paths and create an array of paths in order to map through it
-    let paths = this.props.paths;
-    paths.__app.component = OnlineAppointment;
+    let paths = JSON.stringify(this.props.paths);
+    paths = JSON.parse(paths);
+    if (this.props.appointments.length === 0) {
+      paths.__app.component = OnlineAppointment;
+    } else {
+      paths.__app.component = AppointmentsList;
+    }
     paths.ChooseCenter.component = ChooseCenter;
     paths.ChooseEmployee.component = ChooseEmployee;
     paths.ChooseServices.component = ChooseMainServices;
@@ -54,6 +61,8 @@ class Routes extends Component {
     }
     paths.ChooseServices.childPaths.ConfirmServices.component = ConfirmServices;
     paths.ChooseDateTime.childPaths.CertainDate.component = CertainDate;
+    paths.AddAppointment.component = OnlineAppointment;
+    paths.ConfirmAppointments.component = ConfirmAppointments;
 
     let pathsArray = [];
     this.createArrayFromPathsObject(paths, pathsArray);
@@ -116,7 +125,8 @@ class Routes extends Component {
 function mapStateToProps(state) {
   return {
     paths: state.paths,
-    appointment: state.appointment
+    appointment: state.appointment,
+    appointments: state.appointments
   };
 }
 

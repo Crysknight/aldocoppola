@@ -2,9 +2,22 @@
 	margin-bottom: 20px;
 	display: flex;
 	align-items: flex-start;
-	height: 110px;
+	padding: 20px 20px 20px 0;
 	background-color: $acWhite;
 	box-shadow: $acSmoothShadow;
+	&.single {
+		display: flex;
+		align-items: center;
+		padding-left: 20px;
+		padding-right: 50px;
+		cursor: pointer;
+		position: relative;
+		.svg-arrow-right {
+			.cls-1 {
+				stroke: $acDark;
+			}
+		}
+	}
 	&:last-child {
 		margin-bottom: 0;
 	}
@@ -29,11 +42,12 @@
 		flex-wrap: wrap;
 		padding-right: 20px;
 		p {
-			margin: 4px 0;
 			width: 100%;
+			margin: 0;
 		}
 		.service-title {
 			font-family: $acSemibold;
+			margin-bottom: 4px;
 		}
 		.service-price {
 			display: inline-block;

@@ -1,4 +1,4 @@
-import { GOT_EMPLOYEES } from '../actions/types';
+import { GOT_EMPLOYEES, CHOOSE_CENTER } from '../actions/types';
 
 const employeesMethods = {};
 
@@ -16,6 +16,9 @@ export default (state = [], action) => {
 	switch (action.type) {
 		case GOT_EMPLOYEES: {
 			return action.payload;
+		}
+		case CHOOSE_CENTER: {
+			return [];
 		}
 		default: {
 			return state;

@@ -83,7 +83,7 @@
 			&:nth-child(3n) {
 				margin-right: 0;
 			}
-			&.chosen {
+			&:hover {
 				background-color: $acCherry;
 				color: $acWhite;
 			}

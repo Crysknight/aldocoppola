@@ -30,7 +30,6 @@ class EmployeeInfo extends Component {
 			pathsMethods.getPath(paths, this.props.match.path, paths.ChooseEmployee) + 
 			'employee([\\w|\\d]*)\\/'
 		);
-		console.log(regExp);
 		let id = +this.props.match.path.replace(regExp, '$1');
 		return employeesMethods.findEmployeeById(employees, id);
 	}
@@ -38,7 +37,11 @@ class EmployeeInfo extends Component {
 	chooseEmployee(id, name) {
 		let paths = this.props.paths;
 		this.props.chooseEmployee(id, name);
-		this.props.history.push(pathsMethods.getPath(paths, this.props.location.pathname, paths.__app));
+		if (this.props.appointments.length === 0) {
+			this.props.history.push(pathsMethods.getPath(paths, this.props.location.pathname, paths.__app));
+		} else {
+			this.props.history.push(pathsMethods.getPath(paths, this.props.location.pathname, paths.AddAppointment));
+		}
 	}
 
 	render() {
@@ -90,7 +93,8 @@ class EmployeeInfo extends Component {
 function mapStateToProps(state) {
 	return {
 		paths: state.paths,
-		employees: state.employees
+		employees: state.employees,
+		appointments: state.appointments
 	};
 }
 

@@ -39,6 +39,14 @@ const paths = {
 				privacy: true
 			}
 		}
+	},
+	ConfirmAppointments: {
+		pathString: 'confirm-appointments/',
+		privacy: true
+	},
+	AddAppointment: {
+		pathString: 'add-appointment/',
+		privacy: true
 	}
 };
 

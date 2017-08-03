@@ -41,7 +41,11 @@ class ChooseServices extends Component {
 	}
 
 	chooseService(id, single) {
+		let paths = this.props.paths;
 		this.props.chooseService(id, single);
+		if (single) {
+			this.props.history.push(pathsMethods.getPath(paths, this.props.match.path, paths.ChooseServices.childPaths.ConfirmServices));
+		}
 	}
 
 	renderServices(mainServiceId) {
@@ -53,6 +57,7 @@ class ChooseServices extends Component {
 					return (
 						<Service
 							key={index}
+							single={single}
 							service={service}
 							chooseService={() => this.chooseService(service.id, single)}
 						/>
@@ -64,8 +69,9 @@ class ChooseServices extends Component {
 	render() {
 		let paths = this.props.paths;
 		let mainService = this.getMainService();
+		let servicesChecked = this.props.services.filter(service => service.checked).length;
 		return (
-			<div id="choose_services">
+			<div id="choose_services" className={servicesChecked ? 'has-services' : ''}>
 				<Header title={mainService.title}>
 					<div 
 						onClick={() => this.props.history.goBack()}
@@ -73,26 +79,26 @@ class ChooseServices extends Component {
 					><SVGArrowLeft /></div>
 				</Header>
 				<Content>{this.renderServices(mainService.id)}</Content>
-				<Footer className="coal">
 					{
 						this.props.services.filter(service => service.checked).length > 0 ? (
+							<Footer className="coal">
 								<Link
 									to={pathsMethods.getPath(paths, this.props.match.path, paths.ChooseServices.childPaths.ConfirmServices)}
 									className="footer-link"
 								><SVGCheckboxChecked />
 									{this.props.appointment.employeeChosen && this.props.appointment.employeeChosen.id !== -1 ? 
 										(
-											<span>Просмотреть выбранные услуги ({this.props.services.filter(service => service.checked).length}) и подтвердить</span>
+											<span>Просмотреть выбранные услуги ({servicesChecked}) и подтвердить</span>
 										) : (
 											<span>Просмотреть выбранную услугу и подтвердить</span>
 										)
 									}
 								</Link>
+							</Footer>
 						) : (
 							null
 						)
 					}
-				</Footer>
 			</div>
 		);
 	}

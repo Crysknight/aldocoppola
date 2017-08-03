@@ -1,14 +1,12 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
 import Slider from 'react-slick';
 
 import actions from '../actions';
 
 import Header from '../components/header';
 import Content from '../components/content';
-import Footer from '../components/footer';
 
 import SVGArrowLeft from '../components/svg-arrow-left';
 import SVGArrowLeftSlider from '../components/svg-arrow-left-slider';
@@ -72,7 +70,9 @@ class ChooseDateTime extends Component {
 	}
 
 	chooseDate(month, date) {
+		let paths = this.props.paths;
 		this.props.chooseDate(month, date);
+		this.props.history.push(pathsMethods.getPath(paths, this.props.match.path, paths.ChooseDateTime.childPaths.CertainDate));
 	}
 
 	getBottomSlider() {
@@ -118,15 +118,16 @@ class ChooseDateTime extends Component {
 												dayDisplay = <td key={index}>{null}</td>;
 											} else if (day.past) {
 												dayDisplay = <td key={index} className="day past"><span>{day.date}</span></td>;
+											} else if (!day.workHours) {
+												dayDisplay = <td key={index} className={`day ${day.dayOfWeek}`}><span>{day.date}</span></td>;
 											} else {
 												dayDisplay = (
 													<td
-														className={`day${day.dayOfWeek}${day.workHours ? ' available' : ''}${day.chosen ? ' chosen' : ''}`}
+														onClick={() => this.chooseDate(month.number, day.date)}
+														className={`day available ${day.dayOfWeek}`}
 														key={index}
 													>
-														<span
-															onClick={() => this.chooseDate(month.number, day.date)}
-														>{day.date}</span>
+														<span>{day.date}</span>
 													</td>
 												);
 											}
@@ -143,8 +144,6 @@ class ChooseDateTime extends Component {
 	}
 
 	render() {
-		let paths = this.props.paths;
-		let calendar = this.props.calendar;
 		const settingsTopSlider = {
 			className: 'top-slider',
 			speed: 250,
@@ -167,18 +166,6 @@ class ChooseDateTime extends Component {
 			swipeToSlide: false,
 			draggable: false
 		};
-		let appointmentAvailable = null;
-		let chosenDay = {};
-		if (calendar.filter(month => month.chosen).length > 0) {
-			appointmentAvailable = false;
-			let chosenMonth = calendar.filter(month => month.chosen)[0];
-			let chosenDate = chosenMonth.days.filter(date => date.chosen)[0];
-			chosenDay.month = chosenMonth.number;
-			chosenDay.date = chosenDate.date;
-			if (chosenDate.workHours) {
-				appointmentAvailable = true;
-			}
-		}
 		return (
 			<div id="choose_date_time">
 				<Header title="Выбрать дату">
@@ -198,28 +185,11 @@ class ChooseDateTime extends Component {
 					{this.getBottomSlider()}
 				</Slider>
 				<Content>
-					{appointmentAvailable === null ? (null) : (<div>
-						{appointmentAvailable ? 
-							(
-								<span className="appointment-available">Запись доступна</span>
-							) : (
-								<span className="appointment-unavailable">Запись недоступна</span>
-							)
-						}
-					</div>)}
+					<div>
+						<span className="appointment-available">Запись доступна</span>
+						<span className="appointment-unavailable">Запись недоступна</span>
+					</div>
 				</Content>
-				{appointmentAvailable ?
-					(
-						<Footer className="coal">
-							<Link
-								to={pathsMethods.getPath(paths, this.props.match.path, paths.ChooseDateTime.childPaths.CertainDate)}
-								className="footer-link"
-							>Посмотреть</Link>
-						</Footer>
-					) : (
-						null
-					)
-				}
 			</div>
 		);
 	}

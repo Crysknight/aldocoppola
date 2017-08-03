@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-// import { Link } from 'react-router-dom';
 import Slider from 'react-slick';
 import moment from 'moment';
 import 'moment/locale/ru';
@@ -9,13 +8,10 @@ import 'moment/locale/ru';
 import actions from '../actions';
 
 import Header from '../components/header';
-// import Content from '../components/content';
-import Footer from '../components/footer';
 
 import SVGArrowLeft from '../components/svg-arrow-left';
 import SVGArrowLeftSlider from '../components/svg-arrow-left-slider';
 import SVGArrowRightSlider from '../components/svg-arrow-right-slider';
-import SVGCheckboxChecked from '../components/svg-checkbox-checked';
 
 import { pathsMethods } from '../reducers/paths';
 
@@ -65,78 +61,46 @@ class CertainDate extends Component {
 		}
 	}
 
-	chooseTime(date, time) {
-		this.props.chooseTime(date, time);
-	}
-
-	confirmDateTime(date) {
+	confirmDateTime(date, time) {
 		let paths = this.props.paths;
-		date = moment([date.year, date.monthNumber, date.date, +date.timeChosen.slice(0, 2), +date.timeChosen.slice(3)]);
+		date = moment([date.year, date.monthNumber, date.date, +time.slice(0, 2), +time.slice(3)]);
 		this.props.confirmDateTime({
 			date: date.format('YYYY-MM-DD HH:mm'),
 			dateString: date.format('D MMMM YYYY в HH:mm')
 		});
-		this.props.history.push(pathsMethods.getPath(paths, this.props.location.pathname, paths.__app));
+		if (this.props.appointments.length === 0) {
+			this.props.history.push(pathsMethods.getPath(paths, this.props.location.pathname, paths.__app));
+		} else {
+			this.props.history.push(pathsMethods.getPath(paths, this.props.location.pathname, paths.AddAppointment));
+		}
 	}
 
 	getBottomSlider(availableDates) {
 		return availableDates.map((date, index) => {
+			let segments = [];
+			let i = 0;
+			for (let segment in date.workHours) {
+				segments.push((
+					<div key={i} className="date-segment">
+						<h3>{segment}</h3>
+						<div className="times">
+							{date.workHours[segment].map((time, index) => {
+								return (
+									<div 
+										key={index} 
+										className="time"
+										onClick={() => this.confirmDateTime(date, time)}
+									>{time}</div>
+								);
+							})}
+						</div>
+					</div>
+				));
+				i++;
+			}
 			return (
 				<div key={index} className="date">
-					{date.workHours["Утро"] ? (
-						<div className="date-segment">
-							<h3>Утро</h3>
-							<div className="times">
-								{date.workHours["Утро"].map((time, index) => {
-									return (
-										<div 
-											key={index} 
-											className={`time${time === date.timeChosen ? ' chosen' : ''}`}
-											onClick={() => this.chooseTime(date, time)}
-										>{time}</div>
-									);
-								})}
-							</div>
-						</div>
-					) : (
-						null
-					)}
-					{date.workHours["День"] ? (
-						<div className="date-segment">
-							<h3>День</h3>
-							<div className="times">
-								{date.workHours["День"].map((time, index) => {
-									return (
-										<div 
-											key={index}
-											className={`time${time === date.timeChosen ? ' chosen' : ''}`}
-											onClick={() => this.chooseTime(date, time)}
-										>{time}</div>
-									);
-								})}
-							</div>
-						</div>
-					) : (
-						null
-					)}
-					{date.workHours["Вечер"] ? (
-						<div className="date-segment">
-							<h3>Вечер</h3>
-							<div className="times">
-								{date.workHours["Вечер"].map((time, index) => {
-									return (
-										<div 
-											key={index} 
-											className={`time${time === date.timeChosen ? ' chosen' : ''}`}
-											onClick={() => this.chooseTime(date, time)}
-										>{time}</div>
-									);
-								})}
-							</div>
-						</div>
-					) : (
-						null
-					)}
+					{segments}
 				</div>
 			);
 		});
@@ -144,22 +108,22 @@ class CertainDate extends Component {
 
 	render() {
 		let availableDates = [];
-		let chosenDate;
 		let chosenDateNumber;
 		for (let month of this.props.calendar) {
 			for (let date of month.days) {
-				if (date.workHours) availableDates.push({
-					month: month.name,
-					monthNumber: month.number,
-					year: month.year,
-					...date
-				});
+				if (date.workHours) {
+					availableDates.push({
+						month: month.name,
+						monthNumber: month.number,
+						year: month.year,
+						...date
+					});
+				}
 			}
 		}
 		for (let i = 0; i < availableDates.length; i++) {
 			if (availableDates[i].chosen) {
 				chosenDateNumber = i;
-				chosenDate = availableDates[i];
 			}
 		}
 		const settingsTopSlider = {
@@ -203,20 +167,6 @@ class CertainDate extends Component {
 				<Slider ref={slider => this.bottomSlider = slider} { ...settingsBottomSlider }>
 					{this.getBottomSlider(availableDates)}
 				</Slider>
-				{chosenDate.timeChosen ? 
-					(
-						<Footer className="coal">
-							<div 
-								className="footer-link"
-								onClick={() => this.confirmDateTime(chosenDate)}
-							>
-								<SVGCheckboxChecked />Выбрать
-							</div>
-						</Footer>						
-					) : (
-						null
-					)
-				}
 			</div>
 		);
 	}
@@ -226,7 +176,8 @@ class CertainDate extends Component {
 function mapStateToProps(state) {
 	return {
 		paths: state.paths,
-		calendar: state.calendar
+		calendar: state.calendar,
+		appointments: state.appointments
 	};
 }
 

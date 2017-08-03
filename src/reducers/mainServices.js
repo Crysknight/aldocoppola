@@ -1,4 +1,4 @@
-import { GOT_MAIN_SERVICES } from '../actions/types';
+import { GOT_MAIN_SERVICES, CHOOSE_CENTER } from '../actions/types';
 
 const mainServicesMethods = {};
 
@@ -16,6 +16,9 @@ export default (state = [], action) => {
 	switch (action.type) {
 		case GOT_MAIN_SERVICES: {
 			return action.payload;
+		}
+		case CHOOSE_CENTER: {
+			return [];
 		}
 		default: {
 			return state;

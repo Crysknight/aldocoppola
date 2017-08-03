@@ -13,6 +13,12 @@
 		padding-top: 56px;
 		padding-bottom: 55px;
 		box-sizing: border-box;
+		&#choose_main_services, &#choose_services {
+			padding-bottom: 0;
+		}
+		&#choose_main_services.has-services, &#choose_services.has-services {
+			padding-bottom: 55px;
+		}
 	}
 	.app-switch {
 		display: inline-block;

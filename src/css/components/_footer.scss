@@ -16,6 +16,14 @@
 		align-items: center;
 		cursor: pointer;
 	}
+	.footer-link.double {
+		height: 55px;
+		border-left: 1px solid $acLabelGrey;
+		&.cherry {
+			background-color: $acCherry;
+			border-left: none;
+		}
+	}
 	.svg-person {
 		display: inline-block;
 		width: 16px;
@@ -38,6 +46,17 @@
 		margin-right: 10px;
 		g {
 			fill: $acWhite;
+		}
+	}
+	.svg-checkbox-plus, .svg-checkbox-delete {
+		display: inline-block;
+		width: 16px;
+		margin-right: 10px;
+		.cls-1 {
+			fill: none;
+			stroke: $acWhite;
+			stroke-linecap: round;
+			stroke-miterlimit: 10;
 		}
 	}
 	&.white {

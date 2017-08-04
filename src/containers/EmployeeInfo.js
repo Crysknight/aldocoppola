@@ -18,11 +18,6 @@ import { employeesMethods } from '../reducers/employees';
 
 class EmployeeInfo extends Component {
 
-	// constructor(props) {
-		// super(props);
-
-	// }
-
 	getEmployee() {
 		let paths = this.props.paths;
 		let employees = this.props.employees;
@@ -36,7 +31,7 @@ class EmployeeInfo extends Component {
 
 	chooseEmployee(id, name) {
 		let paths = this.props.paths;
-		this.props.chooseEmployee(id, name);
+		this.props.chooseEmployee(id, name, this.props.appointment.centerChosen.id);
 		if (this.props.appointments.length === 0) {
 			this.props.history.push(pathsMethods.getPath(paths, this.props.location.pathname, paths.__app));
 		} else {
@@ -50,10 +45,10 @@ class EmployeeInfo extends Component {
 		return (
 			<div id="employee_info">
 				<Header title="Информация о сотруднике">
-					<Link 
-						to={pathsMethods.getPath(paths, this.props.match.path, paths.ChooseEmployee)}
+					<div 
+						onClick={() => this.props.history.goBack()}
 						className="back-link"
-					><SVGArrowLeft /></Link>
+					><SVGArrowLeft /></div>
 				</Header>
 				<Content>
 					<div className="employee-photo">
@@ -94,6 +89,7 @@ function mapStateToProps(state) {
 	return {
 		paths: state.paths,
 		employees: state.employees,
+		appointment: state.appointment,
 		appointments: state.appointments
 	};
 }

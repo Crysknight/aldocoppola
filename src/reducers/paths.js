@@ -47,6 +47,10 @@ const paths = {
 	AddAppointment: {
 		pathString: 'add-appointment/',
 		privacy: true
+	},
+	EditAppointment: {
+		pathString: 'edit-appointment/',
+		privacy: true
 	}
 };
 

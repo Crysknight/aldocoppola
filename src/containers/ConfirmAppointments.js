@@ -3,7 +3,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 // import { Link } from 'react-router-dom';
 
-import actions from '../actions';
+// import actions from '../actions';
 
 //here be components
 

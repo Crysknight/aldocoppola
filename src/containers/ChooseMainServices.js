@@ -17,13 +17,11 @@ import { pathsMethods } from '../reducers/paths';
 
 class ChooseMainServices extends Component {
 
-	// constructor(props) {
-		// super(props);
-
-	// }
-
 	componentWillMount() {
-		this.props.loadMainServices();
+		let center = this.props.appointment.centerChosen.id;
+		let employee = this.props.appointment.employeeChosen ? this.props.appointment.employeeChosen.id : null;
+		employee = employee === -1 ? null : employee;
+		this.props.loadMainServices(center, employee);
 	}
 
 	renderServices() {
@@ -52,10 +50,17 @@ class ChooseMainServices extends Component {
 		return (
 			<div id="choose_main_services" className={servicesChecked ? 'has-services' : ''}>
 				<Header title="Выбрать услуги">
-					<Link 
-						to={pathsMethods.getPath(paths, this.props.match.path, paths.__app)}
-						className="back-link"
-					><SVGArrowLeft /></Link>
+					{this.props.appointments.length === 0 ? (
+						<Link 
+							to={pathsMethods.getPath(paths, this.props.match.path, paths.__app)}
+							className="back-link"
+						><SVGArrowLeft /></Link>
+					) : (
+						<div
+							onClick={() => this.props.history.goBack()}
+							className="back-link"
+						><SVGArrowLeft /></div>
+					)}
 				</Header>
 				<Content>{this.renderServices()}</Content>
 					{
@@ -89,7 +94,8 @@ function mapStateToProps(state) {
 		paths: state.paths,
 		mainServices: state.mainServices,
 		services: state.services,
-		appointment: state.appointment
+		appointment: state.appointment,
+		appointments: state.appointments
 	};
 }
 

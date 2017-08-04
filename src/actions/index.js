@@ -19,6 +19,9 @@ import confirmDateTime from './confirm-date-time';
 // Appointment
 import addAppointment from './add-appointment';
 import cancelNewAppointment from './cancel-new-appointment';
+import editAppointment from './edit-appointment';
+import deleteAppointment from './delete-appointment';
+import confirmAppointmentEdit from './confirm-appointment-edit';
 
 export default {
 	loadCenters: loadCenters,
@@ -32,5 +35,8 @@ export default {
 	chooseDate: chooseDate,
 	confirmDateTime: confirmDateTime,
 	addAppointment: addAppointment,
-	cancelNewAppointment: cancelNewAppointment
+	cancelNewAppointment: cancelNewAppointment,
+	editAppointment: editAppointment,
+	deleteAppointment: deleteAppointment,
+	confirmAppointmentEdit: confirmAppointmentEdit
 };

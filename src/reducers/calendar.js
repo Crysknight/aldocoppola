@@ -1,7 +1,7 @@
 import moment from 'moment';
 import 'moment/locale/ru';
 
-import { CHOOSE_EMPLOYEE, CHOOSE_DATE } from '../actions/types';
+import { CHOOSE_EMPLOYEE, CHOOSE_DATE, CONFIRM_SERVICES } from '../actions/types';
 
 const getCalendar = (numberOfMonths) => {
 
@@ -46,41 +46,86 @@ window.moment = moment;
 export default (state = getCalendar(8), action) => {
 	switch (action.type) {
 		case CHOOSE_EMPLOYEE: {
-			let newState = JSON.stringify(state);
-			newState = JSON.parse(newState);
-			for (let calendarMonth of newState) {
-				for (let calendarDate of calendarMonth.days) {
-					delete calendarDate.workHours;
-				}
-			}
-			for (let workHour of action.payload.workHoursFree) {
-				workHour = moment(workHour, 'YYYY-MM-DD hh:mm');
-				let month = workHour.month();
-				let date = workHour.date();
+			if (action.payload.id !== -1) {
+				let newState = JSON.stringify(state);
+				newState = JSON.parse(newState);
 				for (let calendarMonth of newState) {
-					if (calendarMonth.number === month) {
-						for (let calendarDate of calendarMonth.days) {
-							if (calendarDate.date === date) {
-								calendarDate.workHours = calendarDate.workHours ? calendarDate.workHours : {};
-								let morningBorder = workHour.clone().hour(12).minute(0);
-								let dayBorder = workHour.clone().hour(18).minute(0);
-								if (workHour.isSameOrBefore(morningBorder)) {
-									calendarDate.workHours["Утро"] = calendarDate.workHours["Утро"] ? calendarDate.workHours["Утро"] : [];
-									calendarDate.workHours["Утро"].push(workHour.format('HH:mm'));
-								} else if (workHour.isSameOrBefore(dayBorder)) {
-									calendarDate.workHours["День"] = calendarDate.workHours["День"] ? calendarDate.workHours["День"] : [];
-									calendarDate.workHours["День"].push(workHour.format('HH:mm'));
-								} else {
-									calendarDate.workHours["Вечер"] = calendarDate.workHours["Вечер"] ? calendarDate.workHours["Вечер"] : [];
-									calendarDate.workHours["Вечер"].push(workHour.format('HH:mm'));
+					for (let calendarDate of calendarMonth.days) {
+						delete calendarDate.workHours;
+					}
+				}
+				for (let workHour of action.payload.workHoursFree) {
+					workHour = moment(workHour, 'YYYY-MM-DD hh:mm');
+					let month = workHour.month();
+					let date = workHour.date();
+					for (let calendarMonth of newState) {
+						if (calendarMonth.number === month) {
+							for (let calendarDate of calendarMonth.days) {
+								if (calendarDate.date === date) {
+									calendarDate.workHours = calendarDate.workHours ? calendarDate.workHours : {};
+									let morningBorder = workHour.clone().hour(12).minute(0);
+									let dayBorder = workHour.clone().hour(18).minute(0);
+									if (workHour.isSameOrBefore(morningBorder)) {
+										calendarDate.workHours["Утро"] = calendarDate.workHours["Утро"] ? calendarDate.workHours["Утро"] : [];
+										calendarDate.workHours["Утро"].push(workHour.format('HH:mm'));
+									} else if (workHour.isSameOrBefore(dayBorder)) {
+										calendarDate.workHours["День"] = calendarDate.workHours["День"] ? calendarDate.workHours["День"] : [];
+										calendarDate.workHours["День"].push(workHour.format('HH:mm'));
+									} else {
+										calendarDate.workHours["Вечер"] = calendarDate.workHours["Вечер"] ? calendarDate.workHours["Вечер"] : [];
+										calendarDate.workHours["Вечер"].push(workHour.format('HH:mm'));
+									}
+									// calendarDate.workHours.push(workHour.format('HH:mm'));
 								}
-								// calendarDate.workHours.push(workHour.format('HH:mm'));
 							}
 						}
 					}
 				}
+				return newState;
+			} else {
+				return state;
 			}
-			return newState;
+		}
+		case CONFIRM_SERVICES: {
+			if (action.payload.workHoursFree) {
+				let newState = JSON.stringify(state);
+				newState = JSON.parse(newState);
+				for (let calendarMonth of newState) {
+					for (let calendarDate of calendarMonth.days) {
+						delete calendarDate.workHours;
+					}
+				}
+				for (let workHour of action.payload.workHoursFree) {
+					workHour = moment(workHour, 'YYYY-MM-DD hh:mm');
+					let month = workHour.month();
+					let date = workHour.date();
+					for (let calendarMonth of newState) {
+						if (calendarMonth.number === month) {
+							for (let calendarDate of calendarMonth.days) {
+								if (calendarDate.date === date) {
+									calendarDate.workHours = calendarDate.workHours ? calendarDate.workHours : {};
+									let morningBorder = workHour.clone().hour(12).minute(0);
+									let dayBorder = workHour.clone().hour(18).minute(0);
+									if (workHour.isSameOrBefore(morningBorder)) {
+										calendarDate.workHours["Утро"] = calendarDate.workHours["Утро"] ? calendarDate.workHours["Утро"] : [];
+										calendarDate.workHours["Утро"].push(workHour.format('HH:mm'));
+									} else if (workHour.isSameOrBefore(dayBorder)) {
+										calendarDate.workHours["День"] = calendarDate.workHours["День"] ? calendarDate.workHours["День"] : [];
+										calendarDate.workHours["День"].push(workHour.format('HH:mm'));
+									} else {
+										calendarDate.workHours["Вечер"] = calendarDate.workHours["Вечер"] ? calendarDate.workHours["Вечер"] : [];
+										calendarDate.workHours["Вечер"].push(workHour.format('HH:mm'));
+									}
+									// calendarDate.workHours.push(workHour.format('HH:mm'));
+								}
+							}
+						}
+					}
+				}
+				return newState;
+			} else {
+				return state;
+			}
 		}
 		case CHOOSE_DATE: {
 			let newState = JSON.stringify(state);

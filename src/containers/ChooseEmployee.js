@@ -18,18 +18,18 @@ import { pathsMethods } from '../reducers/paths';
 
 class ChooseEmployee extends Component {
 
-	// constructor(props) {
-		// super(props);
-
-	// }
-
 	componentWillMount() {
-		this.props.loadEmployees();
+		let serviceChosenId = null;
+		let employeeChosen = this.props.appointment.employeeChosen ? this.props.appointment.employeeChosen.id : null;
+		if (employeeChosen !== null) {
+			serviceChosenId = this.props.appointment.servicesChosen ? this.props.appointment.servicesChosen[0].id : null;
+		}
+		this.props.loadEmployees(this.props.appointment.centerChosen.id, serviceChosenId, employeeChosen);
 	}
 
 	chooseEmployee(id, name) {
 		let paths = this.props.paths;
-		this.props.chooseEmployee(id, name);
+		this.props.chooseEmployee(id, name, this.props.appointment.centerChosen.id);
 		if (this.props.appointments.length === 0) {
 			this.props.history.push(pathsMethods.getPath(paths, this.props.location.pathname, paths.__app));
 		} else {
@@ -86,6 +86,7 @@ function mapStateToProps(state) {
 	return {
 		paths: state.paths,
 		employees: state.employees,
+		appointment: state.appointment,
 		appointments: state.appointments
 	};
 }

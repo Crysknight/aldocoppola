@@ -18,15 +18,10 @@ import { mainServicesMethods} from '../reducers/mainServices';
 
 class ChooseServices extends Component {
 
-	// constructor(props) {
-		// super(props);
-
-	// }
-
 	componentWillMount() {
-		if (this.props.services.length === 0) {
-			this.props.loadServices();
-		}
+		let employeeId = this.props.appointment.employeeChosen ? this.props.appointment.employeeChosen.id : null;
+		employeeId = employeeId === -1 ? null : employeeId;
+		this.props.loadServices(this.props.appointment.centerChosen.id, employeeId);
 	}
 
 	getMainService() {

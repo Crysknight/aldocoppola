@@ -7,18 +7,22 @@ import actions from '../actions';
 
 import Header from '../components/header';
 import Content from '../components/content';
+import Footer from '../components/footer';
 
 import SVGArrowLeft from '../components/svg-arrow-left';
 import SVGArrowRight from '../components/svg-arrow-right';
+import SVGCheckboxChecked from '../components/svg-checkbox-checked';
+import SVGCheckboxPlus from '../components/svg-checkbox-plus';
 
 import { pathsMethods } from '../reducers/paths';
 
 class AppointmentsList extends Component {
 
-	// constructor(props) {
-		// super(props);
-
-	// }
+	editAppointment(appointmentToEdit) {
+		let paths = this.props.paths;
+		this.props.editAppointment(appointmentToEdit);
+		this.props.history.push(pathsMethods.getPath(paths, this.props.match.path, paths.EditAppointment));
+	}
 
 	getAppointments() {
 		return this.props.appointments.map((appointment, index) => {
@@ -26,7 +30,7 @@ class AppointmentsList extends Component {
 				<div 
 					key={index}
 					className="main-link chosen"
-					onClick={() => this.editAppointment(appointment.number)}
+					onClick={() => this.editAppointment(appointment)}
 				>
 					<span className="title">Запись {appointment.number + 1}</span>
 					<span className="info-text">{appointment.dateTimeChosen.dateString}</span>
@@ -64,6 +68,16 @@ class AppointmentsList extends Component {
 					</div>
 					{this.getAppointments()}
 				</Content>
+				<Footer className="coal">
+					<Link
+						to={pathsMethods.getPath(paths, props.match.path, paths.ConfirmAppointments)}
+						className="footer-link double cherry"
+					><SVGCheckboxChecked />Оформить визит</Link>
+					<Link
+						to={pathsMethods.getPath(paths, props.match.path, paths.AddAppointment)}
+						className="footer-link double"
+					><SVGCheckboxPlus />Добавить еще запись</Link>
+				</Footer>
 			</div>
 		);
 	}
@@ -79,7 +93,7 @@ function mapStateToProps(state) {
 
 function matchDispatchToProps(dispatch) {
 	return bindActionCreators({
-		
+		editAppointment: actions.editAppointment		
 	}, dispatch);
 }
 

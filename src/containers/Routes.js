@@ -63,6 +63,7 @@ class Routes extends Component {
     paths.ChooseDateTime.childPaths.CertainDate.component = CertainDate;
     paths.AddAppointment.component = OnlineAppointment;
     paths.ConfirmAppointments.component = ConfirmAppointments;
+    paths.EditAppointment.component = OnlineAppointment;
 
     let pathsArray = [];
     this.createArrayFromPathsObject(paths, pathsArray);

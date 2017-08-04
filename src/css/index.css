@@ -109,6 +109,10 @@
       transform: rotate(45deg); }
   #_ac_root #online_appointment, #_ac_root #appointments_list {
     background-color: #f5f5f5; }
+    #_ac_root #online_appointment h3, #_ac_root #appointments_list h3 {
+      font-size: 1.2em;
+      font-family: "SourceSansPro-Light";
+      margin: 20px 0; }
     #_ac_root #online_appointment .main-link, #_ac_root #appointments_list .main-link {
       display: flex;
       position: relative;
@@ -422,6 +426,12 @@
       width: 100%;
       align-items: center;
       cursor: pointer; }
+    #_ac_root .ac-footer .footer-link.double {
+      height: 55px;
+      border-left: 1px solid #e6e6e6; }
+      #_ac_root .ac-footer .footer-link.double.cherry {
+        background-color: #c21526;
+        border-left: none; }
     #_ac_root .ac-footer .svg-person {
       display: inline-block;
       width: 16px;
@@ -441,6 +451,15 @@
       margin-right: 10px; }
       #_ac_root .ac-footer .svg-lock g {
         fill: #ffffff; }
+    #_ac_root .ac-footer .svg-checkbox-plus, #_ac_root .ac-footer .svg-checkbox-delete {
+      display: inline-block;
+      width: 16px;
+      margin-right: 10px; }
+      #_ac_root .ac-footer .svg-checkbox-plus .cls-1, #_ac_root .ac-footer .svg-checkbox-delete .cls-1 {
+        fill: none;
+        stroke: #ffffff;
+        stroke-linecap: round;
+        stroke-miterlimit: 10; }
     #_ac_root .ac-footer.white {
       background-color: #ffffff; }
       #_ac_root .ac-footer.white .footer-link {

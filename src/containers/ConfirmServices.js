@@ -34,7 +34,7 @@ class SubmitServices extends Component {
 	confirmServices() {
 		let paths = this.props.paths;
 		let services = this.props.services.filter(service => service.checked);
-		this.props.confirmServices(services);
+		this.props.confirmServices(services, this.props.appointment.centerChosen.id, this.props.appointment.employeeChosen);
 		if (this.props.appointments.length === 0) {
 			this.props.history.push(pathsMethods.getPath(paths, this.props.location.pathname, paths.__app));
 		} else {
@@ -79,12 +79,14 @@ class SubmitServices extends Component {
 					</div>
 				)}
 				<Footer className="coal">
-					<div 
-						className="footer-link"
-						onClick={() => this.confirmServices()}
-					>
-						<SVGCheckboxChecked />Подтвердить
-					</div>
+					{this.props.services.filter(service => service.checked).length > 0 && (
+						<div 
+							className="footer-link"
+							onClick={() => this.confirmServices()}
+						>
+							<SVGCheckboxChecked />Подтвердить
+						</div>
+					)}
 				</Footer>
 			</div>
 		);
@@ -96,6 +98,7 @@ function mapStateToProps(state) {
 	return {
 		paths: state.paths,
 		services: state.services,
+		appointment: state.appointment,
 		appointments: state.appointments
 	};
 }

@@ -12,6 +12,8 @@ import Footer from '../components/footer';
 import SVGLock from '../components/svg-lock';
 import SVGArrowRight from '../components/svg-arrow-right';
 import SVGArrowLeft from '../components/svg-arrow-left';
+import SVGCheckboxDelete from '../components/svg-checkbox-delete';
+import SVGCheckboxChecked from '../components/svg-checkbox-checked';
 
 import { pathsMethods } from '../reducers/paths';
 
@@ -35,9 +37,29 @@ class OnlineAppointment extends Component {
 		if (appointments.length === 0) {
 			this.props.cancelNewAppointment(true, lastAppointment);
 		} else {
-			this.props.cancelNewAppointment(false);
+			this.props.cancelNewAppointment(false, lastAppointment);
 		}
 		this.props.history.push(pathsMethods.getPath(paths, this.props.match.path, paths._app));
+	}
+
+	deleteAppointment() {
+		let paths = this.props.paths;
+		let numberOfTheNewOne = 0;
+		for (let i = 0; i < this.props.appointments.length; i++) {
+			numberOfTheNewOne = i;
+		}
+		this.props.deleteAppointment(this.props.appointment, numberOfTheNewOne);
+		this.props.history.push(pathsMethods.getPath(paths, this.props.match.path, paths._app));
+	}
+
+	confirmAppointmentEdit() {
+		let paths = this.props.paths;
+		let numberOfTheNewOne = 0;
+		for (let i = 0; i < this.props.appointments.length; i++) {
+			numberOfTheNewOne = i + 1;
+		}
+		this.props.confirmAppointmentEdit(this.props.appointment, numberOfTheNewOne);
+		this.props.history.push(pathsMethods.getPath(paths, this.props.match.path, paths._app));	
 	}
 
 	render() {
@@ -46,7 +68,27 @@ class OnlineAppointment extends Component {
 		let appointment = props.appointment;
 		let appointments = props.appointments;
 		let FooterContent = null;
-		if (appointment.servicesChosen && appointment.dateTimeChosen && appointments.length > 0) {
+		let HeaderContent = null;
+
+		if (appointment.edited === false || (appointment.edited === true && (!appointment.servicesChosen || !appointment.dateTimeChosen))) {
+			FooterContent = (
+				<Footer className="coal">
+					<div
+						onClick={() => this.deleteAppointment()}
+						className="footer-link"
+					><SVGCheckboxDelete />Удалить запись {appointment.number + 1}</div>
+				</Footer>
+			);
+		} else if (appointment.edited === true && appointment.servicesChosen && appointment.dateTimeChosen) {
+			FooterContent = (
+				<Footer className="cherry">
+					<div
+						onClick={() => this.confirmAppointmentEdit()}
+						className="footer-link"
+					><SVGCheckboxChecked />Изменить запись {appointment.number + 1}</div>
+				</Footer>
+			);
+		} else if (appointment.servicesChosen && appointment.dateTimeChosen && appointments.length > 0) {
 			FooterContent = (
 				<Footer className="cherry">
 					<div
@@ -83,15 +125,27 @@ class OnlineAppointment extends Component {
 				</Footer>
 			);
 		}
+
+		if (appointment.edited === false || appointment.edited === true) {
+			HeaderContent = (
+				<div
+					onClick={() => this.props.history.goBack()}
+					className="back-link"
+				><SVGArrowLeft /></div>
+			);
+		} else if (appointments.length > 0) {
+			HeaderContent = (
+				<div
+					onClick={() => this.cancelNewAppointment()}
+					className="back-link"
+				><SVGArrowLeft /></div>
+			);
+		}
+
 		return (
 			<div id="online_appointment">
 				<Header title="Онлайн запись">
-					{props.appointments.length > 0 && (
-						<div
-							onClick={() => this.cancelNewAppointment()}
-							className="back-link"
-						><SVGArrowLeft /></div>
-					)}
+					{HeaderContent}
 				</Header>
 				<Content>
 					{props.appointments.length > 0 && (
@@ -164,7 +218,9 @@ function mapStateToProps(state) {
 function matchDispatchToProps(dispatch) {
 	return bindActionCreators({
 		addAppointment: actions.addAppointment,
-		cancelNewAppointment: actions.cancelNewAppointment
+		cancelNewAppointment: actions.cancelNewAppointment,
+		deleteAppointment: actions.deleteAppointment,
+		confirmAppointmentEdit: actions.confirmAppointmentEdit
 	}, dispatch);
 }
 

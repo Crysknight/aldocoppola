@@ -161,6 +161,55 @@
       background-color: #ffffff; }
   #_ac_root #choose_center .svg-arrow-right .cls-1 {
     stroke: #ffffff; }
+  #_ac_root #choose_center .svg-list {
+    width: 16px;
+    height: 16px;
+    margin-right: 10px; }
+    #_ac_root #choose_center .svg-list .cls-1 {
+      fill: none;
+      stroke: #000;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-miterlimit: 10;
+      stroke-width: 2px; }
+  #_ac_root #choose_center .svg-map {
+    width: 18px;
+    height: 18px;
+    margin-right: 10px; }
+    #_ac_root #choose_center .svg-map .cls-1 {
+      opacity: 1; }
+    #_ac_root #choose_center .svg-map .cls-2 {
+      fill: none;
+      stroke: #000;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-miterlimit: 10;
+      stroke-width: 2px; }
+  #_ac_root #choose_center .ac-subheader {
+    background-color: #ffffff;
+    display: flex;
+    padding: 8px 0;
+    align-items: center;
+    justify-content: space-around;
+    height: 65px;
+    box-sizing: border-box; }
+    #_ac_root #choose_center .ac-subheader .ac-subheader-option {
+      display: inline-flex;
+      width: 100%;
+      height: 100%;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.7em;
+      font-family: "SourceSansPro-Semibold";
+      opacity: 0.2;
+      cursor: pointer; }
+      #_ac_root #choose_center .ac-subheader .ac-subheader-option.active {
+        opacity: 1;
+        cursor: default; }
+    #_ac_root #choose_center .ac-subheader .ac-subheader-delimiter {
+      height: 100%;
+      width: 2px;
+      background-color: #e6e6e6; }
   #_ac_root #choose_employee .svg-info {
     display: inline-block;
     width: 16px;

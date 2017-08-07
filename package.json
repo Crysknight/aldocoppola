@@ -16,7 +16,8 @@
     "react-slick": "^0.14.11",
     "redux": "^3.7.2",
     "redux-devtools-extension": "^2.13.2",
-    "redux-thunk": "^2.2.0"
+    "redux-thunk": "^2.2.0",
+    "yandex-map-react": "^1.0.0"
   },
   "devDependencies": {
     "node-sass-chokidar": "0.0.3",

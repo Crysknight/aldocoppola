@@ -60,14 +60,13 @@ class ChooseEmployee extends Component {
 	}
 
 	render() {
-		let paths = this.props.paths;
 		return (
 			<div id="choose_employee">
 				<Header title="Выбрать сотрудника">
-					<Link 
-						to={pathsMethods.getPath(paths, this.props.match.path, paths.__app)}
+					<div 
+						onClick={() => this.props.history.goBack()}
 						className="back-link"
-					><SVGArrowLeft /></Link>
+					><SVGArrowLeft /></div>
 				</Header>
 				<Content>{this.renderEmployees()}</Content>
 				<Footer className="coal">

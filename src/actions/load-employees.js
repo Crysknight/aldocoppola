@@ -3,7 +3,6 @@ import DBMock from '../DBMock';
 
 export default (centerId, serviceId, employeeChosen) => dispatch => {
 	let payload;
-	console.log(employeeChosen);
 	if ((!employeeChosen && employeeChosen !== 0) || employeeChosen === -1) {
 		payload = DBMock.getEmployees(centerId, serviceId);
 	} else {

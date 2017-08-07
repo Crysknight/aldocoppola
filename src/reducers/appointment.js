@@ -25,20 +25,27 @@ export default (state = { number: 0 }, action) => {
 		case CHOOSE_EMPLOYEE: {
 			let newState = JSON.stringify(state);
 			newState = JSON.parse(newState);
-			if (newState.hasOwnProperty('employeeChosen')) {
+			if (
+				newState.hasOwnProperty('employeeChosen') && 
+				newState.employeeChosen.id !== action.payload.id &&
+				newState.employeeChosen.id !== -1
+			) {
 				delete newState.servicesChosen;
+				delete newState.dateTimeChosen;
 			}
 			newState.employeeChosen = action.payload;
 			if (newState.hasOwnProperty('edited')) {
 				newState.edited = true;
 			}
-			delete newState.dateTimeChosen;
 			return newState;
 		}
 		case CONFIRM_SERVICES: {
 			let newState = JSON.stringify(state);
 			newState = JSON.parse(newState);
 			newState.servicesChosen = action.payload.services;
+			if (!newState.hasOwnProperty('employeeChosen')) {
+				newState.employeeChosen = { id: -1, name: 'Любой сотрудник' };
+			}
 			if (newState.hasOwnProperty('edited')) {
 				newState.edited = true;
 			}
@@ -76,7 +83,7 @@ export default (state = { number: 0 }, action) => {
 		case EDIT_APPOINTMENT: {
 			return {
 				edited: false,
-				...action.payload
+				...action.payload.appointmentToEdit
 			};
 		}
 		case DELETE_APPOINTMENT: {

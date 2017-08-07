@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { Map, Marker, MarkerLayout } from 'yandex-map-react';
 
 import actions from '../actions';
 
@@ -11,14 +12,19 @@ import Center from '../components/center';
 import Footer from '../components/footer';
 
 import SVGLock from '../components/svg-lock';
+import SVGList from '../components/svg-list';
+import SVGMap from '../components/svg-map';
 
 import { pathsMethods } from '../reducers/paths';
 
 class ChooseCenter extends Component {
 
-	// constructor(props) {
-	// 	super(props);
-	// }
+	constructor(props) {
+		super(props);
+		this.state = {
+			appearance: 'list'
+		};
+	}
 
 	componentWillMount() {
 		this.props.loadCenters();
@@ -31,15 +37,25 @@ class ChooseCenter extends Component {
 	}
 
 	renderCenters() {
-		return this.props.centers.map((center, index) => {
+		if (this.state.appearance === 'list') {
+			return this.props.centers.map((center, index) => {
+				return (
+					<Center
+						key={index}
+						center={center}
+						chooseCenter={() => this.chooseCenter(center.id, center.name)}
+					/>
+				);
+			});
+		} else if (this.state.appearance === 'map') {
 			return (
-				<Center
-					key={index}
-					center={center}
-					chooseCenter={() => this.chooseCenter(center.id, center.name)}
+				<Map 
+					onAPIAvailable={function () { console.log('API loaded'); }} 
+					center={[55.754734, 37.583314]} 
+					zoom={10}
 				/>
 			);
-		});
+		}
 	}
 
 	render() {
@@ -47,6 +63,33 @@ class ChooseCenter extends Component {
 		return (
 			<div id="choose_center">
 				<Header title="Выбрать центр красоты" />
+				<div className="ac-subheader">
+					<div 
+						className={`ac-subheader-option${this.state.appearance === 'list' ? ' active' : ''}`}
+						onClick={() => {
+							if (this.state.appearance === 'map') {
+								this.setState({
+									appearance: 'list'
+								});
+							}
+						}}
+					>
+						<SVGList />Списком
+					</div>
+					<div className="ac-subheader-delimiter" />
+					<div 
+						className={`ac-subheader-option${this.state.appearance === 'map' ? ' active' : ''}`}
+						onClick={() => {
+							if (this.state.appearance === 'list') {
+								this.setState({
+									appearance: 'map'
+								});
+							}
+						}}
+					>
+						<SVGMap />На карте
+					</div>
+				</div>
 				<Content>{this.renderCenters()}</Content>
 				<Footer className="coal">
 					<Link 

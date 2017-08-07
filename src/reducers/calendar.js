@@ -1,7 +1,7 @@
 import moment from 'moment';
 import 'moment/locale/ru';
 
-import { CHOOSE_EMPLOYEE, CHOOSE_DATE, CONFIRM_SERVICES } from '../actions/types';
+import { CHOOSE_EMPLOYEE, CHOOSE_DATE, CONFIRM_SERVICES, EDIT_APPOINTMENT } from '../actions/types';
 
 const getCalendar = (numberOfMonths) => {
 
@@ -39,7 +39,46 @@ const getCalendar = (numberOfMonths) => {
 
 	return calendar;
 
-}
+};
+
+const setWorkHours = (calendar, workHours) => {
+
+	for (let calendarMonth of calendar) {
+		for (let calendarDate of calendarMonth.days) {
+			delete calendarDate.workHours;
+		}
+	}
+
+	for (let workHour of workHours) {
+		workHour = moment(workHour, 'YYYY-MM-DD hh:mm');
+		let month = workHour.month();
+		let date = workHour.date();
+		for (let calendarMonth of calendar) {
+			if (calendarMonth.number === month) {
+				for (let calendarDate of calendarMonth.days) {
+					if (calendarDate.date === date) {
+						calendarDate.workHours = calendarDate.workHours ? calendarDate.workHours : {};
+						let morningBorder = workHour.clone().hour(12).minute(0);
+						let dayBorder = workHour.clone().hour(18).minute(0);
+						if (workHour.isSameOrBefore(morningBorder)) {
+							calendarDate.workHours["Утро"] = calendarDate.workHours["Утро"] ? calendarDate.workHours["Утро"] : [];
+							calendarDate.workHours["Утро"].push(workHour.format('HH:mm'));
+						} else if (workHour.isSameOrBefore(dayBorder)) {
+							calendarDate.workHours["День"] = calendarDate.workHours["День"] ? calendarDate.workHours["День"] : [];
+							calendarDate.workHours["День"].push(workHour.format('HH:mm'));
+						} else {
+							calendarDate.workHours["Вечер"] = calendarDate.workHours["Вечер"] ? calendarDate.workHours["Вечер"] : [];
+							calendarDate.workHours["Вечер"].push(workHour.format('HH:mm'));
+						}
+					}
+				}
+			}
+		}
+	}
+
+	return calendar;
+
+};
 
 window.moment = moment;
 
@@ -49,39 +88,7 @@ export default (state = getCalendar(8), action) => {
 			if (action.payload.id !== -1) {
 				let newState = JSON.stringify(state);
 				newState = JSON.parse(newState);
-				for (let calendarMonth of newState) {
-					for (let calendarDate of calendarMonth.days) {
-						delete calendarDate.workHours;
-					}
-				}
-				for (let workHour of action.payload.workHoursFree) {
-					workHour = moment(workHour, 'YYYY-MM-DD hh:mm');
-					let month = workHour.month();
-					let date = workHour.date();
-					for (let calendarMonth of newState) {
-						if (calendarMonth.number === month) {
-							for (let calendarDate of calendarMonth.days) {
-								if (calendarDate.date === date) {
-									calendarDate.workHours = calendarDate.workHours ? calendarDate.workHours : {};
-									let morningBorder = workHour.clone().hour(12).minute(0);
-									let dayBorder = workHour.clone().hour(18).minute(0);
-									if (workHour.isSameOrBefore(morningBorder)) {
-										calendarDate.workHours["Утро"] = calendarDate.workHours["Утро"] ? calendarDate.workHours["Утро"] : [];
-										calendarDate.workHours["Утро"].push(workHour.format('HH:mm'));
-									} else if (workHour.isSameOrBefore(dayBorder)) {
-										calendarDate.workHours["День"] = calendarDate.workHours["День"] ? calendarDate.workHours["День"] : [];
-										calendarDate.workHours["День"].push(workHour.format('HH:mm'));
-									} else {
-										calendarDate.workHours["Вечер"] = calendarDate.workHours["Вечер"] ? calendarDate.workHours["Вечер"] : [];
-										calendarDate.workHours["Вечер"].push(workHour.format('HH:mm'));
-									}
-									// calendarDate.workHours.push(workHour.format('HH:mm'));
-								}
-							}
-						}
-					}
-				}
-				return newState;
+				return setWorkHours(newState, action.payload.workHoursFree);
 			} else {
 				return state;
 			}
@@ -90,42 +97,15 @@ export default (state = getCalendar(8), action) => {
 			if (action.payload.workHoursFree) {
 				let newState = JSON.stringify(state);
 				newState = JSON.parse(newState);
-				for (let calendarMonth of newState) {
-					for (let calendarDate of calendarMonth.days) {
-						delete calendarDate.workHours;
-					}
-				}
-				for (let workHour of action.payload.workHoursFree) {
-					workHour = moment(workHour, 'YYYY-MM-DD hh:mm');
-					let month = workHour.month();
-					let date = workHour.date();
-					for (let calendarMonth of newState) {
-						if (calendarMonth.number === month) {
-							for (let calendarDate of calendarMonth.days) {
-								if (calendarDate.date === date) {
-									calendarDate.workHours = calendarDate.workHours ? calendarDate.workHours : {};
-									let morningBorder = workHour.clone().hour(12).minute(0);
-									let dayBorder = workHour.clone().hour(18).minute(0);
-									if (workHour.isSameOrBefore(morningBorder)) {
-										calendarDate.workHours["Утро"] = calendarDate.workHours["Утро"] ? calendarDate.workHours["Утро"] : [];
-										calendarDate.workHours["Утро"].push(workHour.format('HH:mm'));
-									} else if (workHour.isSameOrBefore(dayBorder)) {
-										calendarDate.workHours["День"] = calendarDate.workHours["День"] ? calendarDate.workHours["День"] : [];
-										calendarDate.workHours["День"].push(workHour.format('HH:mm'));
-									} else {
-										calendarDate.workHours["Вечер"] = calendarDate.workHours["Вечер"] ? calendarDate.workHours["Вечер"] : [];
-										calendarDate.workHours["Вечер"].push(workHour.format('HH:mm'));
-									}
-									// calendarDate.workHours.push(workHour.format('HH:mm'));
-								}
-							}
-						}
-					}
-				}
-				return newState;
+				return setWorkHours(newState, action.payload.workHoursFree);
 			} else {
 				return state;
 			}
+		}
+		case EDIT_APPOINTMENT: {
+			let newState = JSON.stringify(state);
+			newState = JSON.parse(newState);
+			return setWorkHours(newState, action.payload.workHoursFree);
 		}
 		case CHOOSE_DATE: {
 			let newState = JSON.stringify(state);

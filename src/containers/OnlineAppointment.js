@@ -109,9 +109,13 @@ class OnlineAppointment extends Component {
 		}	else if (appointment.centerChosen && appointment.servicesChosen && appointment.dateTimeChosen) {
 			FooterContent = (
 				<Footer className="coal">
+					<Link
+						to={pathsMethods.getPath(paths, props.match.path, paths.ConfirmAppointments)}
+						className="footer-link double cherry"
+					><SVGCheckboxChecked />Оформить визит</Link>
 					<div
 						onClick={() => this.addAppointment()}
-						className="footer-link"
+						className="footer-link double"
 					>Добавить еще запись</div>
 				</Footer>
 			);

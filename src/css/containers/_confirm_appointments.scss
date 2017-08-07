@@ -1,0 +1,13 @@
+#confirm_appointments {
+	.appliance-form {
+		input {
+			display: block;
+			width: 100%;
+			background-color: transparent;
+			border: none;
+			outline: none;
+			border-bottom: 1px solid $acDark;
+			margin: 15px 0;
+		}
+	}
+}

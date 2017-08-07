@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
 
 import actions from '../actions';
 
@@ -40,7 +39,7 @@ class EmployeeInfo extends Component {
 	}
 
 	render() {
-		let paths = this.props.paths;
+		// let paths = this.props.paths;
 		let employee = this.getEmployee();
 		return (
 			<div id="employee_info">

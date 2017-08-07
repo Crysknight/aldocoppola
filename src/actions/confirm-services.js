@@ -3,7 +3,7 @@ import DBMock from '../DBMock';
 
 export default (services, centerId, employeeChosen) => {
 	let payload;
-	if (!employeeChosen || employeeChosen === -1) {
+	if (!employeeChosen || employeeChosen.id === -1) {
 		payload = {
 			services, 
 			workHoursFree: DBMock.getWorkHours(centerId, services[0].id, null)

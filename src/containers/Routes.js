@@ -18,6 +18,8 @@ import ConfirmServices from './ConfirmServices';
 import CertainDate from './CertainDate';
 import AppointmentsList from './AppointmentsList';
 import ConfirmAppointments from './ConfirmAppointments';
+import ViewAppointment from './ViewAppointment';
+import ThankYou from './ThankYou';
 
 import { pathsMethods } from '../reducers/paths';
 
@@ -64,6 +66,8 @@ class Routes extends Component {
     paths.AddAppointment.component = OnlineAppointment;
     paths.ConfirmAppointments.component = ConfirmAppointments;
     paths.EditAppointment.component = OnlineAppointment;
+    paths.ViewAppointment.component = ViewAppointment;
+    paths.ThankYou.component = ThankYou;
 
     let pathsArray = [];
     this.createArrayFromPathsObject(paths, pathsArray);

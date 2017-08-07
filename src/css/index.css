@@ -374,6 +374,14 @@
     #_ac_root #certain_date .bottom-slider .time:hover {
       background-color: #c21526;
       color: #ffffff; }
+  #_ac_root #confirm_appointments .appliance-form input {
+    display: block;
+    width: 100%;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid #020202;
+    margin: 15px 0; }
   #_ac_root .ac-header {
     background-color: #020202;
     margin: 0;

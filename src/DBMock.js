@@ -6,7 +6,11 @@ const DBMock = {
 			city: 'Москва',
 			address: 'Москва, Кутузовский проспект, д. 48, Галереи "Времена года", 3 этаж',
 			nearestSession: '12 июля, 10:00',
-			specialistsQuantity: '6 человек'
+			specialistsQuantity: '6 человек',
+			coordinates: {
+				lat: 55.731713, 
+				lon: 37.487084
+			}
 		},
 		{
 			id: 1,
@@ -14,7 +18,11 @@ const DBMock = {
 			city: 'Москва',
 			address: 'Новинский бульвар, д. 31, ТЦ «Новинский пассаж», 2 этаж',
 			nearestSession: '12 июля, 10:00',
-			specialistsQuantity: '6 человек'
+			specialistsQuantity: '6 человек',
+			coordinates: {
+				lat: 55.758072, 
+				lon: 37.581945
+			}
 		},
 		{
 			id: 2,
@@ -22,7 +30,11 @@ const DBMock = {
 			city: 'МО',
 			address: 'Рублево-Успенское шоссе, д. 204, Жуковка',
 			nearestSession: '12 июля, 10:00',
-			specialistsQuantity: '6 человек'
+			specialistsQuantity: '6 человек',
+			coordinates: {
+				lat: 55.738399, 
+				lon: 37.242607
+			}
 		}
 	],
 	employees: [

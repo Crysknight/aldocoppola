@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import MaskedInput from 'react-maskedinput';
 
-// import actions from '../actions';
+import actions from '../actions';
 
 import Header from '../components/header';
 import Content from '../components/content';
@@ -11,6 +12,7 @@ import Footer from '../components/footer';
 
 import SVGArrowLeft from '../components/svg-arrow-left';
 import SVGCheckboxChecked from '../components/svg-checkbox-checked';
+import SVGArrowRight from '../components/svg-arrow-right';
 
 import { pathsMethods } from '../reducers/paths';
 
@@ -24,18 +26,24 @@ class ConfirmAppointments extends Component {
 		};
 	}
 
+	componentWillMount() {
+		if (this.props.appointments.length === 0) {
+			this.props.addAppointment(this.props.appointment);
+		}
+	}
+
 	getAppointments() {
 		let paths = this.props.paths;
-		this.props.appointments.map((appointment, index) => {
+		return this.props.appointments.map((appointment, index) => {
 			return (
 				<Link 
 					key={index} 
-					to={pathsMethods.getPath(paths, this.props.match.path, paths.ViewAppointment)}
-					search={`?appointment=${appointment.number}`}
+					to={pathsMethods.getPath(paths, this.props.match.path, paths.ViewAppointment) + `?appointment=${appointment.number}`}
 					className="appointment"
 				>
 					<span className="title">Детали записи {appointment.number + 1}</span>
 					<span className="info">{appointment.dateTimeChosen.dateString}</span>
+					<SVGArrowRight />
 				</Link>
 			);
 		});
@@ -65,7 +73,7 @@ class ConfirmAppointments extends Component {
 	render() {
 		return (
 			<div id="confirm_appointments">
-				<Header>
+				<Header title="Оформление визита">
 					<div
 						onClick={() => this.props.history.goBack()}
 						className="back-link"
@@ -77,9 +85,19 @@ class ConfirmAppointments extends Component {
 					</div>
 					<div className="appliance-form">
 						<form onSubmit={(e) => this.handleForm(e)}>
-							<input type="text" id="input_name" placeholder="Ваше имя" onChange={(e) => this.handleChange(e)} />
-							<label className="input-number">Номер телефона</label>
-							<input type="number" id="input_number" placeholder="84996669966" onChange={(e) => this.handleChange(e)} />
+							<input
+								type="text" 
+								id="input_name" 
+								placeholder="Ваше имя" 
+								onChange={(e) => this.handleChange(e)} 
+							/>
+							<MaskedInput
+								mask="+7 (111) 111-11-11"
+								type="text"
+								id="input_number"
+								placeholder="Номер телефона (без восьмерки)" 
+								onChange={(e) => this.handleChange(e)} 
+							/>
 						</form>
 					</div>
 				</Content>
@@ -100,13 +118,14 @@ class ConfirmAppointments extends Component {
 function mapStateToProps(state) {
 	return {
 		paths: state.paths,
-		appointments: state.appointments
+		appointments: state.appointments,
+		appointment: state.appointment
 	};
 }
 
 function matchDispatchToProps(dispatch) {
 	return bindActionCreators({
-		
+		addAppointment: actions.addAppointment
 	}, dispatch);
 }
 

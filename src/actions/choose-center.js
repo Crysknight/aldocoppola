@@ -1,11 +1,8 @@
 import { CHOOSE_CENTER } from './types';
 
-export default (id, name) => {
+export default center => {
 	return {
 		type: CHOOSE_CENTER,
-		payload: {
-			id,
-			name
-		}
+		payload: center
 	};
 };

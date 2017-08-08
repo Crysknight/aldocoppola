@@ -27,9 +27,9 @@ class ChooseEmployee extends Component {
 		this.props.loadEmployees(this.props.appointment.centerChosen.id, serviceChosenId, employeeChosen);
 	}
 
-	chooseEmployee(id, name) {
+	chooseEmployee(employee) {
 		let paths = this.props.paths;
-		this.props.chooseEmployee(id, name, this.props.appointment.centerChosen.id);
+		this.props.chooseEmployee(employee, this.props.appointment.centerChosen.id);
 		if (this.props.appointments.length === 0) {
 			this.props.history.push(pathsMethods.getPath(paths, this.props.location.pathname, paths.__app));
 		} else {
@@ -44,7 +44,7 @@ class ChooseEmployee extends Component {
 				<Employee
 					key={index}
 					employee={employee}
-					chooseEmployee={() => this.chooseEmployee(employee.id, employee.name)}
+					chooseEmployee={() => this.chooseEmployee(employee)}
 				>
 					<Link 
 						to={pathsMethods.getPath(

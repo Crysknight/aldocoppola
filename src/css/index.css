@@ -93,6 +93,8 @@
         padding-bottom: 0; }
       #_ac_root #ac_layout > div#choose_main_services.has-services, #_ac_root #ac_layout > div#choose_services.has-services {
         padding-bottom: 55px; }
+      #_ac_root #ac_layout > div#view_appointment {
+        padding-bottom: 0; }
     #_ac_root #ac_layout .app-switch {
       display: inline-block;
       width: 30px;
@@ -185,6 +187,9 @@
       stroke-linejoin: round;
       stroke-miterlimit: 10;
       stroke-width: 2px; }
+  #_ac_root #choose_center.map .ac-content {
+    padding: 0;
+    overflow: hidden; }
   #_ac_root #choose_center .ac-subheader {
     background-color: #ffffff;
     display: flex;
@@ -192,7 +197,9 @@
     align-items: center;
     justify-content: space-around;
     height: 65px;
-    box-sizing: border-box; }
+    box-sizing: border-box;
+    margin: -20px;
+    margin-bottom: 20px; }
     #_ac_root #choose_center .ac-subheader .ac-subheader-option {
       display: inline-flex;
       width: 100%;
@@ -210,6 +217,45 @@
       height: 100%;
       width: 2px;
       background-color: #e6e6e6; }
+  #_ac_root #choose_center.map .ac-subheader {
+    margin: 0;
+    position: relative;
+    z-index: 500; }
+  #_ac_root #choose_center .map-marker-layout {
+    background-color: rgba(2, 2, 2, 0.7);
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 7px;
+    height: 20px;
+    width: 62px;
+    position: relative;
+    cursor: pointer; }
+    #_ac_root #choose_center .map-marker-layout:before {
+      display: inline-block;
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 0;
+      bottom: -12px;
+      left: 31px;
+      border-left: 6px solid transparent;
+      border-right: 6px solid transparent;
+      border-top: 6px solid rgba(2, 2, 2, 0.7);
+      border-bottom: 6px solid transparent; }
+    #_ac_root #choose_center .map-marker-layout .map-marker-text {
+      line-height: 1;
+      font-size: 0.7em;
+      display: inline-block;
+      text-align: center; }
+  #_ac_root #choose_center .ac-map .ac-center {
+    position: absolute;
+    width: 100%;
+    bottom: 56px;
+    background-color: #f5f5f5;
+    padding: 20px;
+    box-sizing: border-box; }
   #_ac_root #choose_employee .svg-info {
     display: inline-block;
     width: 16px;
@@ -430,7 +476,56 @@
     border: none;
     outline: none;
     border-bottom: 1px solid #020202;
-    margin: 15px 0; }
+    margin: 15px 0;
+    padding: 5px 0; }
+    #_ac_root #confirm_appointments .appliance-form input::-webkit-input-placeholder {
+      color: #020202;
+      font-family: "SourceSansPro-Regular";
+      font-size: 1.2em; }
+    #_ac_root #confirm_appointments .appliance-form input::-moz-placeholder {
+      color: #020202;
+      font-family: "SourceSansPro-Regular";
+      font-size: 1.2em; }
+    #_ac_root #confirm_appointments .appliance-form input:-moz-placeholder {
+      color: #020202;
+      font-family: "SourceSansPro-Regular";
+      font-size: 1.2em; }
+    #_ac_root #confirm_appointments .appliance-form input:-ms-input-placeholder {
+      color: #020202;
+      font-family: "SourceSansPro-Regular";
+      font-size: 1.2em; }
+    #_ac_root #confirm_appointments .appliance-form input:focus::-webkit-input-placeholder {
+      color: transparent; }
+    #_ac_root #confirm_appointments .appliance-form input:focus::-moz-placeholder {
+      color: transparent; }
+    #_ac_root #confirm_appointments .appliance-form input:focus:-moz-placeholder {
+      color: transparent; }
+    #_ac_root #confirm_appointments .appliance-form input:focus:-ms-input-placeholder {
+      color: transparent; }
+  #_ac_root #confirm_appointments .appointment {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    background-color: #ffffff;
+    box-shadow: 0 0 8px #e6e6e6;
+    padding: 15px 20px;
+    margin-bottom: 20px;
+    text-decoration: none;
+    font-family: "SourceSansPro-Semibold";
+    position: relative; }
+    #_ac_root #confirm_appointments .appointment span {
+      margin: 4px 0;
+      display: block;
+      width: 100%;
+      color: #020202; }
+    #_ac_root #confirm_appointments .appointment span.title {
+      font-size: 1em; }
+    #_ac_root #confirm_appointments .appointment span.info {
+      font-size: 0.7em; }
+    #_ac_root #confirm_appointments .appointment .svg-arrow-right g {
+      stroke: #e6e6e6; }
+  #_ac_root #view_appointment .ac-service {
+    cursor: default; }
   #_ac_root .ac-header {
     background-color: #020202;
     margin: 0;

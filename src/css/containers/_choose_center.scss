@@ -33,6 +33,12 @@
       stroke-width: 2px;
     }
 	}
+	&.map {
+		.ac-content {
+			padding: 0;
+			overflow: hidden;
+		}
+	}
 	.ac-subheader {
 		background-color: $acWhite;
 		display: flex;
@@ -41,6 +47,8 @@
 		justify-content: space-around;	
 		height: 65px;
 		box-sizing: border-box;
+		margin: -20px;
+		margin-bottom: 20px;
 		.ac-subheader-option {
 			display: inline-flex;
 			width: 100%;
@@ -60,6 +68,52 @@
 			height: 100%;
 			width: 2px;
 			background-color: $acLabelGrey;
+		}
+	}
+	&.map .ac-subheader {
+		margin: 0;
+		position: relative;
+		z-index: 500;
+	}
+	.map-marker-layout {
+		background-color: transparentize($acDark, 0.3);
+		color: $acWhite;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		padding: 7px;
+		height: 20px;
+		width: 62px;
+		position: relative;
+		cursor: pointer;
+		&:before {
+			display: inline-block;
+			content: '';
+			position: absolute;
+			width: 0;
+			height: 0;
+			bottom: -12px;
+			left: 31px;
+			border-left: 6px solid transparent;
+			border-right: 6px solid transparent;
+			border-top: 6px solid transparentize($acDark, 0.3);
+			border-bottom: 6px solid transparent;
+		}
+		.map-marker-text {
+			line-height: 1;
+			font-size: 0.7em;
+			display: inline-block;
+			text-align: center;
+		}
+	}
+	.ac-map {
+		.ac-center {
+			position: absolute;
+			width: 100%;
+			bottom: 56px;
+			background-color: $acLayoutGrey;
+			padding: 20px;
+			box-sizing: border-box;
 		}
 	}
 }

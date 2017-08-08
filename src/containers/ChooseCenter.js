@@ -14,6 +14,7 @@ import Footer from '../components/footer';
 import SVGLock from '../components/svg-lock';
 import SVGList from '../components/svg-list';
 import SVGMap from '../components/svg-map';
+import SVGArrowLeft from '../components/svg-arrow-left';
 
 import { pathsMethods } from '../reducers/paths';
 
@@ -30,9 +31,9 @@ class ChooseCenter extends Component {
 		this.props.loadCenters();
 	}
 
-	chooseCenter(id, name) {
+	chooseCenter(center) {
 		let paths = this.props.paths;
-		this.props.chooseCenter(id, name);
+		this.props.chooseCenter(center);
 		this.props.history.push(pathsMethods.getPath(paths, this.props.location.pathname, paths.__app));
 	}
 
@@ -43,17 +44,49 @@ class ChooseCenter extends Component {
 					<Center
 						key={index}
 						center={center}
-						chooseCenter={() => this.chooseCenter(center.id, center.name)}
+						chooseCenter={() => this.chooseCenter(center)}
 					/>
 				);
 			});
 		} else if (this.state.appearance === 'map') {
 			return (
-				<Map 
-					onAPIAvailable={function () { console.log('API loaded'); }} 
-					center={[55.754734, 37.583314]} 
-					zoom={10}
-				/>
+				<div className="ac-map" style={{ "width": "100%", "height": "100%" }}>
+					<Map
+						center={[55.754734, 37.583314]} 
+						zoom={9}
+						width={"100%"}
+						height={"100%"}
+						style={{
+							"position": "relative",
+							"marginTop": `${!this.state.showCenter ? '-32px' : '-132px'}`
+						}}
+					>
+						{this.props.centers.map((center, index) => {
+							return (
+								<Marker
+									key={index}
+									lat={center.coordinates.lat}
+									lon={center.coordinates.lon}
+									onClick={() => this.setState({ showCenter: center })}
+								>
+									<MarkerLayout>
+										<div className="map-marker-layout">
+											<div className="map-marker-text">
+												{center.name}
+											</div>
+										</div>
+									</MarkerLayout>
+								</Marker>
+							);
+						})}
+					</Map>
+					{this.state.showCenter && (
+						<Center 
+							center={this.state.showCenter}
+							chooseCenter={() => this.chooseCenter(this.state.showCenter.id, this.state.showCenter.name)}
+						/>
+					)}
+				</div>
 			);
 		}
 	}
@@ -61,36 +94,47 @@ class ChooseCenter extends Component {
 	render() {
 		let paths = this.props.paths;
 		return (
-			<div id="choose_center">
-				<Header title="Выбрать центр красоты" />
-				<div className="ac-subheader">
-					<div 
-						className={`ac-subheader-option${this.state.appearance === 'list' ? ' active' : ''}`}
-						onClick={() => {
-							if (this.state.appearance === 'map') {
-								this.setState({
-									appearance: 'list'
-								});
-							}
-						}}
-					>
-						<SVGList />Списком
+			<div id="choose_center" className={`${this.state.appearance === 'map' ? 'map' : ''}`}>
+				<Header title="Выбрать центр красоты">
+					{this.state.showCenter && (
+						<div 
+							className="back-link"
+							onClick={() => this.setState({ showCenter: null })}
+						>
+							<SVGArrowLeft />
+						</div>
+					)}
+				</Header>
+				<Content>
+					<div className="ac-subheader">
+						<div 
+							className={`ac-subheader-option${this.state.appearance === 'list' ? ' active' : ''}`}
+							onClick={() => {
+								if (this.state.appearance === 'map') {
+									this.setState({
+										appearance: 'list'
+									});
+								}
+							}}
+						>
+							<SVGList />Списком
+						</div>
+						<div className="ac-subheader-delimiter" />
+						<div 
+							className={`ac-subheader-option${this.state.appearance === 'map' ? ' active' : ''}`}
+							onClick={() => {
+								if (this.state.appearance === 'list') {
+									this.setState({
+										appearance: 'map'
+									});
+								}
+							}}
+						>
+							<SVGMap />На карте
+						</div>
 					</div>
-					<div className="ac-subheader-delimiter" />
-					<div 
-						className={`ac-subheader-option${this.state.appearance === 'map' ? ' active' : ''}`}
-						onClick={() => {
-							if (this.state.appearance === 'list') {
-								this.setState({
-									appearance: 'map'
-								});
-							}
-						}}
-					>
-						<SVGMap />На карте
-					</div>
-				</div>
-				<Content>{this.renderCenters()}</Content>
+					{this.renderCenters()}
+				</Content>
 				<Footer className="coal">
 					<Link 
 						to={pathsMethods.getPath(paths, this.props.match.path, paths.MyAccount)}

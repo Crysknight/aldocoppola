@@ -16,14 +16,17 @@ export default class Service extends Component {
 	render() {
 		return (
 			<div 
-				className={`ac-service${this.props.single ? ' single' : ''}`}
+				className={`ac-service${this.props.single || this.props.inform ? ' single' : ''}`}
 				onClick={() => {
+					if (this.props.inform) {
+						return;
+					}
 					if (this.props.single) {
 						return this.props.chooseService();
 					}
 				}}
 			>
-				{!this.props.single && (
+				{!this.props.single && !this.props.inform && (
 					<div className="service-checkbox" onClick={this.props.chooseService}>
 						{
 							this.props.service.checked ? (

@@ -50,17 +50,10 @@ class ChooseMainServices extends Component {
 		return (
 			<div id="choose_main_services" className={servicesChecked ? 'has-services' : ''}>
 				<Header title="Выбрать услуги">
-					{this.props.appointments.length === 0 ? (
-						<Link 
-							to={pathsMethods.getPath(paths, this.props.match.path, paths.__app)}
-							className="back-link"
-						><SVGArrowLeft /></Link>
-					) : (
-						<div
-							onClick={() => this.props.history.goBack()}
-							className="back-link"
-						><SVGArrowLeft /></div>
-					)}
+					<div
+						onClick={() => this.props.history.goBack()}
+						className="back-link"
+					><SVGArrowLeft /></div>
 				</Header>
 				<Content>{this.renderServices()}</Content>
 					{

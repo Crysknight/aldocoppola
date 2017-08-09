@@ -5,18 +5,23 @@ import { connect } from 'react-redux';
 
 // import actions from '../actions';
 
-//here be components
+import Header from '../components/header';
+import Content from '../components/content';
+
+import SVGCheckboxChecked from '../components/svg-checkbox-checked';
 
 class ThankYou extends Component {
 
-	// constructor(props) {
-		// super(props);
-
-	// }
-
 	render() {
 		return (
-			<div>Спасибо!</div>
+			<div id="thank_you">
+				<Header title="Спасибо за обращение" />
+				<Content>
+					<SVGCheckboxChecked />
+					<h3>Вы успешно записаны</h3>
+					<p>На Ваш телефон отправлено подтверждение записи и продублированны данные записи</p>
+				</Content>
+			</div>
 		);
 	}
 

@@ -9,25 +9,26 @@
 			border-bottom: 1px solid $acDark;
 			margin: 15px 0;
 			padding: 5px 0;
+			font-size: 1em;
 			&::-webkit-input-placeholder {
 				color: $acDark;
-				font-family: $acRegular;
-				font-size: 1.2em;
+				font-family: $acSemibold;
+				font-size: 1em;
 			}
 			&::-moz-placeholder {
 				color: $acDark;
-				font-family: $acRegular;
-				font-size: 1.2em;
+				font-family: $acSemibold;
+				font-size: 1em;
 			}
 			&:-moz-placeholder {
 				color: $acDark;
-				font-family: $acRegular;
-				font-size: 1.2em;
+				font-family: $acSemibold;
+				font-size: 1em;
 			}
 			&:-ms-input-placeholder {
 				color: $acDark;
-				font-family: $acRegular;
-				font-size: 1.2em;
+				font-family: $acSemibold;
+				font-size: 1em;
 			}
 			&:focus::-webkit-input-placeholder {
 				color: transparent;

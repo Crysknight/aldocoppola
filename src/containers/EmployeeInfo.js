@@ -28,9 +28,9 @@ class EmployeeInfo extends Component {
 		return employeesMethods.findEmployeeById(employees, id);
 	}
 
-	chooseEmployee(id, name) {
+	chooseEmployee(employee) {
 		let paths = this.props.paths;
-		this.props.chooseEmployee(id, name, this.props.appointment.centerChosen.id);
+		this.props.chooseEmployee(employee, this.props.appointment.centerChosen.id);
 		if (this.props.appointments.length === 0) {
 			this.props.history.push(pathsMethods.getPath(paths, this.props.location.pathname, paths.__app));
 		} else {
@@ -75,7 +75,7 @@ class EmployeeInfo extends Component {
 				<Footer className="coal">
 					<div
 						className="footer-link"
-						onClick={() => this.chooseEmployee(employee.id, employee.name)}
+						onClick={() => this.chooseEmployee(employee)}
 					><SVGPerson />Выбрать этого сотрудника</div>
 				</Footer>
 			</div>

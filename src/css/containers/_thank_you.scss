@@ -1,0 +1,26 @@
+#thank_you {
+	.ac-content {
+		display: flex;
+		align-items: center;
+		align-content: center;
+		justify-content: center;
+		flex-wrap: wrap;
+		h3, p {
+			width: 100%;
+			text-align: center;
+			margin: 5px 0;
+		}
+		h3 {
+			font-family: $acSemibold;
+			font-size: 1em;
+		}
+		p {
+			font-size: 0.8em;
+		}
+		.svg-checkbox-checked {
+			width: 70px;
+			height: 70px;
+			margin-bottom: 20px;
+		}
+	}
+}

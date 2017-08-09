@@ -83,7 +83,7 @@ class ChooseCenter extends Component {
 					{this.state.showCenter && (
 						<Center 
 							center={this.state.showCenter}
-							chooseCenter={() => this.chooseCenter(this.state.showCenter.id, this.state.showCenter.name)}
+							chooseCenter={() => this.chooseCenter(this.state.showCenter)}
 						/>
 					)}
 				</div>
